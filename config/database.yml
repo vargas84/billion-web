@@ -23,11 +23,15 @@ default: &default
 
 development:
   <<: *default
-  database: lambda_api_development
+  database: billion_web_development
+
+integration:
+  <<: *default
+  database: billion_web_integration
 
 stage:
   <<: *default
-  database: lambda_api_stage
+  database: billion_web_integration
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,7 +65,7 @@ stage:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: lambda_api_test
+  database: billion_web_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,6 +88,6 @@ test:
 #
 production:
   <<: *default
-  database: lambda_api_production
-  username: lambda-api
+  database: billion_web_production
+  username: billion
   password: <%= ENV['LAMBDA-API_DATABASE_PASSWORD'] %>
