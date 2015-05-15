@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # Project-specific gems
 gem 'high_voltage', '~> 2.3.0'
-gem 'devise', '~> 3.4.1'
 gem 'paranoia', '~> 2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
