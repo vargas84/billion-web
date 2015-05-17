@@ -1,0 +1,47 @@
+.navbar-landing {
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+
+  a {
+    color: white !important;
+  }
+}
+
+.jumbotron-landing {
+  background-image: image-url('earthAtNight.jpg');
+  background-position: 50% -15px;
+  background-size: cover;
+  height: 700px;
+  margin-top: -50px;
+  padding-top: 200px !important;
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .glyphicon-menu-down {
+    color: white !important;
+    display: block;
+    font-size: 52px;
+    margin-top: 200px;
+    text-align: center;
+  }
+
+  h1, p {
+    color: white !important;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: $font-family-logo;
+    font-size: 112px !important;
+  }
+
+  p {
+    font-size: 28px !important;
+  }
+}
