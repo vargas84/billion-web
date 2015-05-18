@@ -1,0 +1,14 @@
+// typography
+$font-family-sans-serif: 'Muli', Helvetica, Arial, sans-serif !default;
+$font-family-logo: 'Righteous', Helvetica, Arial, sans-serif !default;
+
+// colors
+$brand-primary: #3FAAA5;
+$green: #27ae60;
+$orange: #d35400;
+$blue: #2980b9;
+$red: #c0392b;
+
+// bg
+$body-bg-light: lighten($brand-primary, 45%);
+$body-bg-lighter: lighten($brand-primary, 51%);

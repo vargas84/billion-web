@@ -3,23 +3,41 @@
   background-color: transparent !important;
   border: none !important;
 
-  a {
+  li a {
     color: white !important;
+    padding: 5px 10px !important;
+    margin: 10px 0 !important;
+  }
+
+  .navbar-brand img {
+    width: 50px;
+  }
+
+  .nav-call-to-action {
+    background-color: $brand-primary;
+    border-radius: $border-radius-base;
+
+    &:hover {
+      background-color: lighten($brand-primary, 10%) !important;
+    }
   }
 }
 
 .jumbotron-landing {
   background-image: image-url('earthAtNight.jpg');
-  background-position: 50% -15px;
   background-size: cover;
   height: 700px;
   margin-top: -50px;
   padding-top: 200px !important;
 
-  a {
-    &:hover {
-      text-decoration: none;
-    }
+  .bounce {
+    -moz-animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;
+
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
   }
 
   .glyphicon-menu-down {
@@ -39,6 +57,12 @@
   h1 {
     font-family: $font-family-logo;
     font-size: 112px !important;
+  }
+
+  .jumbotron-down-link {
+    &:hover, &:visited, &:active, &:focus {
+      text-decoration: none;
+    }
   }
 
   p {

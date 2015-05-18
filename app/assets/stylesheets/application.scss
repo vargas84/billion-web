@@ -1,4 +1,7 @@
-@import 'overrides';
-@import 'header-landing';
+@import 'variables'; // includes overrides
+@import 'mixins'; // includes overrides
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'animate';
+@import 'header-landing';
+@import 'landing';

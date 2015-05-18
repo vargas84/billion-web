@@ -1,0 +1,14 @@
+@mixin number-label($color) {
+  &:after {
+    border: 3px solid $color;
+    border-radius: 50%;
+    color: $color;
+    display: block;
+    height: 30px; width: 30px;
+    line-height: 25px;
+    position: relative;
+    text-align: center;
+    top: 5px; left: 5px;
+    @content;
+  }
+}
