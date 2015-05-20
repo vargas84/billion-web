@@ -1,5 +1,6 @@
 @import 'variables'; // includes overrides
-@import 'mixins'; // includes overrides
+@import 'base';
+@import 'mixins';
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'animate';

@@ -60,15 +60,26 @@
 
 footer {
   background-color: $body-bg-light;
-  height: 70px;
+  height: 150px;
 
-  p {
-    line-height: 70px;
-    margin: 0;
+  .fa {
+    margin-left: 5px;
   }
 
   img {
     padding: 20px 0;
     width: 35px;
+  }
+
+  .logo {
+    font-family: $font-family-logo;
+    font-size: 21px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 150px;
+    margin: 0;
+    padding: 0
   }
 }
