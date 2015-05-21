@@ -1,20 +1,32 @@
-// typography
-$font-family-sans-serif: 'Muli', Helvetica, Arial, sans-serif !default;
-$font-family-logo: 'Righteous', Helvetica, Arial, sans-serif !default;
+/* BOOTSTRAP */
 
-$font-size-base: 14px !default;
+// Typography
+$font-family-sans-serif: 'Muli', Helvetica, Arial, sans-serif !default;
+$font-size-base: 14px;
 $font-size-h1: floor(($font-size-base * 2.4)) !default;
 
-// colors
+// Colors
 $gray-base: #444951;
 $brand-primary: #3FAAA5;
+$headings-color: $gray-base;
+
+// Components
+$border-radius-base: 0;
+$border-radius-large: $border-radius-base;
+$border-radius-small: $border-radius-base;
+
+/* CUSTOM VARIABLES */
+
+// Typography
+$font-family-logo: 'Righteous', Helvetica, Arial, sans-serif !default;
+
+// Colors
 $green: #27ae60;
 $orange: #d35400;
 $blue: #2980b9;
 $red: #c0392b;
 
-$headings-color: $gray-base;
-
-// bg
+// Background
 $body-bg-light: lighten($brand-primary, 40%);
 $body-bg-lighter: lighten($brand-primary, 51%);
+

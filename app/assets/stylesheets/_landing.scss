@@ -1,61 +1,71 @@
 .landing-section {
-  padding: 0 0 100px;
+  padding: 20px 0 70px;
 
-  .page-header {
-    padding-bottom: 0;
-    margin-bottom: 40px;
+  .section-header {
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  .section-rant {
+    font-weight: 300;
+    font-size: $font-size-h2;
+    line-height: 1.25;
+    padding: 40px 0;
+
+    strong {
+      font-weight: 600;
+      color: $headings-color;
+    }
+  }
+
+  &:nth-child(2n) {
+    background-color: $body-bg-lighter;
   }
 }
 
-#about-text, #team {
-  background-color: $body-bg-lighter;
-}
-
-.video-container {
-  position:relative;
-  padding-bottom:39%;
-  height:0;
-  overflow:hidden;
-}
-
-.video-container iframe, .video-container object, .video-container embed {
-  position:absolute;
-  top: 0; left: 0;
-  margin-left: 15%;
-  width: 70%;
-  height: 100%;
-}
-
-#about-text {
+#landing-about {
   .about-icon-block {
     width: 100%;
     height: 180px;
   }
 
-  .about-text-block:nth-child(1) .about-icon-block {
-    @include number-label(white) { content: '1'}
-    background-color: $green;
+  .about-text-block {
+    margin-bottom: 40px;
   }
 
-  .about-text-block:nth-child(2) .about-icon-block {
-    @include number-label(white) { content: '2'}
-    background-color: $red;
-  }
+  .about-text-blocks {
+    > div:nth-child(1) .about-icon-block {
+      @include number-label(white) { content: '1'}
+      background-color: $green;
+    }
 
-  .about-text-block:nth-child(3) .about-icon-block {
-    @include number-label(white) { content: '3'}
-    background-color: $blue;
-  }
+    > div:nth-child(2) .about-icon-block {
+      @include number-label(white) { content: '2'}
+      background-color: $red;
+    }
 
-  .about-text-block:nth-child(4) .about-icon-block {
-    @include number-label(white) { content: '4'}
-    background-color: $orange;
+    > div:nth-child(3) .about-icon-block {
+      @include number-label(white) { content: '3'}
+      background-color: $blue;
+    }
   }
 
   h4 {
     margin-top: 20px;
     text-align: center;
   }
+}
+
+#landing-join {
+  input {
+    @include box-shadow(none);
+  }
+  p {
+    font-size: $font-size-h4;
+    text-align: center;
+    margin-top: 0.5em;
+  }
+
 }
 
 footer {
