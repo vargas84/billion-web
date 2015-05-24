@@ -1,3 +1,9 @@
+<script>
+  window.config = window.config || {};
+  window.config.subscribePath = '<%= subscribe_path %>';
+  window.config.authenticityToken = '<%= form_authenticity_token %>';
+</script>
+
 <nav class="navbar navbar-default navbar-landing">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -231,16 +237,32 @@
       </div>
     </div>
     <div class='row'>
-      <div class="col-sm-8 col-sm-offset-2 form-group">
-        <div class="input-group">
-          <input type='text' class="form-control input-lg"
-          placeholder="e.g. elonmusk@ironman.com"/>
-          <span class="input-group-btn">
-            <button class='btn btn-primary input-lg'>Subscribe</button>
-          </span>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="alert alert-success hide" role="alert">
+          <strong>Thanks for your support!</strong> We've sent you an email to
+          confirm that you'd like to recieve updates on our progress.
         </div>
       </div>
-      <div class="col-sm-12 form-group">
+      <div class="col-sm-8 col-sm-offset-2 bd-danger">
+        <div class="alert alert-danger hide" role="alert">
+          Please enter a valid email address.
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2 form-group">
+        <form>
+          <div class="input-group">
+            <input type="email" class="form-control input-lg landing-email-input"
+            placeholder="e.g. elonmusk@ironman.com"/>
+            <span class="input-group-btn">
+              <button class='btn btn-primary input-lg landing-email-submit'>
+                <span class="landing-submit-text">Subscribe</span>
+                <%= icon('spinner', '', class: 'fa-pulse hide') %>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-12 form-group landing-join-message">
         <p>We'll keep you updated on our progress.
         <a href='mailto:hello@billioneffect.com'>Still have questions? Ask away</a>
         </p>
@@ -275,7 +297,7 @@
 <div id="modalVideo" class="modal fade">
   <div class="modal-dialog">
     <div id="modalVideoHeader">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>      
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <div id='embedVideo' class='embed-container'>
       <iframe src='http://www.youtube.com/embed/m68_iXKX5Ag?autoplay=true&rel=0&amp;controls=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>

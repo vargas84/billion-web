@@ -137,12 +137,18 @@
   input {
     @include box-shadow(none);
   }
-  p {
-    font-size: $font-size-h4;
-    text-align: center;
-    margin-top: 0.5em;
+
+  .landing-email-submit {
+    width: 90px;
   }
 
+  .landing-join-message {
+    p {
+      font-size: $font-size-h4;
+      text-align: center;
+      margin-top: 0.5em;
+    }
+  }
 }
 
 footer {
@@ -150,6 +156,7 @@ footer {
 
   background-color: $body-bg-light;
   padding: 50px 0;
+
   .fa {
     margin-left: 5px;
   }
@@ -199,8 +206,6 @@ footer {
       }
     }
   }
-
-
 }
 
 .about-icon-block > img {
