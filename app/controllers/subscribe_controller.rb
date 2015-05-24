@@ -4,7 +4,7 @@ class SubscribeController < ApplicationController
 
     if EmailValidator.valid? email
       mailchimp = Mailchimp::API.new ENV['mailchimp_api_key']
-      mailchimp.lists.subscribe ENV['mailchimp_list_id'], { "email" => email }
+      mailchimp.lists.subscribe ENV['mailchimp_list_id'], 'email' => email
 
       render json: { message: 'success' }.to_json, status: :ok
     else
