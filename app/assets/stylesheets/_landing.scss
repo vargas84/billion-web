@@ -56,6 +56,67 @@
   }
 }
 
+#landing-team {
+
+  .person-image {
+    text-align: center;
+    img {
+      max-width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .person-bio {
+    h2 {
+      font-size: $font-size-h3;
+      text-align: center;
+    }
+    small {
+      display: block;
+      line-height: 1.75;
+    }
+  }
+
+  .person-lg-container {
+
+    margin-top: 50px;
+
+    .person-bio {
+      max-width: $screen-sm-min * 0.5;
+      margin: 0 auto;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: 0px;
+      .person-bio {
+        max-width: auto;
+        margin: 0;
+      }
+    }
+
+    @media (min-width: $screen-md-min) {
+      .person-bio {
+        padding: 0 30px;
+      }
+    }
+  }
+
+  .person-sm-container {
+    margin-top: 50px;
+
+    @media (min-width: $screen-md-min) {
+      h2 {
+        font-size: $font-size-h4;
+      }
+
+      img {
+        max-width: 85%;
+      }
+    }
+  }
+
+}
+
 #landing-join {
   input {
     @include box-shadow(none);
