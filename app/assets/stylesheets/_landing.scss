@@ -18,7 +18,14 @@
       color: $headings-color;
     }
 
+    p {
+      margin-top: 1em;
+    }
+
     @media (min-width: $screen-sm-min) {
+      p {
+        margin-top: 0;
+      }
       text-align: left;
     }
   }
@@ -139,9 +146,10 @@
 }
 
 footer {
-  background-color: $body-bg-light;
-  height: 150px;
+  $line-height: 30px;
 
+  background-color: $body-bg-light;
+  padding: 50px 0;
   .fa {
     margin-left: 5px;
   }
@@ -153,15 +161,46 @@ footer {
 
   .logo {
     font-family: $font-family-logo;
-    font-size: 21px;
+    font-size: $font-size-h2;
+    line-height: $line-height;
   }
 
   p {
-    font-size: 16px;
-    line-height: 150px;
     margin: 0;
-    padding: 0
   }
+
+  .love {
+    font-size: 19px;
+    line-height: $line-height;
+    padding-top: 0.2em;
+  }
+
+  .social-links {
+    font-size: 19px;
+    vertical-align: middle;
+    a {
+      display: inline-block;
+      padding: 0em 0.55em 0 0;
+    }
+  }
+
+  .fa-heart {
+    margin-left: 0;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .love {
+      text-align: center;
+    }
+    .social-links {
+      text-align: right;
+      a {
+        padding: 0.2em 0.2em 0 0;
+      }
+    }
+  }
+
+
 }
 
 .about-icon-block > img {

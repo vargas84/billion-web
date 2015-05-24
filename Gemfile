@@ -62,3 +62,5 @@ group :development, :test do
   gem 'json-schema', '~> 2.5.1'
   gem 'database_cleaner', '~> 1.4.1'
 end
+
+gem 'font-awesome-sass', '4.3.2.1'

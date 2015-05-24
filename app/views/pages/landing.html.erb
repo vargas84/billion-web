@@ -168,19 +168,20 @@
 <footer>
   <div class="container">
     <div class='row'>
-      <div class="col-sm-4">
-        <p class="logo">billion</p>
+      <div class="col-sm-2">
+        <p class="logo">billion
+        </p>
       </div>
-      <div class="col-sm-4">
-        <p class="text-center">Made with
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+      <div class="col-sm-8">
+        <p class="love">Made with
+        <%= icon('heart') %>
         in Columbus, OH</p>
       </div>
-      <div class="col-sm-4">
-        <p class="text-right">
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-twitter"></i>
-        <i class="fa fa-instagram"></i>
+      <div class="col-sm-2">
+        <p class="social-links">
+        <%= link_to icon('facebook'), '#' %>
+        <%= link_to icon('twitter'), '#' %>
+        <%= link_to icon('instagram'), '#' %>
         </p>
       </div>
     </div>
