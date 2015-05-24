@@ -11,10 +11,15 @@
     font-size: $font-size-h2;
     line-height: 1.25;
     padding: 40px 0;
+    text-align: center;
 
     strong {
       font-weight: 600;
       color: $headings-color;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      text-align: left;
     }
   }
 
@@ -30,7 +35,11 @@
   }
 
   .about-text-block {
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
+    max-width: $screen-sm-min * 0.5;
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 40px 0;
+    }
   }
 
   .about-text-blocks {
