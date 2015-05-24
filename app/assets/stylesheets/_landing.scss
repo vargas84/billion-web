@@ -93,3 +93,27 @@ footer {
     padding: 0
   }
 }
+
+.about-icon-block > img {
+  margin-top: 30px;
+}
+
+/* utility class, center aligns element vertically in its parent container */
+/* see http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+.verticalAlignCenter {
+  position: absolute;
+  top: 50%;
+  /* position is top of element, need to offset by half of element's height. transform is the best way to do this. display:table-cell inside display;table will work equally, but for some reason prevents clicks on dropzone elements */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.horizontalAlignCenter {
+  position: absolute;
+  left: 50%;
+  /* position is top of element, need to offset by half of element's height. transform is the best way to do this. display:table-cell inside display;table will work equally, but for some reason prevents clicks on dropzone elements */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
