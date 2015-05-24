@@ -226,3 +226,64 @@ footer {
   -moz-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
+/* http://embedresponsively.com/ */
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-container iframe, .embed-container object, .embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* bootstrap modal */
+@media (max-width: $screen-xs-max) {
+  #modalVideo .modal-dialog {
+    width: 100%;
+    padding-right: 20px; /* needed if 100% width */
+  }
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  #modalVideo .modal-dialog {
+    width: 600px;
+  }
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+  #modalVideo .modal-dialog {
+    width: 800px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  #modalVideo .modal-dialog {
+    width: 1000px;
+  }
+}
+
+/* bootstrap modal background */
+div.modal-backdrop.in {
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+div.modal-backdrop {
+  background-color: white; 
+}
+
+#modalVideoHeader {
+  text-align: right;
+}
+
+#modalVideoHeader button.close {
+  float: initial !important;
+}
