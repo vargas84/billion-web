@@ -14,8 +14,8 @@
   $stickyNav.addClass('animated');
   $leftContainer.addClass('animated');
 
-  $(window).on('scroll', _.debounce(toggleLogo, 0));
-  $(window).on('scroll', _.debounce(toggleSticky, 0));
+  $(window).on('scroll', _.debounce(toggleLogo, 100));
+  $(window).on('scroll', _.debounce(toggleSticky, 100));
 
   function toggleLogo() {
     var scrollTop = $(window).scrollTop();
