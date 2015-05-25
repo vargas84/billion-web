@@ -4,7 +4,16 @@
   <title>Billion - Changing the way the world crowdfunds. For good.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href='http://fonts.googleapis.com/css?family=Righteous|Muli:300,400' rel='stylesheet' type='text/css'>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <% %w(57 72 114 120 152).each do |size| %>
+    <%= favicon_link_tag "favicons/apple-touch-icon-#{size}x#{size}.png",
+      rel: 'apple-touch-icon-precomposed' %>
+  <% end %>
+
+  <% %w(16 32).each do |size| %>
+    <%= favicon_link_tag "favicons/favicon-#{size}x#{size}.png", rel: 'icon' %>
+  <% end %>
+
   <%= stylesheet_link_tag 'application', media: 'all',
     'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
