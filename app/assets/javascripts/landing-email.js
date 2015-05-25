@@ -10,7 +10,9 @@ $(document).ready(function() {
       subscribePath = window.config.subscribePath,
       authenticityToken = window.config.authenticityToken;
 
-  $landingEmailForm.on('submit', function() {
+  $landingEmailForm.on('submit', function(e) {
+    e.preventDefault();
+
     var email = $landingEmailInput.val(),
         data = { authenticity_token: authenticityToken, email: email };
 
