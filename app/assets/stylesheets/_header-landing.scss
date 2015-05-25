@@ -8,47 +8,51 @@
   @media (min-width: $screen-sm-min) {
     background-size: cover;
   }
+
+  padding-top: $navbar-height;
+
+  @media (min-width: $screen-sm-min) {
+    padding-top: 0;
+  }
 }
 
-.navbar-landing {
+.navbar-sticky {
+  .navbar-brand {
+    font-family: $font-family-logo;
+    display: inline-block;
+    float: none;
+  }
+
+  .play-btn {
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+.navbar-non-sticky {
   background: none;
   border-bottom: none;
 
-  li a {
-    color: white;
-    padding: 5px 10px;
-    margin: 10px 0;
-  }
-
-  .navbar-brand img {
-    width: 50px;
-  }
-
-  .nav-call-to-action {
-    background-color: $brand-primary;
-    border-radius: $border-radius-base;
-
-    &:hover {
-      background-color: lighten($brand-primary, 10%) !important;
-    }
-  }
-
-  .navbar-brand {
-    .logo-image {
-      display: inline;
-    }
-    .logo-text {
-      font-family: $font-family-logo;
-      font-weight: bold;
-      font-size: 40px;
-      vertical-align: middle;
-      //color: $brand-primary;
-      color: $gray-base;
-    }
-  }
-
   nav li {
     font-color: $gray-base;
+  }
+}
+
+
+.navbar-landing .navbar-cta {
+  @media (min-width: $screen-sm-min) {
+    height: $navbar-height;
+    padding: 0;
+    line-height: $navbar-height;
+    span {
+      display: inline-block;
+      background-color: $brand-primary;
+      color: white;
+      line-height: 2;
+      padding: 0 1em;
+    }
   }
 }
 
