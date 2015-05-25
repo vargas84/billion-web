@@ -1,10 +1,10 @@
 $(function () {
-    $('#modalVideo').on('shown.bs.modal', function (e) {
-        var src = $('#videowrapper').attr('data-iframe-src');
-        $('#embedVideo').attr('src', src);
-    });
+  var $modalVideo = $('#modalVideo'),
+      $videoIframe = $('#embedVideo').find('iframe'),
+      videoSrc = $videoIframe.attr('src');
 
-    $('#modalVideo').on('hidden.bs.modal', function (e) {
-        $('#embedVideo').attr('src', '');
-    });
+  $modalVideo.on('hidden.bs.modal', function (e) {
+    $videoIframe.attr('src', '');
+    $videoIframe.attr('src', videoSrc);
+  });
 });

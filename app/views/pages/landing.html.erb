@@ -43,7 +43,8 @@
       <p class="tag-line">Changing the way the world crowdfunds. For&nbsp;good.</p>
 
       <div>
-        <button class='play-btn btn'><%= icon('play', 'Watch the video') %></button>
+        <button class='play-btn btn' data-toggle="modal"
+        data-target="#modalVideo"><%= icon('play', 'Watch the video') %></button>
       </div>
 
     </div>
@@ -321,7 +322,7 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <div id='embedVideo' class='embed-container'>
-      <iframe src='http://www.youtube.com/embed/m68_iXKX5Ag?autoplay=true&rel=0&amp;controls=0&amp;showinfo=0' frameborder='0' allowfullscreen></iframe>
+      <iframe src='https://www.youtube.com/embed/m68_iXKX5Ag' frameborder='0' allowfullscreen></iframe>
     </div>
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
