@@ -1,35 +1,67 @@
-.navbar-landing {
-  margin-bottom: 0 !important;
-  background-color: transparent !important;
-  border: none !important;
+.masthead-container {
+  background-image: image-url('landing_bg/491850284_c86bf9dcb3_o.jpg');
+  background-attachment: fixed;
+  background-position: top center;
+  height: 600px;
+  background-size: auto 150%;
 
-  li a {
-    color: white !important;
-    padding: 5px 10px !important;
-    margin: 10px 0 !important;
+  @media (min-width: $screen-sm-min) {
+    background-size: cover;
   }
 
-  .navbar-brand img {
-    width: 50px;
+  padding-top: $navbar-height;
+
+  @media (min-width: $screen-sm-min) {
+    padding-top: 0;
+  }
+}
+
+.navbar-sticky {
+  .navbar-brand {
+    font-family: $font-family-logo;
+    display: inline-block;
+    float: none;
   }
 
-  .nav-call-to-action {
-    background-color: $brand-primary;
-    border-radius: $border-radius-base;
+  .play-btn {
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-    &:hover {
-      background-color: lighten($brand-primary, 10%) !important;
+}
+
+.navbar-non-sticky {
+  background: none;
+  border-bottom: none;
+
+  nav li {
+    font-color: $gray-base;
+  }
+}
+
+
+.navbar-landing .navbar-cta {
+  @media (min-width: $screen-sm-min) {
+    height: $navbar-height;
+    padding: 0;
+    line-height: $navbar-height;
+    span {
+      display: inline-block;
+      background-color: $brand-primary;
+      color: white;
+      line-height: 2;
+      padding: 0 1em;
     }
   }
 }
 
 .jumbotron-landing {
-  background-image: image-url('earthAtNight.jpg');
-  background-size: cover;
-  height: 700px;
-  margin-top: -50px;
-  padding-top: 200px !important;
   margin-bottom: 0;
+  text-align: center;
+  position: relative;
+  background: none;
+  padding-top: 0;
 
   .bounce {
     -moz-animation-delay: 3s;
@@ -41,32 +73,63 @@
     animation-duration: 1s;
   }
 
-  .glyphicon-menu-down {
-    color: white !important;
-    display: block;
-    font-size: 52px;
-    margin-top: 200px;
+  .tag-line {
     text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    //border: 5px solid $brand-primary;
+    color: $gray-base;
+    background-color: rgba(255, 255, 255, 1);
+    display: inline-block;
+    padding: 0.4em 1.2em;
+    margin: 0 auto;
+    @media (min-width: $screen-sm-min) {
+      font-size: 30px;
+    }
   }
 
-  h1, p {
-    color: white !important;
-    font-weight: bolder;
-    text-align: center;
-  }
-
-  h1 {
-    font-family: $font-family-logo;
-    font-size: 112px !important;
+  .scroll-btn {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 60px;
+    margin-left: -30px;
   }
 
   .jumbotron-down-link {
+    display: inline-block;
+    color: $brand-primary;
+    font-size: 60px;
+
     &:hover, &:visited, &:active, &:focus {
       text-decoration: none;
     }
   }
 
-  p {
-    font-size: 28px !important;
+  .logo-text {
+    font-family: $font-family-logo;
+    font-size: 80px;
+    color: $gray-base;
   }
+
+  .play-btn {
+    background-color: white;
+    font-size: 18px;
+    padding: 0.5em 1.25em;
+    margin-top: 1em;
+    color: $gray-base;
+    .fa-play {
+      margin-right: 0.5em;
+    }
+    &:hover {
+      background-color: $gray-base;
+      color: white;
+      @include transition(all 0.3s)
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    padding-top: 50px;
+  }
+
 }

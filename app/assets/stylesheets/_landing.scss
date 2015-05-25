@@ -11,15 +11,45 @@
     font-size: $font-size-h2;
     line-height: 1.25;
     padding: 40px 0;
+    text-align: center;
 
     strong {
       font-weight: 600;
       color: $headings-color;
     }
+
+    p {
+      margin-top: 1em;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      p {
+        margin-top: 0;
+      }
+      text-align: left;
+    }
   }
 
   &:nth-child(2n) {
     background-color: $body-bg-lighter;
+  }
+}
+
+#landing-columbus {
+  background-image: image-url('landing_bg/coming_to_columbus.jpg');
+  background-attachment: fixed;
+  background-position: top center;
+  background-size: cover;
+
+  .landing-columbus-text {
+    background-color: white;
+    padding: 1.5em 2em 1em;
+  }
+
+  h1 {
+    font-size: 75px;
+    font-weight: 700;
+    color: white;
   }
 }
 
@@ -30,7 +60,11 @@
   }
 
   .about-text-block {
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
+    max-width: $screen-sm-min * 0.5;
+    @media (min-width: $screen-sm-min) {
+      margin: 0 0 40px 0;
+    }
   }
 
   .about-text-blocks {
@@ -56,21 +90,90 @@
   }
 }
 
-#landing-join {
-  input {
-    @include box-shadow(none);
-  }
-  p {
-    font-size: $font-size-h4;
+#landing-team {
+
+  .person-image {
     text-align: center;
-    margin-top: 0.5em;
+    img {
+      max-width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .person-bio {
+    h2 {
+      font-size: $font-size-h3;
+      text-align: center;
+    }
+    small {
+      display: block;
+      line-height: 1.75;
+    }
+  }
+
+  .person-lg-container {
+
+    margin-top: 50px;
+
+    .person-bio {
+      max-width: $screen-sm-min * 0.5;
+      margin: 0 auto;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: 0px;
+      .person-bio {
+        max-width: auto;
+        margin: 0;
+      }
+    }
+
+    @media (min-width: $screen-md-min) {
+      .person-bio {
+        padding: 0 30px;
+      }
+    }
+  }
+
+  .person-sm-container {
+    margin-top: 50px;
+
+    @media (min-width: $screen-md-min) {
+      h2 {
+        font-size: $font-size-h4;
+      }
+
+      img {
+        max-width: 85%;
+      }
+    }
   }
 
 }
 
+#landing-join {
+  input {
+    @include box-shadow(none);
+  }
+
+  .landing-email-submit {
+    width: 90px;
+  }
+
+  .landing-join-message {
+    p {
+      font-size: $font-size-h4;
+      text-align: center;
+      margin-top: 0.5em;
+    }
+  }
+}
+
 footer {
+  $line-height: 30px;
+
   background-color: $body-bg-light;
-  height: 150px;
+  padding: 50px 0;
 
   .fa {
     margin-left: 5px;
@@ -83,13 +186,127 @@ footer {
 
   .logo {
     font-family: $font-family-logo;
-    font-size: 21px;
+    font-size: $font-size-h2;
+    line-height: $line-height;
   }
 
   p {
-    font-size: 16px;
-    line-height: 150px;
     margin: 0;
-    padding: 0
   }
+
+  .love {
+    font-size: 19px;
+    line-height: $line-height;
+    padding-top: 0.2em;
+  }
+
+  .social-links {
+    font-size: 19px;
+    vertical-align: middle;
+    a {
+      display: inline-block;
+      padding: 0em 0.55em 0 0;
+    }
+  }
+
+  .fa-heart {
+    margin-left: 0;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .love {
+      text-align: center;
+    }
+    .social-links {
+      text-align: right;
+      a {
+        padding: 0.2em 0.2em 0 0;
+      }
+    }
+  }
+}
+
+.about-icon-block > img {
+  margin-top: 30px;
+}
+
+/* utility class, center aligns element vertically in its parent container */
+/* see http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+.verticalAlignCenter {
+  position: absolute;
+  top: 50%;
+  /* position is top of element, need to offset by half of element's height. transform is the best way to do this. display:table-cell inside display;table will work equally, but for some reason prevents clicks on dropzone elements */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.horizontalAlignCenter {
+  position: absolute;
+  left: 50%;
+  /* position is top of element, need to offset by half of element's height. transform is the best way to do this. display:table-cell inside display;table will work equally, but for some reason prevents clicks on dropzone elements */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* http://embedresponsively.com/ */
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-container iframe, .embed-container object, .embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* bootstrap modal */
+@media (max-width: $screen-xs-max) {
+  #modalVideo .modal-dialog {
+    width: 100%;
+    padding-right: 20px; /* needed if 100% width */
+  }
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  #modalVideo .modal-dialog {
+    width: 600px;
+  }
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+  #modalVideo .modal-dialog {
+    width: 800px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  #modalVideo .modal-dialog {
+    width: 1000px;
+  }
+}
+
+/* bootstrap modal background */
+div.modal-backdrop.in {
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+div.modal-backdrop {
+  background-color: white; 
+}
+
+#modalVideoHeader {
+  text-align: right;
+}
+
+#modalVideoHeader button.close {
+  float: initial !important;
 }

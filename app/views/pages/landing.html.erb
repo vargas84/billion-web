@@ -1,61 +1,102 @@
-<nav class="navbar navbar-default navbar-landing">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        <%= image_tag 'greenlogo.png' %>
-      </a>
+<script>
+  window.config = window.config || {};
+  window.config.subscribePath = '<%= subscribe_path %>';
+  window.config.authenticityToken = '<%= form_authenticity_token %>';
+</script>
+<div class='masthead-container'>
+
+  <nav class="navbar navbar-default navbar-landing navbar-non-sticky hidden-xs">
+    <div class="container">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#landing-about">About</a></li>
+          <li><a href="#landing-columbus">Where</a></li>
+          <li><a href="#landing-team">Team</a></li>
+          <li><a href="#landing-join" class='navbar-cta'><span>Join The Movement</span></a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Social</a></li>
-        <li><a href="#" class="nav-call-to-action">Join The Movement</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  <nav class="navbar navbar-default navbar-landing navbar-fixed-top navbar-sticky visible-xs">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-<section class="jumbotron jumbotron-landing">
-  <div class="container">
-    <h1>billion</h1>
-    <p>Fundamentally Changing the Way the World Crowd Funds</p>
-    <a href="#about-video" class="jumbotron-down-link">
-      <span class="glyphicon glyphicon-menu-down bounce" aria-hidden="true"></span>
-    </a>
-  </div>
-</section>
+       <span class='navbar-left-container' style='opacity: 0'>
+          <%= link_to 'billion', '#landing-jumbotron', class: 'navbar-brand' %>
+          <button type='button' class='btn play-btn navbar-btn'
+            data-toggle="modal" data-target="#modalVideo" >
+           <%= icon('play-circle', 'Watch our video') %>
+         </button>
+        </span>
+      </div>
+
+      <div class="collapse navbar-collapse" id="nav-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#landing-about">About</a></li>
+          <li><a href="#landing-columbus">Where</a></li>
+          <li><a href="#landing-team">Team</a></li>
+          <li><a href="#landing-join" class='navbar-cta'><span>Join The Movement</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="landing-jumbotron" class="jumbotron jumbotron-landing">
+    <div class="container">
+      <div>
+        <span class='logo-text'>billion</span>
+      </div>
+
+      <p class="tag-line">Changing the way the world crowdfunds. For&nbsp;good.</p>
+
+      <div>
+        <button class='play-btn btn' data-toggle="modal"
+        data-target="#modalVideo"><%= icon('play', 'Watch the video') %></button>
+      </div>
+
+    </div>
+  </section>
+</div>
 
 <section id="landing-about" class="landing-section">
+
   <div class="container">
-    <div class="section-rant">
-      <p>We are developers, designers, creatives, or entrepreneurs by
-      trade. But we are makers at heart.</p>
-      <p><strong>Billion is where we band together to change the world.
-      </strong></p>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <div class="section-rant">
+          <p>We are developers, designers, creatives, or entrepreneurs by
+          trade. But we are do-gooders at heart.</p>
+          <p><strong>Billion is where we band together to change the world.
+          </strong></p>
+        </div>
+      </div>
     </div>
+
     <div class="row about-text-blocks">
       <div class="col-xs-12 col-sm-4">
         <div class="about-text-block">
-          <div class="about-icon-block"></div>
+          <div class="about-icon-block">
+            <%= image_tag('stages/hand.png', :class => 'horizontalAlignCenter')  %>
+          </div>
           <h4>Pitch & Rally</h4>
-          <p>On September 15, 2015 pitch your BAM on billioneffect.com and
+          <p>On launch day, pitch your BAM on billioneffect.com and
           start to rally votes from your friends family.</p>
           <p>1 vote = $1.</p>
         </div>
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="about-text-block">
-          <div class="about-icon-block"></div>
+          <div class="about-icon-block">
+            <%= image_tag('stages/bracket.png', :class => 'horizontalAlignCenter') %>
+          </div>
           <h4>Bracket</h4>
           <p>The top 16 ideas will be funneled into a basketball style bracket.
           Votes from other BAMs will be reallocated by donors into the
@@ -64,7 +105,9 @@
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="about-text-block">
-          <div class="about-icon-block"></div>
+          <div class="about-icon-block">
+            <%= image_tag('stages/person.png', :class => 'horizontalAlignCenter') %>
+          </div>
           <h4>Crowdfund & Peoplesource</h4>
           <p>Once the winning billion movement is chosen, the community will
           begin traditional crowdfunding. Additionally, the community will
@@ -75,60 +118,221 @@
   </div>
 </section>
 
-<section id="landing-social" class="landing-section">
+<section id="landing-columbus" class="landing-section">
   <div class="container">
-    <div class="section-header">
-      <h1>Social</h1>
+    <div class='row'>
+      <div class="section-header">
+        <h1>Coming to Columbus</h1>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-sm-8 col-sm-offset-2 landing-columbus-text">
+        <p>Billion is a platform for crowdfunding global initiatives. We’re
+        starting at home to first give back to our community. In our case,
+        that’s the beautiful city of Columbus, Ohio.</p>
+        <p>The first iteration of Billion will be held in the 614.  The release
+        date of our crowdfunding site will be up very soon. Make sure to join
+        our email list and we’ll keep you updated. No spam, we promise.
+        <%= icon('heart') %></p>
+        <p>Start thinking of ideas to change Columbus, for good.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="landing-team" class="landing-section">
   <div class="container">
-    <div class="section-header">
-      <h1>Team</h1>
+    <div class='row'>
+      <div class="section-header">
+        <h1>Get to know us</h1>
+      </div>
+    </div>
+
+    <div class='row'>
+
+      <div class='col-sm-4'>
+        <div class='person-lg-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/eileen.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Eileen Guan<small>CEO & Founder</small></h2>
+            <p>Eileen is a UI/UX designer with a passion for solving impossible problems.
+            A fourth-year student at Ohio State, she is a tech startup junkie with an
+            unending love for building stuff and social entrepreneurship.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4'>
+        <div class='person-lg-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/alex.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Alex Vargas<small>CTO</small></h2>
+            <p>Alex is a social entrepeneur with full stack development experience.
+            He's excited to be working on a project that can make billion-people impacts.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4'>
+        <div class='person-lg-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/ray.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Ray Li<small>COO</small></h2>
+            <p>Ray is a recent graduate of Cornell University, where he studied physics and music.
+            Ray is passionate about technology, innovation, and social good, and wants to develop
+            platforms that deliver lasting changes for a better tomorrow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4 col-md-2'>
+        <div class='person-sm-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/winnie.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Winnie Li<small>Marketing</small></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4 col-md-2'>
+        <div class='person-sm-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/michael.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Michael <small>Finance</small></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4 col-md-2'>
+        <div class='person-sm-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/dicko.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Dicko Sow<small>Finance</small></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4 col-md-2'>
+        <div class='person-sm-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/mark.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Mark<small>Back End Lead Developer</small></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4 col-md-2'>
+        <div class='person-sm-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/justin.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Justin<small>Front End Lead Developer</small></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-sm-4 col-md-2'>
+        <div class='person-sm-container'>
+          <div class='person-image'>
+            <%= image_tag 'team/allen.jpg' %>
+          </div>
+          <div class='person-bio'>
+            <h2>Allen White<small>Developer</small></h2>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section id="landing-join" class="landing-section">
   <div class="container">
-    <div class="section-header">
-      <h1>Join the Movement</h1>
-    </div>
-    <div class="col-sm-8 col-sm-offset-2 form-group">
-      <div class="input-group">
-        <input type='text' class="form-control input-lg"
-          placeholder="e.g. elonmusk@ironman.com"/>
-        <span class="input-group-btn">
-          <button class='btn btn-primary input-lg'>Subscribe</button>
-        </span>
+    <div class='row'>
+      <div class="section-header">
+        <h1>Join the Movement</h1>
       </div>
     </div>
-    <div class="col-sm-12 form-group">
-      <p>We'll keep you updated on our progress.
-      <a href='mailto:info@billioneffect.com'>Still have questions? Ask away</a>
-      </p>
+    <div class='row'>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="alert alert-success hide" role="alert">
+          <strong>Thanks for your support!</strong> We've sent you an email to
+          confirm that you'd like to recieve updates on our progress.
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2 bd-danger">
+        <div class="alert alert-danger hide" role="alert">
+          Please enter a valid email address.
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2 form-group">
+        <form>
+          <div class="input-group">
+            <input type="email" class="form-control input-lg landing-email-input"
+            placeholder="e.g. elonmusk@ironman.com"/>
+            <span class="input-group-btn">
+              <button class='btn btn-primary input-lg landing-email-submit'>
+                <span class="landing-submit-text">Subscribe</span>
+                <%= icon('spinner', '', class: 'fa-pulse hide') %>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-12 form-group landing-join-message">
+        <p>We'll keep you updated on our progress.
+        <a href='mailto:hello@billioneffect.com'>Still have questions? Ask away</a>
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <div class="col-sm-4">
-      <p class="logo">billion</p>
-    </div>
-    <div class="col-sm-4">
-      <p class="text-center">Made with
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-      in Columbus, OH</p>
-    </div>
-    <div class="col-sm-4">
-      <p class="text-right">
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-twitter"></i>
-        <i class="fa fa-instagram"></i>
-      </p>
+    <div class='row'>
+      <div class="col-sm-2">
+        <p class="logo">billion
+        </p>
+      </div>
+      <div class="col-sm-8">
+        <p class="love">Made with
+        <%= icon('heart') %>
+        in Columbus, OH</p>
+      </div>
+      <div class="col-sm-2">
+        <p class="social-links">
+        <%= link_to icon('facebook'), 'https://www.facebook.com/billioneffect' %>
+        <%= link_to icon('twitter'), 'https://twitter.com/BillionEffect' %>
+        <%= link_to icon('instagram'), 'https://instagram.com/BillionEffect' %>
+        </p>
+      </div>
     </div>
   </div>
 </footer>
+
+<div id="modalVideo" class="modal fade">
+  <div class="modal-dialog">
+    <div id="modalVideoHeader">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div id='embedVideo' class='embed-container'>
+      <iframe src='https://www.youtube.com/embed/m68_iXKX5Ag' frameborder='0' allowfullscreen></iframe>
+    </div>
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
