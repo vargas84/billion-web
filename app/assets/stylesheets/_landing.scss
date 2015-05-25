@@ -47,9 +47,12 @@
   }
 
   h1 {
-    font-size: 75px;
+    font-size: $font-size-h1;
     font-weight: 700;
     color: white;
+    @media (min-width: $screen-sm-min) {
+      font-size: 65px;
+    }
   }
 }
 
