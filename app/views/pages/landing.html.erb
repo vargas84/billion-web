@@ -3,43 +3,68 @@
   window.config.subscribePath = '<%= subscribe_path %>';
   window.config.authenticityToken = '<%= form_authenticity_token %>';
 </script>
+<div class='masthead-container'>
 
-<nav class="navbar navbar-default navbar-landing">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        <%= image_tag 'greenlogo.png' %>
-      </a>
+  <nav class="navbar navbar-default navbar-landing navbar-non-sticky hidden-xs">
+    <div class="container">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#landing-about">About</a></li>
+          <li><a href="#landing-columbus">Where</a></li>
+          <li><a href="#landing-team">Team</a></li>
+          <li><a href="#landing-join" class='navbar-cta'><span>Join The Movement</span></a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Social</a></li>
-        <li><a href="#" class="nav-call-to-action">Join The Movement</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  <nav class="navbar navbar-default navbar-landing navbar-fixed-top navbar-sticky visible-xs">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-<section class="jumbotron jumbotron-landing">
-  <div class="container">
-    <h1>billion</h1>
-    <p>Fundamentally Changing the Way the World Crowd Funds</p>
-    <a href="#about-video" class="jumbotron-down-link">
-      <span class="glyphicon glyphicon-menu-down bounce" aria-hidden="true"></span>
-    </a>
-  </div>
-</section>
+       <span class='navbar-left-container' style='opacity: 0'>
+          <%= link_to 'billion', '#landing-jumbotron', class: 'navbar-brand' %>
+          <button type='button' class='btn play-btn navbar-btn'
+            data-toggle="modal" data-target="#modalVideo" >
+           <%= icon('play-circle', 'Watch our video') %>
+         </button>
+        </span>
+      </div>
+
+      <div class="collapse navbar-collapse" id="nav-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#landing-about">About</a></li>
+          <li><a href="#landing-columbus">Where</a></li>
+          <li><a href="#landing-team">Team</a></li>
+          <li><a href="#landing-join" class='navbar-cta'><span>Join The Movement</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="landing-jumbotron" class="jumbotron jumbotron-landing">
+    <div class="container">
+      <div>
+        <span class='logo-text'>billion</span>
+      </div>
+
+      <p class="tag-line">Changing the way the world crowdfunds. For&nbsp;good.</p>
+
+      <div>
+        <button class='play-btn btn' data-toggle="modal"
+        data-target="#modalVideo"><%= icon('play', 'Watch the video') %></button>
+      </div>
+
+    </div>
+  </section>
+</div>
 
 <section id="landing-about" class="landing-section">
 
@@ -48,14 +73,9 @@
       <div class='col-xs-12'>
         <div class="section-rant">
           <p>We are developers, designers, creatives, or entrepreneurs by
-          trade. But we are makers at heart.</p>
+          trade. But we are do-gooders at heart.</p>
           <p><strong>Billion is where we band together to change the world.
           </strong></p>
-          <p>
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalVideo">
-              Watch video
-            </button>
-          </p>
         </div>
       </div>
     </div>
@@ -67,7 +87,7 @@
             <%= image_tag('stages/hand.png', :class => 'horizontalAlignCenter')  %>
           </div>
           <h4>Pitch & Rally</h4>
-          <p>On September 15, 2015 pitch your BAM on billioneffect.com and
+          <p>On launch day, pitch your BAM on billioneffect.com and
           start to rally votes from your friends family.</p>
           <p>1 vote = $1.</p>
         </div>
@@ -98,11 +118,23 @@
   </div>
 </section>
 
-<section id="landing-social" class="landing-section">
+<section id="landing-columbus" class="landing-section">
   <div class="container">
     <div class='row'>
       <div class="section-header">
-        <h1>Social</h1>
+        <h1>Coming to Columbus</h1>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-sm-8 col-sm-offset-2 landing-columbus-text">
+        <p>Billion is a platform for crowdfunding global initiatives. We’re
+        starting at home to first give back to our community. In our case,
+        that’s the beautiful city of Columbus, Ohio.</p>
+        <p>The first iteration of Billion will be held in the 614.  The release
+        date of our crowdfunding site will be up very soon. Make sure to join
+        our email list and we’ll keep you updated. No spam, we promise.
+        <%= icon('heart') %></p>
+        <p>Start thinking of ideas to change Columbus, for good.</p>
       </div>
     </div>
   </div>
@@ -285,9 +317,9 @@
       </div>
       <div class="col-sm-2">
         <p class="social-links">
-        <%= link_to icon('facebook'), '#' %>
-        <%= link_to icon('twitter'), '#' %>
-        <%= link_to icon('instagram'), '#' %>
+        <%= link_to icon('facebook'), 'https://www.facebook.com/billioneffect' %>
+        <%= link_to icon('twitter'), 'https://twitter.com/BillionEffect' %>
+        <%= link_to icon('instagram'), 'https://instagram.com/BillionEffect' %>
         </p>
       </div>
     </div>
@@ -300,7 +332,7 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <div id='embedVideo' class='embed-container'>
-      <iframe id="player1" src='https://player.vimeo.com/video/128719004?api=1&byline=0&badge=0&portrait=0&player_id=player1' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+      <iframe src='https://www.youtube.com/embed/m68_iXKX5Ag' frameborder='0' allowfullscreen></iframe>
     </div>
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
