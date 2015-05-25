@@ -35,6 +35,24 @@
   }
 }
 
+#landing-columbus {
+  background-image: image-url('landing_bg/coming_to_columbus.jpg');
+  background-attachment: fixed;
+  background-position: top center;
+  background-size: cover;
+
+  .landing-columbus-text {
+    background-color: white;
+    padding: 1.5em 2em 1em;
+  }
+
+  h1 {
+    font-size: 75px;
+    font-weight: 700;
+    color: white;
+  }
+}
+
 #landing-about {
   .about-icon-block {
     width: 100%;
