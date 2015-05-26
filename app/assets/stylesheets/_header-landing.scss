@@ -1,9 +1,10 @@
 .masthead-container {
   background-image: image-url('landing_bg/491850284_c86bf9dcb3_o.jpg');
-  background-attachment: fixed;
   background-position: top center;
   height: 600px;
   background-size: auto 150%;
+
+  @include background-attachment-fixed;
 
   @media (min-width: $screen-sm-min) {
     background-size: cover;
