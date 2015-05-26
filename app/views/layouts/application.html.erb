@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Billion - Changing the way the world crowdfunds. For good.</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <%= render 'layouts/meta' %>
+
   <link href='http://fonts.googleapis.com/css?family=Righteous|Muli:300,400' rel='stylesheet' type='text/css'>
 
-  <% %w(57 72 114 120 152).each do |size| %>
-    <%= favicon_link_tag "favicons/apple-touch-icon-#{size}x#{size}.png",
-      rel: 'apple-touch-icon-precomposed' %>
-  <% end %>
-
-  <% %w(16 32).each do |size| %>
-    <%= favicon_link_tag "favicons/favicon-#{size}x#{size}.png", rel: 'icon' %>
-  <% end %>
+  <%= render 'layouts/favicons' %>
 
   <%= stylesheet_link_tag 'application', media: 'all',
     'data-turbolinks-track' => true %>
