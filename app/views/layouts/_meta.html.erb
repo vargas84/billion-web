@@ -1,0 +1,32 @@
+<%# Templates %>
+<%# https://scotch.io/quick-tips/all-search-and-social-media-meta-tags-starter-template%>
+
+<%# TODO: Move this to i18n %>
+
+<% title = "Billion - Changing the way the world crowdfunds. For good." %>
+<% description = "Billion is a competitive crowdfunding platform for social good." %>
+<% image = image_url('share-image.png') %>
+
+
+<title><%= title %></title>
+<meta name="description" content="<%= description %>">
+<link rel="canonical" href="<%= root_url %>">
+
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="Billion Effect">
+<meta name="twitter:site" content="@BillionEffect">
+<meta name="twitter:description" content="<%= description %>">
+<meta name="twitter:image:src" content="<%= image %>">
+
+<!-- Social: Facebook / Open Graph -->
+<meta property="og:url" content="<%= root_url %>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="<%= title %>">
+<meta property="og:image" content="<%= image %>"/>
+<meta property="og:description" content="<%= description %>">
+<meta property="og:site_name" content="BillionEffect">
+
+<!-- Social: Google+ / Schema.org  -->
+<meta itemprop="name" content="<%= title %>">
+<meta itemprop="description" content="<%= description %>">
+<meta itemprop="image" content="<%= image %>">
