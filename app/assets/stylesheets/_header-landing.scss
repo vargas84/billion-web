@@ -3,6 +3,7 @@
   background-position: top center;
   height: 600px;
   background-size: auto 150%;
+  position: relative;
 
   @include background-attachment-fixed;
 
