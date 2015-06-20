@@ -62,6 +62,13 @@
         data-target="#modalVideo"><%= icon('play', 'Watch the video') %></button>
       </div>
 
+      <div>
+       <!-- Button trigger application modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalApplication">
+          Submit your idea
+        </button>
+      </div>
+
     </div>
   </section>
 </div>
@@ -302,6 +309,86 @@
     </div>
   </div>
 </section>
+
+<!-- Application modal -->
+<div class="modal fade" id="modalApplication" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pitch your B.A.M.</h4>
+      </div>
+      <div class="modal-body">
+        <h5>
+          We're taking submissions for your Big Ass Movements! Let us know how you plan on changing your community for good, and we'll get in touch.
+        </h5>
+        <form>
+          <p>
+            Tell us who you are
+            <br/>
+            <input type="text" id="inputApplicationFirstName" placeholder="First name" class="textInput" />
+            <input type="text" id="inputApplicationLastName" placeholder="Last name" class="textInput" />
+            <br/>
+            <label id="labelErrorContactFirstLastName" for="inputApplicationFirstName" class="labelError hidden control-label"></label>
+          </p>
+
+          <p>
+            How can we contact you if we need more information?
+            <br/>
+            <input type="email" id="inputApplicationEmail" placeholder="you@somewhere.com" class="textInput" />
+            <input type="tel" id="inputApplicationPhone" placeholder="xxx-xxx-xxxx" class="textInput" />
+            <br/>
+            <label id="labelErrorContactEmailPhone" for="inputApplicationContactEmail" class="labelError hidden control-label"></label>
+          </p>
+
+          <p>
+            Name your movement
+            <br/>
+            <input type="text" id="inputApplicationName" placeholder="My Awesome B.A.M." class="textInput fullWidth" />
+            <label id="labelErrorName" for="inputApplicationName" class="labelError hidden control-label"></label>
+          </p>
+
+          <p>
+            Billion is working towards addressing a specific challenge here in the Columbus community. What is the problem or issue that your movement seeks to address?
+            <br/>
+            <div id="inputApplicationDescription" contenteditable="true" class="textInput textArea"></div>
+            <label id="labelErrorDescription" for="inputApplicationDescription" class="labelError hidden control-label"></label>
+          </p>
+
+          <p>
+            Describe your movement in a tweet (140 characters or less)
+            <br/>
+            <div contenteditable="true" id="inputApplicationTweet" class="textInput textArea"></div>
+            <label id="labelErrorTweet" for="inputApplicationTweet" class="labelError hidden control-label"></label>
+          </p>
+
+          <p>
+            Describe the long term impact your movement will have.
+            <br/>
+            <div contenteditable="true" id="inputApplicationImpact" class="textInput textArea"></div>
+            <label id="labelErrorImpact" for="inputApplicationImpact" class="labelError hidden control-label"></label>
+          </p>
+
+          <p>
+            What product or service will your movement provide to address this issue?
+            <br/>
+            <div contenteditable="true" id="inputApplicationProduct" class="textInput textArea"></div>
+            <label id="labelErrorProduct" for="inputApplicationProduct" class="labelError hidden control-label"></label>
+          </p>
+
+          <input type="hidden" id="hiddenApplicationDescription" />
+          <input type="hidden" id="hiddenApplicationTweet" />
+          <input type="hidden" id="hiddenApplicationImpact" />
+          <input type="hidden" id="hiddenApplicationProduct" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Maybe Later</button>
+        <button type="button" id="btnApplicationSubmit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="container">
