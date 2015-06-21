@@ -7,7 +7,7 @@ $font-size-h1: floor(($font-size-base * 2.4)) !default;
 
 // Colors
 $gray-base: #444951;
-$brand-primary: #3FAAA5;
+$brand-primary: #323B63;
 $headings-color: $gray-base;
 
 // Components
@@ -28,5 +28,5 @@ $red: #c0392b;
 
 // Background
 $body-bg-light: lighten($brand-primary, 40%);
-$body-bg-lighter: lighten($brand-primary, 51%);
+$body-bg-lighter: lighten($brand-primary, 69%);
 

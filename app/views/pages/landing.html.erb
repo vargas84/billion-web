@@ -29,12 +29,15 @@
           <span class="icon-bar"></span>
         </button>
 
-       <span class='navbar-left-container' style='opacity: 0'>
-          <%= link_to 'billion', '#landing-jumbotron', class: 'navbar-brand' %>
+        <span class='navbar-left-container' style='opacity: 0'>
+          <%= link_to '#landing-jumbotron', class: 'navbar-brand' do %>
+            <%= image_tag 'billion_logo_small', class: 'logo-small' %>
+          <% end %>
           <button type='button' class='btn play-btn navbar-btn'
             data-toggle="modal" data-target="#modalVideo" >
-           <%= icon('play-circle', 'Watch our video') %>
-         </button>
+            <%= icon('play-circle') %>
+            <span class="play-text">Watch our Video</span>
+          </button>
         </span>
       </div>
 
@@ -52,7 +55,7 @@
   <section id="landing-jumbotron" class="jumbotron jumbotron-landing">
     <div class="container">
       <div>
-        <span class='logo-text'>billion</span>
+        <%= image_tag 'billion_logo_large', class: 'logo-large' %>
       </div>
 
       <p class="tag-line">Changing the way the world crowdfunds. For&nbsp;good.</p>
@@ -314,8 +317,7 @@
   <div class="container">
     <div class='row'>
       <div class="col-sm-2">
-        <p class="logo">billion
-        </p>
+        <%= image_tag 'billion_logo_white_small.png' %>
       </div>
       <div class="col-sm-8">
         <p class="love">Made with
