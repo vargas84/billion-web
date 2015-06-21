@@ -23,12 +23,29 @@
     font-family: $font-family-logo;
     display: inline-block;
     float: none;
+    padding: 13px 15px;
+
+    img {
+      height: 100%;
+      display: inline;
+    }
   }
 
   .play-btn {
     background: none;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
+    margin: 4px 0 8px;
+
+    i {
+      vertical-align: bottom;
+      font-size: 30px;
+      margin-right: 10px;
+    }
+
+    .play-text {
+      font-size: 18px;
+      font-weight: 300;
+    }
   }
 
 }
@@ -108,10 +125,9 @@
     }
   }
 
-  .logo-text {
-    font-family: $font-family-logo;
-    font-size: 80px;
-    color: $gray-base;
+  .logo-large {
+    max-width: 200px;
+    margin: 20px 0;
   }
 
   .play-btn {
@@ -133,5 +149,4 @@
   @media (min-width: $screen-sm-min) {
     padding-top: 50px;
   }
-
 }

@@ -40,9 +40,7 @@
     }
   }
 
-  &:nth-child(2n) {
-    background-color: $body-bg-lighter;
-  }
+  &:nth-child(2n) { background-color: #f8f8f8; }
 }
 
 #landing-columbus {
@@ -179,13 +177,15 @@
       text-align: center;
       margin-top: 0.5em;
     }
+
+    a { font-weight: 400; }
   }
 }
 
 footer {
   $line-height: 30px;
 
-  background-color: $body-bg-light;
+  background-color: $brand-primary;
   padding: 50px 0;
 
   .fa {
@@ -193,8 +193,8 @@ footer {
   }
 
   img {
-    padding: 20px 0;
-    width: 35px;
+    width: 75px;
+    margin-top: 4px;
   }
 
   .logo {
@@ -211,6 +211,7 @@ footer {
     font-size: 19px;
     line-height: $line-height;
     padding-top: 0.2em;
+    color: white;
   }
 
   .social-links {
@@ -219,6 +220,7 @@ footer {
     a {
       display: inline-block;
       padding: 0em 0.55em 0 0;
+      color: white;
     }
   }
 
