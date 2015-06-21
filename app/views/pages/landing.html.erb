@@ -29,12 +29,15 @@
           <span class="icon-bar"></span>
         </button>
 
-       <span class='navbar-left-container' style='opacity: 0'>
-          <%= link_to 'billion', '#landing-jumbotron', class: 'navbar-brand' %>
+        <span class='navbar-left-container' style='opacity: 0'>
+          <%= link_to '#landing-jumbotron', class: 'navbar-brand' do %>
+            <%= image_tag 'billion_logo_small.png', class: 'logo-small' %>
+          <% end %>
           <button type='button' class='btn play-btn navbar-btn'
             data-toggle="modal" data-target="#modalVideo" >
-           <%= icon('play-circle', 'Watch our video') %>
-         </button>
+            <%= icon('play-circle') %>
+            <span class="play-text">Watch our Video</span>
+          </button>
         </span>
       </div>
 
@@ -52,7 +55,7 @@
   <section id="landing-jumbotron" class="jumbotron jumbotron-landing">
     <div class="container">
       <div>
-        <span class='logo-text'>billion</span>
+        <%= image_tag 'billion_logo_large.png', class: 'logo-large' %>
       </div>
 
       <p class="tag-line">Changing the way the world crowdfunds. For&nbsp;good.</p>
@@ -71,6 +74,10 @@
 
     </div>
   </section>
+
+  <div class='landing-image-credit'>
+    <a href='https://www.flickr.com/photos/neallindsay/491850284/in/photolist-5Jdbg7-5J8YZZ-ameWA1-9oA7wy-9owMoT-9ox1PH-n1TmTX-n1V3aG-nzsyEG-7SuicL-gE4nEV-a5cnhp-paYPkv-bxoLm7-psumeM-7fDGiQ-8uxL6h-KsRXj-5NCLro-jXQiX-7fDGuW-7fzPd8-7fDGrJ-7fDGcu-7fDGAu-7fDGDU-7fDG9u-7fzP14-7fDH2j-7fzNPg-7fzP3p-7fzPaP-7fzP5a-7fDGfo-7fDGSj-7fzNEp-2VCALZ-pnQii-5xM6zR-r4iK5h-7Kmz7w-4aUst2-iYghH-2iSF9T-g7NK5L-o443QM-8hv6hq-fP5rqW-9QfzPm-9oAakJ'>Image by Neal Lindsay</a>
+  </div>
 </div>
 
 <section id="landing-about" class="landing-section">
@@ -144,6 +151,9 @@
         <p>Start thinking of ideas to change Columbus. For good.</p>
       </div>
     </div>
+  </div>
+  <div class='landing-image-credit'>
+    <a href='https://www.flickr.com/photos/janitors/9797078766/in/photolist-fVJAc9-fVJSra-fVJtSp-5dsK6G-ac6BX6-ac9tXw-ac9tZo-ac9tTj-ac9tCb-8d6J4v-5qoiju-5wFGdj-fYh8Zc-5HHLR5-5HDn4B-ancNFT-6ewBWz-6vJcoJ-45XdZ-6gukAv-bdi7ig-dbhvjn-6HCHVe-5T5Dcq-7ax4Qk-4QQsZn-cow5ab-dbhz37-4UfmUX-fSXDJr-8g2obH-4RxxKM-wkBFu-fPadC7-5HDrUF-5HDtRx-8d6Eu2-6FpuT2-ftdaKK-dBDFQA-8g5yzd-ftsB3S-8g5UE9-8g2tfZ-8g2BZ2-fq17Gg-6FtAQL-fTc8tF-4VF49P-7NpciA'>Image by Kārlis Dambrāns</a>
   </div>
 </section>
 
@@ -394,8 +404,7 @@
   <div class="container">
     <div class='row'>
       <div class="col-sm-2">
-        <p class="logo">billion
-        </p>
+        <%= image_tag 'billion_logo_white_small.png' %>
       </div>
       <div class="col-sm-8">
         <p class="love">Made with

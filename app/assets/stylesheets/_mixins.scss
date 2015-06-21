@@ -12,3 +12,10 @@
     @content;
   }
 }
+
+@mixin background-attachment-fixed {
+  background-attachment: scroll;
+  @media (min-width: $screen-sm-min) {
+    background-attachment: fixed;
+  }
+}
