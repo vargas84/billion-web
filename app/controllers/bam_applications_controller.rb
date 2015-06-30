@@ -14,7 +14,7 @@ class BamApplicationsController < ApplicationController
 
   def bam_application_params
     params.permit(:first_name, :last_name, :email, :phone, :name, :description,
-                  :tweet, :impact, :product)
+      :tweet, :impact, :product)
   end
 
   def params_errors
@@ -25,5 +25,4 @@ class BamApplicationsController < ApplicationController
 
     errors
   end
-
 end
