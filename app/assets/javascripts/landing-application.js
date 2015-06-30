@@ -37,6 +37,7 @@ Billion.Validation = {
 $(function() {
 	$("#applicationForm").on("submit", function(e) {
 		var $form = $(this);
+    var $modal = $form.closest(".modal");
 		e.preventDefault();
 		// validate the form
 
@@ -162,9 +163,9 @@ $(function() {
 		$("#hiddenApplicationProduct").val(product);
 
 		var data = $form.serializeArray();
-		var json = {}
+		var json = {};
 		data.forEach(function(field) {
-			json[field.name] = field.value
+			json[field.name] = field.value;
 		});
 
 		$.ajax({
@@ -173,10 +174,12 @@ $(function() {
 			dataType: 'json',
 			data: json,
 			success: function(data) {
+        $form[0].reset();
+        $modal.modal('hide');
 			},
 			error: function(jqXHR) {
 			},
-		})
+		});
 	});
 
 });
