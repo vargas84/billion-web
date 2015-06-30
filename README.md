@@ -10,6 +10,8 @@ Changing the way the world crowdfunds. For good.
 * Redis (eventually)
 * HTML/SASS
 * Backbone/Marionette
+* Vagrant
+* AWS (OpsWorks, Ec2, RDS, etc)
 
 ## Contributing
 

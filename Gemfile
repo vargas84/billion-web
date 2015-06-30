@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'letter_opener', '~> 1.3.0'
+  gem 'letter_opener_web', '~> 1.3.0'
 end
 
 group :stage, :development, :test do
