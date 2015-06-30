@@ -36,9 +36,14 @@ Billion.Validation = {
 
 $(function() {
 	$("#applicationForm").on("submit", function(e) {
-		var $form = $(this);
-    var $modal = $form.closest(".modal");
 		e.preventDefault();
+
+		var $form = $(this);
+		var $modal = $form.closest(".modal");
+		var $spinner = $form.find(".fa-spin");
+
+		$spinner.show();
+
 		// validate the form
 
 		// reset error styles
@@ -153,6 +158,7 @@ $(function() {
 		}
 
 		if (!valid) {
+			$spinner.hide();
 			return;
 		}
 
@@ -174,10 +180,12 @@ $(function() {
 			dataType: 'json',
 			data: json,
 			success: function(data) {
-        $form[0].reset();
-        $modal.modal('hide');
+				$spinner.hide();
+				$form[0].reset();
+				$modal.modal('hide');
 			},
 			error: function(jqXHR) {
+				$spinner.hide();
 			},
 		});
 	});
