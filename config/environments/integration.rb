@@ -15,13 +15,13 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.smtp_settings = {
-    :address   => 'smtp.mandrillapp.com',
-    :port      => 587,
-    :enable_starttls_auto => true,
-    :user_name => ENV['MANDRILL_USERNAME'],
-    :password  => ENV['MANDRILL_APIKEY'],
-    :authentication => 'login',
-    :domain => 'billioneffect.com'
+    address: 'smtp.mandrillapp.com',
+    port: 587,
+    enable_starttls_auto: true,
+    user_name: ENV['mandrill_username'],
+    password: ENV['mandrill_apikey'],
+    authentication: 'login',
+    domain: 'billioneffect.com'
   }
   config.action_mailer.default_url_options = { host: 'http://billioneffect.com' }
   config.action_mailer.raise_delivery_errors = false
