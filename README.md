@@ -10,6 +10,8 @@ Changing the way social projects get funded.
 * Redis (eventually)
 * HTML/SASS
 * Backbone/Marionette
+* Vagrant
+* AWS (OpsWorks, Ec2, RDS, etc)
 
 ## Contributing
 
