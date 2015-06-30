@@ -63,6 +63,14 @@
       <div>
         <button class='play-btn btn' data-toggle="modal"
         data-target="#modalVideo"><%= icon('play', 'Watch the video') %></button>
+        <button type="button" class="btn btn-primary btn-lg application-btn"
+        data-toggle="modal" data-target="#modalApplication">
+          Submit your idea
+        </button>
+      </div>
+
+      <div>
+       <!-- Button trigger application modal -->
       </div>
 
     </div>
@@ -345,3 +353,5 @@
     </div>
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<%= render 'pages/bam_application' %>

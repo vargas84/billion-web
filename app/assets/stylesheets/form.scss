@@ -1,0 +1,50 @@
+#modalApplication {
+  h1 { font-size: 28px; }
+  input { width: 100%; }
+
+  textarea {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5em;
+    margin: 5px 0 10px;
+  }
+
+  .modal-header, .modal-footer {
+    background-color: #f8f8f8;
+    border: none;
+  }
+
+  .modal-footer { margin-top: 20px; }
+
+  .help-block {
+    margin-top: 20px;
+    margin-bottom: 7px;
+  }
+
+  .textInput {
+    border: 1px solid #323b63;
+    padding: 10px;
+  }
+
+  .formElementError {
+    border: 1px solid red !important;
+  }
+
+  .textArea {
+    min-height: 80px;
+  }
+
+  .fullWidth {
+    width: 100%;
+  }
+
+  .labelError {
+    color: red;
+    font-weight: 300;
+    margin: 5px 0 0 0;
+  }
+}

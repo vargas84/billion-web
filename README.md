@@ -1,7 +1,7 @@
 [![Build Status](https://semaphoreci.com/api/v1/projects/056267a7-6787-482b-b9e0-50bfc275ce19/420189/badge.svg)](https://semaphoreci.com/avargas/web)
 
 # Billion
-Changing the way social projects get funded.
+Changing the way the world crowdfunds. For good.
 
 ## Tech Stack
 
@@ -10,6 +10,8 @@ Changing the way social projects get funded.
 * Redis (eventually)
 * HTML/SASS
 * Backbone/Marionette
+* Vagrant
+* AWS (OpsWorks, Ec2, RDS, etc)
 
 ## Contributing
 
