@@ -23,138 +23,160 @@ Billion.Validation = {
 //$("#inputApplicationPhone").mask("999-999-9999");
 // $("#inputApplicationPhone").on("blur", function() {
 //     var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
-    
+
 //     if( last.length == 3 ) {
 //         var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
 //         var lastfour = move + last;
-        
+
 //         var first = $(this).val().substr( 0, 9 );
-        
+
 //         $(this).val( first + '-' + lastfour );
 //     }
 // });
 
-$("#btnApplicationSubmit").on("click", function() {
-	// validate the form
-	
-	// reset error styles
-	$("#inputApplicationFirstName").removeClass("formElementError");
-	$("#inputApplicationLastName").removeClass("formElementError");
-	$("#inputApplicationEmail").removeClass("formElementError");
-	$("#inputApplicationPhone").removeClass("formElementError");
-	$("#inputApplicationName").removeClass("formElementError");
-	$("#inputApplicationDescription").removeClass("formElementError");
-	$("#inputApplicationTweet").removeClass("formElementError");
-	$("#inputApplicationImpact").removeClass("formElementError");
-	$("#inputApplicationProduct").removeClass("formElementError");
+$(function() {
+	$("#applicationForm").on("submit", function(e) {
+		var $form = $(this);
+		e.preventDefault();
+		// validate the form
 
-	$("#labelErrorContactFirstLastName").addClass("hidden");
-	$("#labelErrorContactEmailPhone").addClass("hidden");
-	$("#labelErrorName").addClass("hidden");
-	$("#labelErrorDescription").addClass("hidden");
-	$("#labelErrorTweet").addClass("hidden");
-	$("#labelErrorImpact").addClass("hidden");
-	$("#labelErrorProduct").addClass("hidden");
+		// reset error styles
+		$("#inputApplicationFirstName").removeClass("formElementError");
+		$("#inputApplicationLastName").removeClass("formElementError");
+		$("#inputApplicationEmail").removeClass("formElementError");
+		$("#inputApplicationPhone").removeClass("formElementError");
+		$("#inputApplicationName").removeClass("formElementError");
+		$("#inputApplicationDescription").removeClass("formElementError");
+		$("#inputApplicationTweet").removeClass("formElementError");
+		$("#inputApplicationImpact").removeClass("formElementError");
+		$("#inputApplicationProduct").removeClass("formElementError");
 
-	// gather form inputs
-	var firstName = $("#inputApplicationFirstName").val().trim();
-	var lastName = $("#inputApplicationLastName").val().trim();
-	var email = $("#inputApplicationEmail").val().trim();
-	var phone = $("#inputApplicationPhone").val().trim();
-	var name = $("#inputApplicationName").val().trim();
-	// content-editable divs
-	var description = $("#inputApplicationDescription").text().trim();
-	var tweet = $("#inputApplicationTweet").text().trim();
-	var impact = $("#inputApplicationImpact").text().trim();
-	var product = $("#inputApplicationProduct").text().trim();
-	
-	// assume valid until proven otherwise
-	var valid = true;
+		$("#labelErrorContactFirstLastName").addClass("hidden");
+		$("#labelErrorContactEmailPhone").addClass("hidden");
+		$("#labelErrorName").addClass("hidden");
+		$("#labelErrorDescription").addClass("hidden");
+		$("#labelErrorTweet").addClass("hidden");
+		$("#labelErrorImpact").addClass("hidden");
+		$("#labelErrorProduct").addClass("hidden");
 
-	if (firstName === "" || lastName === "") {
-		valid = false;
-		$("#labelErrorContactFirstLastName").text("What's your name?");
-		$("#labelErrorContactFirstLastName").removeClass("hidden");
+		// gather form inputs
+		var firstName = $("#inputApplicationFirstName").val().trim();
+		var lastName = $("#inputApplicationLastName").val().trim();
+		var email = $("#inputApplicationEmail").val().trim();
+		var phone = $("#inputApplicationPhone").val().trim();
+		var name = $("#inputApplicationName").val().trim();
+		// content-editable divs
+		var description = $("#inputApplicationDescription").val().trim();
+		var tweet = $("#inputApplicationTweet").val().trim();
+		var impact = $("#inputApplicationImpact").val().trim();
+		var product = $("#inputApplicationProduct").val().trim();
 
-		if (firstName === "") {
-			$("#inputApplicationFirstName").addClass("formElementError");
+		// assume valid until proven otherwise
+		var valid = true;
+
+		if (firstName === "" || lastName === "") {
+			valid = false;
+			$("#labelErrorContactFirstLastName").text("What's your name?");
+			$("#labelErrorContactFirstLastName").removeClass("hidden");
+
+			if (firstName === "") {
+				$("#inputApplicationFirstName").addClass("formElementError");
+			}
+			if (lastName === "") {
+				$("#inputApplicationLastName").addClass("formElementError");
+			}
 		}
-		if (lastName === "") {
-			$("#inputApplicationLastName").addClass("formElementError");
+
+		if (email === "" || phone === "") {
+			valid = false;
+			$("#labelErrorContactEmailPhone").text("We need a way to get in touch with you!");
+			$("#labelErrorContactEmailPhone").removeClass("hidden");
+
+			if (email === "") {
+				$("#inputApplicationEmail").addClass("formElementError");
+			}
+			if (phone === "") {
+				$("#inputApplicationPhone").addClass("formElementError");
+			}
 		}
-	}
 
-	if (email === "" || phone === "") {
-		valid = false;
-		$("#labelErrorContactEmailPhone").text("We need a way to get in touch with you!");
-		$("#labelErrorContactEmailPhone").removeClass("hidden");
-
-		if (email === "") {
+		// validate email syntax
+		if (valid && !Billion.Validation.validateEmail(email)) {
+			valid = false;
+			$("#labelErrorContactEmailPhone").text("Check your email address again.");
+			$("#labelErrorContactEmailPhone").removeClass("hidden");
 			$("#inputApplicationEmail").addClass("formElementError");
 		}
-		if (phone === "") {
-			$("#inputApplicationPhone").addClass("formElementError");
+
+		// validate phone syntax
+		// not currently doing
+
+		// name
+		if (name === "") {
+			valid = false;
+			$("#labelErrorName").text("Your movement wants a name!");
+			$("#labelErrorName").removeClass("hidden");
+			$("#inputApplicationName").addClass("formElementError");
 		}
-	}
 
-	// validate email syntax
-	if (valid && !Billion.Validation.validateEmail(email)) {
-		valid = false;
-		$("#labelErrorContactEmailPhone").text("Check your email address again.");
-		$("#labelErrorContactEmailPhone").removeClass("hidden");
-		$("#inputApplicationEmail").addClass("formElementError");
-	}
-	
-	// validate phone syntax
-	// not currently doing
+		// description
+		if (description === "") {
+			valid = false;
+			$("#labelErrorDescription").text("Tell us about the issue you want to solve!");
+			$("#labelErrorDescription").removeClass("hidden");
+			$("#inputApplicationDescription").addClass("formElementError");
+		}
 
-	// name
-	if (name === "") {
-		valid = false;
-		$("#labelErrorName").text("Your movement wants a name!");
-		$("#labelErrorName").removeClass("hidden");
-		$("#inputApplicationName").addClass("formElementError");
-	}
+		// tweetable
+		if (tweet === "") {
+			valid = false;
+			$("#labelErrorTweet").text("Give us a tweetable summary of your movement!");
+			$("#labelErrorTweet").removeClass("hidden");
+			$("#inputApplicationTweet").addClass("formElementError");
+		}
 
-	// description
-	if (description === "") {
-		valid = false;
-		$("#labelErrorDescription").text("Tell us about the issue you want to solve!");
-		$("#labelErrorDescription").removeClass("hidden");
-		$("#inputApplicationDescription").addClass("formElementError");
-	}
+		// impact
+		if (impact === "") {
+			valid = false;
+			$("#labelErrorImpact").text("Tell us about your impact!");
+			$("#labelErrorImpact").removeClass("hidden");
+			$("#inputApplicationImpact").addClass("formElementError");
+		}
 
-	// tweetable
-	if (tweet === "") {
-		valid = false;
-		$("#labelErrorTweet").text("Give us a tweetable summary of your movement!");
-		$("#labelErrorTweet").removeClass("hidden");
-		$("#inputApplicationTweet").addClass("formElementError");
-	}
+		// product or service
+		if (product === "") {
+			valid = false;
+			$("#labelErrorProduct").text("Tell us about your product or service!");
+			$("#labelErrorProduct").removeClass("hidden");
+			$("#inputApplicationProduct").addClass("formElementError");
+		}
 
-	// impact
-	if (impact === "") {
-		valid = false;
-		$("#labelErrorImpact").text("Tell us about your impact!");
-		$("#labelErrorImpact").removeClass("hidden");
-		$("#inputApplicationImpact").addClass("formElementError");
-	}
+		if (!valid) {
+			return;
+		}
 
-	// product or service
-	if (product === "") {
-		valid = false;
-		$("#labelErrorProduct").text("Tell us about your product or service!");
-		$("#labelErrorProduct").removeClass("hidden");
-		$("#inputApplicationProduct").addClass("formElementError");
-	}
+		// copy content editables to hidden form elements
+		$("#hiddenApplicationDescription").val(description);
+		$("#hiddenApplicationTweet").val(tweet);
+		$("#hiddenApplicationImpact").val(impact);
+		$("#hiddenApplicationProduct").val(product);
 
-	if (!valid) {
-		return;
-	}
+		var data = $form.serializeArray();
+		var json = {}
+		data.forEach(function(field) {
+			json[field.name] = field.value
+		});
 
-	// copy content editables to hidden form elements
-	$("#hiddenApplicationDescription").value = description;
-	$("#hiddenApplicationTweet").value = tweet;
-	$("#hiddenApplicationImpact").value = impact;
-	$("#hiddenApplicationProduct").value = product;
+		$.ajax({
+			url: $form.attr('action'),
+			method: $form.attr('method'),
+			dataType: 'json',
+			data: json,
+			success: function(data) {
+			},
+			error: function(jqXHR) {
+			},
+		})
+	});
+
 });

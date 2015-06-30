@@ -1,0 +1,7 @@
+<h1><%= @form_data[:name] %></h1>
+<% @form_data.each do |key, value| %>
+  <p>
+    <strong><%= key.humanize %>:</strong><br />
+    <%= simple_format value %>
+  </p>
+<% end %>
