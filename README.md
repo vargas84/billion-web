@@ -1,4 +1,4 @@
-[![Build Status](https://semaphoreci.com/api/v1/projects/056267a7-6787-482b-b9e0-50bfc275ce19/420189/badge.svg)](https://semaphoreci.com/avargas/web)
+[![Build Status](https://semaphoreci.com/api/v1/projects/5408ac85-2455-4a65-9410-1d0ec4b85055/480909/badge.svg)](https://semaphoreci.com/billion/billion-web)
 
 # Billion
 Changing the way the world crowdfunds. For good.
