@@ -1,13 +1,21 @@
 /* BOOTSTRAP */
 
-// Typography
-$font-family-sans-serif: 'Muli', Helvetica, Arial, sans-serif !default;
+
+//== Colors
+$gray-base: #444951;
+$brand-primary: #323B63;
+
+//== Scaffolding
+
+$body-bg: #eee;
+$text-color: #222;
+
+
+//== Typography
+$font-family-sans-serif: 'Open Sans', Helvetica, Arial, sans-serif !default;
 $font-size-base: 14px;
 $font-size-h1: floor(($font-size-base * 2.4)) !default;
 
-// Colors
-$gray-base: #444951;
-$brand-primary: #323B63;
 $headings-color: $gray-base;
 
 // Components
@@ -22,14 +30,3 @@ $grid-gutter-width: 15px;
 
 // Typography
 $font-family-logo: 'Righteous', Helvetica, Arial, sans-serif !default;
-
-// Colors
-$green: #27ae60;
-$orange: #d35400;
-$blue: #2980b9;
-$red: #c0392b;
-
-// Background
-$body-bg-light: lighten($brand-primary, 40%);
-$body-bg-lighter: lighten($brand-primary, 69%);
-

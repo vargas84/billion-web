@@ -37,6 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    animate-rails (1.0.8)
+      rails
     arel (6.0.0)
     ast (2.0.0)
     astrolabe (1.3.0)
@@ -241,6 +243,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  animate-rails (~> 1.0.8)
   bootstrap-sass (~> 3.3.4)
   braintree (~> 2.45.0)
   byebug

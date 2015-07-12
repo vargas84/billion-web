@@ -1,11 +1,11 @@
+@import 'animate';
 @import 'variables'; // includes overrides
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'animate_override';
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import 'base';
 @import 'mixins';
-@import 'animate';
-@import 'header-landing';
 @import 'landing';
 @import 'form';
