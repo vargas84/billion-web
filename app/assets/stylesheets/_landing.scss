@@ -1,327 +1,138 @@
-.landing-image-credit {
-  position: absolute;
-  bottom: $grid-gutter-width / 2;
-  right: $grid-gutter-width / 2;
-  a {
-    color: white;
-  }
-}
+.landing {
+  /* background colors */
+  $bg-blue: #67C6FF;
+  $bg-orange: #FEC27C;
 
-.landing-section {
-  padding: 20px 0 70px;
-  position: relative;
+  &-section {
+    padding: $grid-gutter-width * 3 0;
 
-  .section-header {
-    padding: 30px 0;
-    text-align: center;
-  }
-
-  .section-rant {
-    font-weight: 300;
-    font-size: $font-size-h2;
-    line-height: 1.25;
-    padding: 40px 0;
-    text-align: center;
-
-    strong {
-      font-weight: 600;
-      color: $headings-color;
-    }
-
-    p {
-      margin-top: 1em;
-    }
-
-    @media (min-width: $screen-sm-min) {
-      p {
-        margin-top: 0;
-      }
-      text-align: left;
-    }
-  }
-
-  &:nth-child(2n) { background-color: #f8f8f8; }
-}
-
-#landing-columbus {
-  background-image: image-url('landing_bg/coming_to_columbus.jpg');
-  background-position: top center;
-  background-size: cover;
-  @include background-attachment-fixed;
-
-  .landing-columbus-text {
-    background-color: white;
-    padding: 1.5em 2em 1em;
-  }
-
-  h1 {
-    font-size: $font-size-h1;
-    font-weight: 700;
-    color: white;
-    @media (min-width: $screen-sm-min) {
-      font-size: 65px;
-    }
-  }
-}
-
-#landing-about {
-  .about-icon-block {
-    width: 100%;
-    height: 180px;
-  }
-
-  .about-text-block {
-    margin: 0 auto 40px;
-    max-width: $screen-sm-min * 0.5;
-    @media (min-width: $screen-sm-min) {
-      margin: 0 0 40px 0;
-    }
-  }
-
-  .about-text-blocks {
-    > div:nth-child(1) .about-icon-block {
-      @include number-label(white) { content: '1'}
-      background-color: $green;
-    }
-
-    > div:nth-child(2) .about-icon-block {
-      @include number-label(white) { content: '2'}
-      background-color: $red;
-    }
-
-    > div:nth-child(3) .about-icon-block {
-      @include number-label(white) { content: '3'}
-      background-color: $blue;
-    }
-  }
-
-  h4 {
-    margin-top: 20px;
-    text-align: center;
-  }
-}
-
-#landing-team {
-
-  .person-image {
-    text-align: center;
-    img {
-      max-width: 100%;
-      border-radius: 50%;
-    }
-  }
-
-  .person-bio {
     h2 {
-      font-size: $font-size-h3;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 2;
+      color: $brand-primary;
+    }
+
+    &-heading {
       text-align: center;
-    }
-    small {
-      display: block;
-      line-height: 1.75;
-    }
-  }
+      margin-bottom: $grid-gutter-width;
+      h1 {
+        margin: 0 0 $grid-gutter-width / 2;
+        color: $brand-primary;
+        font-weight: bold;
+      }
 
-  .person-lg-container {
-
-    margin-top: 50px;
-
-    .person-bio {
-      max-width: $screen-sm-min * 0.5;
-      margin: 0 auto;
-    }
-
-    @media (min-width: $screen-sm-min) {
-      margin-top: 0px;
-      .person-bio {
-        max-width: auto;
+      p {
+        font-size: 18px;
         margin: 0;
       }
     }
 
-    @media (min-width: $screen-md-min) {
-      .person-bio {
-        padding: 0 30px;
-      }
-    }
-  }
-
-  .person-sm-container {
-    margin-top: 50px;
-
-    @media (min-width: $screen-md-min) {
-      h2 {
-        font-size: $font-size-h4;
-      }
-
-      img {
-        max-width: 85%;
-      }
-    }
-  }
-
-}
-
-#landing-join {
-  input {
-    @include box-shadow(none);
-  }
-
-  .landing-email-submit {
-    width: 90px;
-  }
-
-  .landing-join-message {
     p {
-      font-size: $font-size-h4;
+      line-height: 1.8;
+    }
+  }
+
+  &-masthead {
+    $background: $bg-blue;
+
+    background-color: $background;
+    text-align: center;
+    padding: 120px 0 100px;
+
+    .logo {
+      height: 90px;
+    }
+
+    .tagline {
+      font-weight: 300;
+      color: $brand-primary;
+      font-size: 27px;
+      line-height: 1.6;
+      margin-bottom: 70px;
+    }
+
+    .scroll-btn {
       text-align: center;
-      margin-top: 0.5em;
-    }
-
-    a { font-weight: 400; }
-  }
-}
-
-footer {
-  $line-height: 30px;
-
-  background-color: $brand-primary;
-  padding: 50px 0;
-
-  .fa {
-    margin-left: 5px;
-  }
-
-  img {
-    width: 75px;
-    margin-top: 4px;
-  }
-
-  .logo {
-    font-family: $font-family-logo;
-    font-size: $font-size-h2;
-    line-height: $line-height;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .love {
-    font-size: 19px;
-    line-height: $line-height;
-    padding-top: 0.2em;
-    color: white;
-  }
-
-  .social-links {
-    font-size: 19px;
-    vertical-align: middle;
-    a {
-      display: inline-block;
-      padding: 0em 0.55em 0 0;
-      color: white;
-    }
-  }
-
-  .fa-heart {
-    margin-left: 0;
-  }
-
-  @media (min-width: $screen-sm-min) {
-    .love {
-      text-align: center;
-    }
-    .social-links {
-      text-align: right;
       a {
-        padding: 0.2em 0.2em 0 0;
+        font-size: 19px;
+        padding: 20px;
+        border: none;
+        background-color: $brand-primary;
+        color: lighten($background, 20%);
+      }
+      .fa {
+        margin-left: 15px;
+        color: white;
+      }
+    }
+
+    .animated {
+      // delay it a bit to improve the chance that the images and fonts has
+      // been loaded
+      @include animation-delay(0.5s);
+    }
+  }
+
+  &-festival {
+    counter-reset: festival-step;
+
+    .festival-step {
+      margin: $grid-gutter-width 0;
+    }
+
+    h2 {
+      $counter-width: 1em;
+
+      position: relative;
+
+      &::before {
+        counter-increment: festival-step;
+        content: counter(festival-step) ". ";
+
+        @media (min-width: $screen-sm) {
+          content: counter(festival-step);
+          display: block;
+          left: - $counter-width - 0.5em;
+          position: absolute;
+          text-align: right;
+          top: 0;
+          width: $counter-width;
+        }
       }
     }
   }
-}
 
-.about-icon-block > img {
-  margin-top: 30px;
-}
+  &-pitch {
 
-/* utility class, center aligns element vertically in its parent container */
-/* see http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
-.verticalAlignCenter {
-  position: absolute;
-  top: 50%;
-  /* position is top of element, need to offset by half of element's height. transform is the best way to do this. display:table-cell inside display;table will work equally, but for some reason prevents clicks on dropzone elements */
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+    $background: $bg-orange;
 
-.horizontalAlignCenter {
-  position: absolute;
-  left: 50%;
-  /* position is top of element, need to offset by half of element's height. transform is the best way to do this. display:table-cell inside display;table will work equally, but for some reason prevents clicks on dropzone elements */
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
+    background-color: $background;
+    h2 {
+      text-align: center;
+    }
 
-/* http://embedresponsively.com/ */
-.embed-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-}
+    .submit-btn-container {
+      text-align: center;
+      margin: $grid-gutter-width * 2 0 0;
+    }
 
-.embed-container iframe, .embed-container object, .embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* bootstrap modal */
-@media (max-width: $screen-xs-max) {
-  #modalVideo .modal-dialog {
-    width: 100%;
-    padding-right: 20px; /* needed if 100% width */
+    .submit-idea-btn {
+      color: lighten($background, 20%);
+      padding: 1em 2em;
+    }
   }
-}
 
-@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-  #modalVideo .modal-dialog {
-    width: 600px;
+  &-dates {
+
   }
-}
 
-@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-  #modalVideo .modal-dialog {
-    width: 800px;
+  &-join {
+    background-color: #e0e0e0;
   }
-}
 
-@media (min-width: $screen-lg-min) {
-  #modalVideo .modal-dialog {
-    width: 1000px;
+  &-footer {
+    background-color: $brand-primary;
+    padding: $grid-gutter-width * 2 0;
   }
-}
-
-/* bootstrap modal background */
-div.modal-backdrop.in {
-  opacity: 0.9;
-  filter: alpha(opacity=90);
-}
-
-div.modal-backdrop {
-  background-color: white; 
-}
-
-#modalVideoHeader {
-  text-align: right;
-}
-
-#modalVideoHeader button.close {
-  float: initial !important;
 }
