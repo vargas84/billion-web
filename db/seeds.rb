@@ -7,3 +7,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Role.create!(name: 'user') if Role.where(name: 'user').blank?
+
+Role.create!(name: 'admin') if Role.where(name: 'admin').blank?
