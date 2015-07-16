@@ -10,6 +10,7 @@ gem 'figaro', '~> 1.1.1'
 gem 'email_validator', '~> 1.6.0'
 gem 'lodash-rails', '~> 3.7.0'
 gem 'devise'
+gem 'pundit'
 
 gem 'rails', '4.2.0'
 gem 'pg'
