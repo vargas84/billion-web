@@ -50,6 +50,8 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    braintree (2.45.0)
+      builder (>= 2.0.0)
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
@@ -240,6 +242,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.3.4)
+  braintree (~> 2.45.0)
   byebug
   database_cleaner (~> 1.4.1)
   devise (~> 3.5.1)
