@@ -14,8 +14,8 @@ gem 'devise_invitable', '~> 1.5.1'
 gem 'braintree', '~> 2.45.0'
 gem 'animate-rails', '~> 1.0.8'
 gem 'jquery-validation-rails', '~> 1.13.1'
-gem 'pundit'
-
+gem 'pundit', '~> 1.0.1'
+gem 'faker', '~> 1.4.3'
 
 # Rails-specific gems
 gem 'rails', '4.2.0'
