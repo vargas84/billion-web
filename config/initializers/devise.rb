@@ -1,20 +1,20 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
-  # OAOAom tokens. Changing this key will render invalid all existing
+  # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'c40439b2ee7c0bec14db20b6ffe1ddabbe7f4a5c7a510271d0174479e46f8836d3e7067124771a02fb2b733a37508609458a1c077954a2ef627900017ba487f6'
 
   # ==> Mailer Configuration
-  # Configure OAA e-mail address which will be shown in Devise::Mailer,
+  # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with deOAAlt "from" parameter.
   config.mailer_sender = 'hello@billioneffect.com'
 
-  # ConOAOAre the class responsible to send e-mails.
-  # OAAfig.mailer = 'Devise::Mailer'
+  # Configure the class responsible to send e-mails.
+  # config.mailer = 'Devise::Mailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -62,6 +62,7 @@ Devise.setup do |config|
   # :database      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
 
+  # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
 
   # The realm used in Http Basic Authentication. 'Application' by default.
