@@ -1,0 +1,126 @@
+<!-- Modal -->
+<div class="modal fade landing-pitch-modal" id='pitch-modal' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+  <div class="modal-dialog" role="document">
+    <%= form_tag bam_applications_path, method: 'post' do %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="myModalLabel">Submit your idea</h1>
+      </div>
+      <div class="modal-body">
+
+        <div class='row'>
+          <div class='col-md-12'>
+            <h2 class='modal-section-heading'>Tell us about yourself</h2>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-6 form-group'>
+            <%= label_tag :first_name %>
+            <%= text_field_tag :first_name, '', class: 'form-control', required: true, placeholder: 'Tony' %>
+          </div>
+
+          <div class='col-md-6 form-group'>
+            <%= label_tag :last_name %>
+            <%= text_field_tag :last_name, '', class: 'form-control', required: true, placeholder: 'Stark' %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-6 form-group'>
+            <%= label_tag :email %>
+            <%= email_field_tag :email, '', class: 'form-control', required: true, placeholder: 'tony@starkindustries.com' %>
+          </div>
+
+          <div class='col-md-6 form-group'>
+            <%= label_tag :phone %>
+            <%= telephone_field_tag :phone, '', class: 'form-control', required: true, placeholder: '(xxx) xxx-xxx' %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-12'>
+            <h2 class='modal-section-heading'>Tell us about your idea</h2>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-12 form-group'>
+            <%= label_tag :name, 'Name your movement' %>
+            <%= text_field_tag :name, '', class: 'form-control', required: true %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-12 form-group'>
+            <%= label_tag :description do %>
+              Billion is working toward adressing a specific challenge here in
+              the Columbus community. What is the problem or issue that your
+              movement seek to address? (200 characters)
+            <% end %>
+            <%= text_area_tag :description, '', class: 'form-control', rows: 3, required: true, maxlength: 200 %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-12 form-group'>
+            <%= label_tag :impact do %>
+              Describe the long term impact your movement will have (200 characters)
+            <% end %>
+            <%= text_area_tag :impact , '', class: 'form-control', rows: 3, required: true, maxlength: 200 %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-12 form-group'>
+            <%= label_tag :product do %>
+              What product or service will your movement provide to address the issue? (200 characters)
+            <% end %>
+            <%= text_area_tag :product, '', class: 'form-control', rows: 3, required: true, maxlength: 200 %>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-12 form-group'>
+            <%= label_tag :tweet do %>
+              Describe your movement in a tweet (140 characters)
+            <% end %>
+            <%= text_area_tag :tweet, '', class: 'form-control', rows: 3, required: true, maxlength: 140 %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <% end %>
+
+    <div class='modal-content pitch-success-content hide'>
+      <div class="modal-header">
+        <h1 class="modal-title" id="myModalLabel">You're done!</h1>
+      </div>
+
+      <div class='modal-body'>
+        <p><strong>Thanks!</strong> Your application has been submitted!</p>
+
+        <p>If your idea is selected, we'll soon be in touch.</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<% content_for :scripts do %>
+  <script>
+$(document).ready(function() {
+  new Billion.PitchModal($('.landing-pitch-modal'));
+});
+  </script>
+<% end %>

@@ -1,0 +1,34 @@
+//== Forms
+
+.form-control {
+  box-shadow: none;
+  &:focus {
+    box-shadow: none;
+    border-color: rgba(lighten($brand-primary, 20%), 0.75);
+  }
+}
+
+label {
+  font-weight: normal;
+  color: $text-color;
+  line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: $grid-gutter-width / 2;
+}
+
+.has-error {
+  .form-control {
+    box-shadow: none;
+    &:focus {
+      box-shadow: none;
+      background-color: mix($brand-danger, white, 5%);
+    }
+  }
+
+  .help-block {
+    font-weight: bold;
+    line-height: 1.5;
+  }
+}

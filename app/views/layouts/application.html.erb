@@ -7,7 +7,7 @@
 
   <%= render 'layouts/meta' %>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700|Righteous' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600' rel='stylesheet' type='text/css'>
 
   <%= render 'layouts/favicons' %>
 
@@ -35,5 +35,6 @@
 <%= yield %>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= yield :scripts %>
 </body>
 </html>

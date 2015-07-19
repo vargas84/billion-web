@@ -1,11 +1,12 @@
+@import 'modular-scale';
 @import 'animate';
 @import 'variables'; // includes overrides
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'animate_override';
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import 'base';
+@import 'modal';
 @import 'mixins';
 @import 'landing';
-@import 'form';
