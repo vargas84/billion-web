@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe User, type: 'model' do
-  #pending "add some examples to (or delete) #{__FILE__}"
+describe User, type: :model do
+  subject { build :user }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:role).inverse_of(:users) }
+  end
 end

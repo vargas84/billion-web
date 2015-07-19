@@ -12,7 +12,8 @@ gem 'lodash-rails', '~> 3.7.0'
 gem 'devise', '~> 3.5.1'
 gem 'devise_invitable', '~> 1.5.1'
 gem 'braintree', '~> 2.45.0'
-gem 'pundit'
+gem 'pundit', '~> 1.0.1'
+gem 'faker', '~> 1.4.3'
 
 # Rails-specific gems
 gem 'rails', '4.2.0'
