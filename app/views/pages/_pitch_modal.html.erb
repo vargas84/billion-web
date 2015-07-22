@@ -5,9 +5,15 @@
     <%= form_tag bam_applications_path, method: 'post' do %>
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="myModalLabel">Submit your idea</h1>
+        <h1 class="modal-title">Submit your idea</h1>
       </div>
       <div class="modal-body">
+        <div class='row'>
+          <div class='col-md-12'>
+            <div class='alert alert-warning hide'>
+            </div>
+          </div>
+        </div>
 
         <div class='row'>
           <div class='col-md-12'>
@@ -99,7 +105,7 @@
 
     <div class='modal-content pitch-success-content hide'>
       <div class="modal-header">
-        <h1 class="modal-title" id="myModalLabel">You're done!</h1>
+        <h1 class="modal-title">You're done!</h1>
       </div>
 
       <div class='modal-body'>
