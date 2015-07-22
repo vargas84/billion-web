@@ -13,6 +13,10 @@
       color: $brand-primary;
     }
 
+    p {
+      line-height: 1.8;
+    }
+
     &-heading {
       text-align: center;
       margin-bottom: $grid-gutter-width;
@@ -25,12 +29,10 @@
       p {
         font-size: ms(1);
         margin: 0;
+        line-height: ms(2);
       }
     }
 
-    p {
-      line-height: 1.8;
-    }
   }
 
   &-masthead {
