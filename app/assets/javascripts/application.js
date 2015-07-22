@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require lodash
+//= require scrollmagic
 //= require_tree .

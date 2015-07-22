@@ -21,6 +21,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'bundler', '>= 1.8.4'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-scrollmagic', '~> 2.0.5'
+end
+
 group :development, :test do
   gem 'letter_opener', '~> 1.3.0'
 end
