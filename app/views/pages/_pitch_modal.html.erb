@@ -124,9 +124,9 @@
 </div>
 
 <% content_for :scripts do %>
-  <script>
-$(document).ready(function() {
-  new Billion.PitchModal($('.landing-pitch-modal'));
-});
-  </script>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      new Billion.PitchModal($('.landing-pitch-modal'));
+    });
+  <% end %>
 <% end %>
