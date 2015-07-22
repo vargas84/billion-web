@@ -37,30 +37,27 @@
 
   &-masthead {
     $background: $bg-blue;
-
     background-color: $background;
-    text-align: center;
-    padding: 120px 0 100px;
 
     .logo {
-      height: 90px;
+      height: 40px;
+      margin: 20px 10px;
+    }
 
-      &.animated {
-        // delay it a bit to improve the chance that the image has loaded
-        @include animation-delay(0.3s);
-      }
+    .masthead-content-container {
+      padding: 160px 0 200px;
+    }
+
+    .tagline, .scroll-btn {
+      text-align: center;
     }
 
     .tagline {
       font-weight: 300;
       color: $brand-primary;
-      font-size: ms(2);
+      font-size: ms(3);
       line-height: 1.6;
-      margin-bottom: 70px;
-
-      &.animated {
-        @include animation-delay(0.7s);
-      }
+      margin-bottom: 40px;
     }
 
     .scroll-btn {
@@ -68,19 +65,20 @@
 
       a {
         font-size: ms(1);
-        padding: 20px;
+        padding: 10px 15px;
         border: none;
         background-color: $brand-primary;
+        border-radius: 50%;
         color: lighten($background, 20%);
       }
 
+      l
       .fa {
-        margin-left: 15px;
         color: white;
       }
 
       &.animated {
-        @include animation-delay(0.9s);
+        @include animation-delay(0.8s);
       }
     }
 
