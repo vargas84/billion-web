@@ -1,357 +1,247 @@
-<script>
-  window.config = window.config || {};
-  window.config.subscribePath = '<%= subscribe_path %>';
-  window.config.authenticityToken = '<%= form_authenticity_token %>';
-</script>
-<div class='masthead-container'>
-
-  <nav class="navbar navbar-default navbar-landing navbar-non-sticky hidden-xs">
-    <div class="container">
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#landing-about">About</a></li>
-          <li><a href="#landing-columbus">Where</a></li>
-          <li><a href="#landing-team">Team</a></li>
-          <li><a href="#landing-join" class='navbar-cta'><span>Join The Movement</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <nav class="navbar navbar-default navbar-landing navbar-fixed-top navbar-sticky visible-xs">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-
-        <span class='navbar-left-container' style='opacity: 0'>
-          <%= link_to '#landing-jumbotron', class: 'navbar-brand' do %>
-            <%= image_tag 'billion_logo_small.png', class: 'logo-small' %>
-          <% end %>
-          <button type='button' class='btn play-btn navbar-btn'
-            data-toggle="modal" data-target="#modalVideo" >
-            <%= icon('play-circle') %>
-            <span class="play-text">Watch our Video</span>
-          </button>
-        </span>
-      </div>
-
-      <div class="collapse navbar-collapse" id="nav-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#landing-about">About</a></li>
-          <li><a href="#landing-columbus">Where</a></li>
-          <li><a href="#landing-team">Team</a></li>
-          <li><a href="#landing-join" class='navbar-cta'><span>Join The Movement</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <section id="landing-jumbotron" class="jumbotron jumbotron-landing">
-    <div class="container">
-      <div>
-        <%= image_tag 'billion_logo_large.png', class: 'logo-large' %>
-      </div>
-
-      <p class="tag-line">Changing the way the world crowdfunds. For&nbsp;good.</p>
-
-      <div>
-        <button class='play-btn btn' data-toggle="modal"
-        data-target="#modalVideo"><%= icon('play', 'Watch the video') %></button>
-        <button type="button" class="btn btn-primary btn-lg application-btn"
-        data-toggle="modal" data-target="#modalApplication">
-          Submit your idea
-        </button>
-      </div>
-
-      <div>
-       <!-- Button trigger application modal -->
-      </div>
-
-    </div>
-  </section>
-
-  <div class='landing-image-credit'>
-    <a href='https://www.flickr.com/photos/neallindsay/491850284/in/photolist-5Jdbg7-5J8YZZ-ameWA1-9oA7wy-9owMoT-9ox1PH-n1TmTX-n1V3aG-nzsyEG-7SuicL-gE4nEV-a5cnhp-paYPkv-bxoLm7-psumeM-7fDGiQ-8uxL6h-KsRXj-5NCLro-jXQiX-7fDGuW-7fzPd8-7fDGrJ-7fDGcu-7fDGAu-7fDGDU-7fDG9u-7fzP14-7fDH2j-7fzNPg-7fzP3p-7fzPaP-7fzP5a-7fDGfo-7fDGSj-7fzNEp-2VCALZ-pnQii-5xM6zR-r4iK5h-7Kmz7w-4aUst2-iYghH-2iSF9T-g7NK5L-o443QM-8hv6hq-fP5rqW-9QfzPm-9oAakJ'>Image by Neal Lindsay</a>
+<section class='landing-masthead'>
+  <div class='container-fluid masthead-logo-container'>
+    <%= image_tag 'billion_logo_white_small.png', class: 'logo' %>
   </div>
-</div>
-
-<section id="landing-about" class="landing-section">
-
-  <div class="container">
+  <div class='container masthead-content-container'>
     <div class='row'>
-      <div class='col-xs-12'>
-        <div class="section-rant">
-          <p>We are developers, designers, creatives, or entrepreneurs by
-          trade. But we are do-gooders at heart.</p>
-          <p><strong>Billion is where we band together to change the world.
-          </strong></p>
+      <div class='col-md-12'>
+        <div class='tagline animated fadeInUp'>
+          <p>
+          The world's first competitive-crowdfunding platform for <strong>social
+          good</strong>.<br/>
+          We help communities turn big ideas into big movements.
+          </p>
         </div>
-      </div>
-    </div>
 
-    <div class="row about-text-blocks">
-      <div class="col-xs-12 col-sm-4">
-        <div class="about-text-block">
-          <div class="about-icon-block">
-            <%= image_tag('stages/hand.png', :class => 'horizontalAlignCenter')  %>
-          </div>
-          <h4>Pitch & Rally</h4>
-          <p>On launch day, pitch your BAM on billioneffect.com and
-          start to rally votes from your friends and family.</p>
-          <p>1 vote = $1.</p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="about-text-block">
-          <div class="about-icon-block">
-            <%= image_tag('stages/bracket.png', :class => 'horizontalAlignCenter') %>
-          </div>
-          <h4>Bracket</h4>
-          <p>The top 16 ideas will be funneled into a basketball style bracket.
-          Votes from other BAMs will be reallocated by donors into the
-          advancing movements.</p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="about-text-block">
-          <div class="about-icon-block">
-            <%= image_tag('stages/person.png', :class => 'horizontalAlignCenter') %>
-          </div>
-          <h4>Crowdfund & Peoplesource</h4>
-          <p>Once the winning billion movement is chosen, the community will
-          begin traditional crowdfunding. Additionally, the community will
-          volunteer skills and hours to support the billion movement. </p>
+        <div class='scroll-btn animated bounceIn'>
+          <a class='btn btn-lg' href='#festival-section'>
+            <%= icon('chevron-down') %>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="landing-columbus" class="landing-section">
-  <div class="container">
-    <div class='row'>
-      <div class="section-header">
-        <h1>Coming to Columbus</h1>
-      </div>
-    </div>
-    <div class='row'>
-      <div class="col-sm-8 col-sm-offset-2 landing-columbus-text">
-        <p>Billion is a platform for crowdfunding global initiatives. We’re
-        starting at home to give back to our community. In our case,
-        that’s the beautiful city of Columbus, Ohio.</p>
-        <p>The first iteration of Billion will be held in the 614. The release
-        date of our crowdfunding site will be up very soon. Make sure to join
-        our email list and we’ll keep you updated. No spam, we promise.
-        <%= icon('heart') %></p>
-        <p>Start thinking of ideas to change Columbus. For good.</p>
+<section class='landing-section landing-festival' id='festival-section'>
+  <div class='container'>
+    <div class='landing-section-heading'>
+      <h1>Columbus Independents' Day Festival</h1>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p>
+          Billion
+          is excited to hold our first crowdfunding cycle during the
+          <a href='http://thisisindependent.com/' title="Columbus Independents's Day Festival">
+            Columbus&nbsp;Independents'&nbsp;Day&nbsp;Festival</a>
+          on September&nbsp;19&nbsp;-&nbsp;20.
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  <div class='landing-image-credit'>
-    <a href='https://www.flickr.com/photos/janitors/9797078766/in/photolist-fVJAc9-fVJSra-fVJtSp-5dsK6G-ac6BX6-ac9tXw-ac9tZo-ac9tTj-ac9tCb-8d6J4v-5qoiju-5wFGdj-fYh8Zc-5HHLR5-5HDn4B-ancNFT-6ewBWz-6vJcoJ-45XdZ-6gukAv-bdi7ig-dbhvjn-6HCHVe-5T5Dcq-7ax4Qk-4QQsZn-cow5ab-dbhz37-4UfmUX-fSXDJr-8g2obH-4RxxKM-wkBFu-fPadC7-5HDrUF-5HDtRx-8d6Eu2-6FpuT2-ftdaKK-dBDFQA-8g5yzd-ftsB3S-8g5UE9-8g2tfZ-8g2BZ2-fq17Gg-6FtAQL-fTc8tF-4VF49P-7NpciA'>Image by Kārlis Dambrāns</a>
+
+  <div class='col-md-6 lg-festival-img-container'>
+    <%= image_tag 'festival.jpg', class: 'festival-img-lg' %>
   </div>
-</section>
 
-<section id="landing-team" class="landing-section">
-  <div class="container">
+  <div class='container'>
     <div class='row'>
-      <div class="section-header">
-        <h1>Get to know us</h1>
+      <div class='col-md-6'>
+        <%= image_tag 'festival.jpg', class: 'festival-img-sm' %>
       </div>
-    </div>
+      <div class='col-md-6'>
+        <div class='festival-step'>
+          <h2>Pitching</h2>
+          <p>
+          We are accepting applications for ideas that will make a positive impact in the Columbus community.
+          The top eight ideas will be selected to compete for funding at the festival.
+          </p>
+          <p><strong>Have a great idea? <a href='#pitch-section'>Pitch it!</a></strong></p>
+        </div>
 
-    <div class='row'>
+        <div class='festival-step'>
+          <h2>At the festival</h2>
 
-      <div class='col-sm-4'>
-        <div class='person-lg-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/eileen.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Eileen Guan<small>CEO & Founder</small></h2>
-            <p>Eileen is a UI/UX designer with a passion for solving impossible problems.
-            A fourth-year student at Ohio State, she is a tech startup junkie with an
-            unending love for building stuff and social entrepreneurship.</p>
-          </div>
+          <p><strong>Find our booth</strong> We'll be featured right in the
+          middle of the festival. Come check out the eight awesome ideas that were accepted.</p>
+          <p><strong>Play and earn points</strong> Have fun with an augumented
+          reality video game made by our friends at
+          <strong><a href='http://www.multivariousgames.com/'>Multivarious Games</a></strong>.
+          All of the points you earned will count toward the idea that you
+          selected, and the admission fee will be used to fund the winning
+          idea.</p>
+          <p><strong>Follow the bracket</strong> Ideas will be matched against
+          each other in a single elimination tournament bracket. Bring your
+          friends and families, spread the word, and help take your favorite
+          idea to the top.</p>
+          <p><strong>Buy points online</strong> Can't make it to the
+          festival, but still want to support an idea? We've got your back.
+          Visit us on this website and you'll be able to purchase points for
+          the idea of your choosing.</p>
+        </div>
+
+        <div class='festival-step'>
+          <h2>Winner</h2>
+          <p>At the end of the festival, the idea that has earned the most points will receive 100% of the admission fees raised at the event.</p>
+          <p>We call this <em>Competitive Crowdfunding</em>. Sound like fun yet?</p>
         </div>
       </div>
-
-      <div class='col-sm-4'>
-        <div class='person-lg-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/alex.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Alex Vargas<small>CTO</small></h2>
-            <p>Alex is a full-stack software engineer, passionate do-gooder,
-            and full time dad to the coolest kid on the planet.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class='col-sm-4'>
-        <div class='person-lg-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/ray.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Ray Li<small>COO</small></h2>
-            <p>Ray is a recent graduate of Cornell University, where he studied physics and music.
-            Ray is passionate about technology, innovation, and social good, and wants to develop
-            platforms that deliver lasting changes for a better tomorrow.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class='col-sm-4 col-md-2'>
-        <div class='person-sm-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/winnie.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Winnie Li<small>Marketing</small></h2>
-          </div>
-        </div>
-      </div>
-
-      <div class='col-sm-4 col-md-2'>
-        <div class='person-sm-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/michael.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Michael <small>Outreach</small></h2>
-          </div>
-        </div>
-      </div>
-
-      <div class='col-sm-4 col-md-2'>
-        <div class='person-sm-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/dicko.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Dicko Sow<small>Biz Dev</small></h2>
-          </div>
-        </div>
-      </div>
-
-      <div class='col-sm-4 col-md-2'>
-        <div class='person-sm-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/mark.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Mark<small>Back End Lead Developer</small></h2>
-          </div>
-        </div>
-      </div>
-
-      <div class='col-sm-4 col-md-2'>
-        <div class='person-sm-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/justin.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Justin<small>Front End Lead Developer</small></h2>
-          </div>
-        </div>
-      </div>
-
-      <div class='col-sm-4 col-md-2'>
-        <div class='person-sm-container'>
-          <div class='person-image'>
-            <%= image_tag 'team/allen.jpg' %>
-          </div>
-          <div class='person-bio'>
-            <h2>Allen White<small>Developer</small></h2>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<section id="landing-join" class="landing-section">
-  <div class="container">
-    <div class='row'>
-      <div class="section-header">
-        <h1>Join the Movement</h1>
+<section class='landing-section landing-pitch' id='pitch-section'>
+  <div class='container'>
+    <div class='landing-section-heading'>
+      <h1>Pitch Your Idea</h1>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p>Have a great idea? We'd love to talk!</p>
+        </div>
       </div>
     </div>
+
     <div class='row'>
-      <div class="col-sm-8 col-sm-offset-2">
-        <div class="alert alert-success hide" role="alert">
-          <strong>Thanks for your support!</strong> We've sent you an email to
-          confirm that you'd like to receive updates on our progress.
+      <div class='col-md-4 col-md-offset-1 pitch-why'>
+        <h2>Why</h2>
+        <p>Your participation alongside Billion at the Columbus Independents'
+        Day Festival is a surefire way to gain publicity for your idea. You
+        will have the opportunity to present your idea to thousands of Ohioans
+        who attend the Independents' Day Festival every year.</p>
+        <p>And if you can convince attendees that your idea is the best, you will go home
+        with some serious capital to make your idea into a reality.</p>
+        <p>In addition to your newly found fans and dough, you'll receive
+        mentorship and helpful resources from Billion to help you get bring
+        your idea to life.</p>
+      </div>
+
+      <div class='col-md-4 col-md-offset-2 pitch-who'>
+        <h2>Who</h2>
+        <p>Billion is aimed at individuals, teams and organizations. We're
+        looking for movers, doers, artists, entrepreneurs, and story tellers
+        who want to accomplish social good in Columbus' communities. You bring
+        the idea, and we'll bring Columbus' best and brightest community
+        leaders, movers and shakers who can help make it all happen.</p>
+        <p>If applying on behalf of an existing organization, we ask that you
+        apply with a specific idea in mind, rather than just applying for your
+        organization in general.</p>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class='submit-btn-container'>
+          <button class='submit-idea-btn btn btn-lg btn-primary' data-toggle="modal" data-target="#pitch-modal">
+            Submit your idea
+          </a>
         </div>
       </div>
-      <div class="col-sm-8 col-sm-offset-2 bd-danger">
-        <div class="alert alert-danger hide" role="alert">
-          Please enter a valid email address.
+    </div>
+  </div>
+</section>
+
+<section class='landing-section landing-dates'>
+  <div class='container'>
+    <div class='landing-section-heading'>
+      <h1>Important Dates</h1>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p>We know you're busy trying to change the world and everything, so
+          here are some important dates to keep in mind.</p>
         </div>
       </div>
-      <div class="col-sm-8 col-sm-offset-2 form-group">
-        <form>
-          <div class="input-group">
-            <input type="email" class="form-control input-lg landing-email-input"
-            placeholder="e.g. elonmusk@ironman.com"/>
-            <span class="input-group-btn">
-              <button class='btn btn-primary input-lg landing-email-submit'>
-                <span class="landing-submit-text">Subscribe</span>
-                <%= icon('spinner', '', class: 'fa-pulse hide') %>
-              </button>
+    </div>
+
+    <div class='row'>
+      <div class='timeline'>
+
+        <div class='col-md-3 event-container'>
+          <div class='timeline-event timeline-past-event'>
+            <span class='timeline-date'>
+              <time datetime='2015-06-30'>June 30</time>
             </span>
+            <h2>Pitching begins</h2>
+            <p>Submit your applications on the Billion web site! We review
+            submissions as they are sent in. If we need more information about
+            your application, we'll be in contact.</p>
           </div>
-        </form>
+        </div>
+
+        <div class='col-md-3 event-container'>
+          <div class='timeline-event'>
+            <span class='timeline-date'>
+              <time datetime='2015-08-01'>August 1</time>
+            </span>
+            <h2>Pitching ends</h2>
+            <p>We'll pick the top eight submissions to appear at the event. If
+            your idea is selected to participate, we'll let you know.</p>
+          </div>
+        </div>
+
+        <div class='col-md-3 event-container'>
+          <div class='timeline-event'>
+            <time datetime='2015-09-01' class='timeline-date'>September 1</time>
+            <h2>Rallying begins</h2>
+            <p>Submissions selected for participation will be displayed at our
+            web site at
+            <a href='http://www.billioneffect.com'>billioneffect.com</a>. Share
+            the link to your project with friends and family to build
+            support.</p>
+          </div>
+        </div>
+
+        <div class='col-md-3 event-container'>
+          <div class='timeline-event'>
+            <span class='timeline-date'>
+              <time datetime='2015-09-19'>September 19</time>
+              -
+              <time datetime='2015-09-20'>20</time>
+            </span>
+            <h2>Competition</h2>
+            <p>Compete against other social causes at the Columbus Independents'
+            Day Festival to win the money stash. We'll announce the winner on
+            the last day of the festival.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="col-sm-12 form-group landing-join-message">
-        <p>We'll keep you updated on our progress.
-        <a href='mailto:hello@billioneffect.com'>Still have questions? Ask away</a>
-        </p>
+    </div>
+
+  </div>
+</section>
+
+<section class='landing-section landing-join'>
+  <div class='container'>
+    <div class='landing-section-heading'>
+      <h1>Join the Movement</h1>
+
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p>
+            Subscribe to our mailing list and we'll keep you updated on our
+            progress.<br/>
+            <a href='mailto:hello@billioneffect.com'>
+            Still have questions? Ask away!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <%= render 'pages/subscription_form' %>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class='row'>
-      <div class="col-sm-2">
-        <%= image_tag 'billion_logo_white_small.png' %>
-      </div>
-      <div class="col-sm-8">
-        <p class="love">Made with
-        <%= icon('heart') %>
-        in Columbus, OH</p>
-      </div>
-      <div class="col-sm-2">
-        <p class="social-links">
-        <%= link_to icon('facebook'), 'https://www.facebook.com/billioneffect' %>
-        <%= link_to icon('twitter'), 'https://twitter.com/BillionEffect' %>
-        <%= link_to icon('instagram'), 'https://instagram.com/BillionEffect' %>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
+<%= render 'pages/pitch_modal' %>
 
-<div id="modalVideo" class="modal fade">
-  <div class="modal-dialog">
-    <div id="modalVideoHeader">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>
-    <div id='embedVideo' class='embed-container'>
-      <iframe src='https://www.youtube.com/embed/m68_iXKX5Ag' frameborder='0' allowfullscreen></iframe>
-    </div>
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<%= render 'pages/bam_application' %>
+<% content_for :scripts do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      new Billion.LandingAnimator();
+    });
+  <% end %>
+<% end %>

@@ -1,41 +1,54 @@
-$(document).ready(function() {
-  var $join = $('#landing-join'),
-      $landingEmailForm = $join.find('form'),
-      $landingEmailInput = $join.find('.landing-email-input'),
-      $landingEmailSubmit = $join.find('.landing-email-submit'),
-      $landingEmailSpinner = $landingEmailSubmit.find('.fa-spinner'),
-      $landingSubmitText = $landingEmailSubmit.find('.landing-submit-text'),
-      $successMsg = $join.find('.alert-success'),
-      $failureMsg = $join.find('.alert-danger'),
-      subscribePath = window.config.subscribePath,
-      authenticityToken = window.config.authenticityToken;
+(function() {
+  'use strict';
 
-  $landingEmailForm.on('submit', function(e) {
-    e.preventDefault();
+  function SubscribeForm(form) {
+    this.$el = $(form);
+    this.$submit = this.$el.find('[type=submit]');
+    this.$alertSuccess = this.$el.find('.js-alert-success');
+    this.$alertError = this.$el.find('.js-alert-error');
+    this.$emailGroup = this.$el.find('.js-email-group');
 
-    var email = $landingEmailInput.val(),
-        data = { authenticity_token: authenticityToken, email: email };
+    _.bindAll(this, 'onSubmit', 'onSuccess', 'onError');
+    this.$el.validate({submitHandler: this.onSubmit});
+  }
 
-    if (email) {
-      $.post(subscribePath, data, success).fail(failure);
-      $landingEmailSpinner.removeClass('hide');
-      $landingSubmitText.addClass('hide');
-      $landingEmailSubmit.prop('disabled', true);
+  SubscribeForm.prototype = {
+    onSubmit: function() {
+      this.toggleButton();
+      $.ajax({
+        url: this.$el.attr('action'),
+        method: this.$el.attr('method'),
+        data: this.$el.serialize(),
+        success: this.onSuccess,
+        error: this.onError
+      });
+    },
+    onSuccess: function() {
+      this.$alertError.addClass('hide');
+      this.$alertSuccess.removeClass('hide');
+      this.$emailGroup.remove();
+    },
+    onError: function(jqXHR) {
+      var message;
+      switch(jqXHR.status) {
+        case 400:
+          message = jqXHR.responseJSON.message;
+          this.$el.find('input[type=email]').focus()[0].select();
+          break;
+        default:
+          message = 'Something went wrong. Please try again later.'
+      }
+      this.toggleButton();
+      this.$alertError.removeClass('hide');
+      this.$alertError.find('.error-message').text(message)
+    },
+    toggleButton: function() {
+      this.$submit.prop('disabled', !this.$submit.prop('disabled'));
+      this.$el.find('.js-spin-icon').toggleClass('hide');
+      this.$el.find('.js-submit-icon').toggleClass('hide');
     }
+  };
 
-    function success() {
-      $successMsg.removeClass('hide');
-      $failureMsg.addClass('hide');
-      $landingEmailSpinner.addClass('hide');
-      $landingSubmitText.removeClass('hide');
-    }
-
-    function failure() {
-      $failureMsg.removeClass('hide');
-      $successMsg.addClass('hide');
-      $landingEmailSubmit.prop('disabled', false);
-      $landingEmailSpinner.addClass('hide');
-      $landingSubmitText.removeClass('hide');
-    }
-  });
-});
+  window.Billion = window.Billion || {};
+  window.Billion.SubscribeForm = SubscribeForm;
+}());

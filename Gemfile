@@ -12,6 +12,8 @@ gem 'lodash-rails', '~> 3.7.0'
 gem 'devise', '~> 3.5.1'
 gem 'devise_invitable', '~> 1.5.1'
 gem 'braintree', '~> 2.45.0'
+gem 'animate-rails', '~> 1.0.8'
+gem 'jquery-validation-rails', '~> 1.13.1'
 
 # Rails-specific gems
 gem 'rails', '4.2.0'
@@ -23,6 +25,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'bundler', '>= 1.8.4'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-scrollmagic', '~> 2.0.5'
+end
 
 group :development, :test do
   gem 'letter_opener', '~> 1.3.0'
