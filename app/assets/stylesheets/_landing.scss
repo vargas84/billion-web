@@ -42,6 +42,11 @@
 
     .logo {
       height: 90px;
+
+      &.animated {
+        // delay it a bit to improve the chance that the image has loaded
+        @include animation-delay(0.3s);
+      }
     }
 
     .tagline {
@@ -50,10 +55,15 @@
       font-size: ms(2);
       line-height: 1.6;
       margin-bottom: 70px;
+
+      &.animated {
+        @include animation-delay(0.7s);
+      }
     }
 
     .scroll-btn {
       text-align: center;
+
       a {
         font-size: ms(1);
         padding: 20px;
@@ -61,17 +71,17 @@
         background-color: $brand-primary;
         color: lighten($background, 20%);
       }
+
       .fa {
         margin-left: 15px;
         color: white;
       }
+
+      &.animated {
+        @include animation-delay(0.9s);
+      }
     }
 
-    .animated {
-      // delay it a bit to improve the chance that the images and fonts has
-      // been loaded
-      @include animation-delay(0.5s);
-    }
   }
 
   &-festival {
@@ -79,6 +89,11 @@
 
     .festival-step {
       margin: $grid-gutter-width 0;
+      visibility: hidden;
+
+      &.animated {
+        visibility: visible;
+      }
     }
 
     h2 {
@@ -101,15 +116,46 @@
         }
       }
     }
+
+    .festival-img-sm {
+      display: block;
+      width: 100%;
+
+      @media (min-width: $screen-md) {
+        display: none;
+      }
+    }
+
+    .lg-festival-img-container {
+      padding: 40px 0 0 0;
+      overflow: hidden;
+    }
+
+    .festival-img-lg {
+      display: none;
+      margin-top: 10%;
+      width: 90%;
+
+      @media (min-width: $screen-md) {
+        display: block;
+      }
+    }
   }
 
   &-pitch {
-
     $background: $bg-orange;
-
     background-color: $background;
+
     h2 {
       text-align: center;
+    }
+
+    .pitch-who, .pitch-why {
+      visibility: hidden;
+
+      &.animated {
+        visibility: visible;
+      }
     }
 
     .submit-btn-container {
@@ -134,7 +180,26 @@
 
     .timeline-event {
       position: relative;
+    }
 
+    .event-container {
+      visibility: hidden;
+
+      &.animated {
+        visibility: visible;
+      }
+
+      &.animated:nth-of-type(2) {
+        @include animation-delay(0.1s);
+      }
+
+      &.animated:nth-of-type(3) {
+        @include animation-delay(0.2s);
+      }
+
+      &.animated:nth-of-type(4) {
+        @include animation-delay(0.3s);
+      }
     }
 
     .timeline-date {
