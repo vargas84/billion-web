@@ -211,16 +211,42 @@
       <h1>Join the Movement</h1>
       <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
-          <p>We'll keep you updated on our progress. <a href='#'>Still have
+          <p>We'll keep you updated on our progress. <a href='mailto:hello@billioneffect.com'>Still have
             questions? Ask away!</a></p>
         </div>
       </div>
     </div>
+
+    <div class='row'>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="alert alert-success hide" role="alert">
+          <strong>Thanks for your support!</strong> We've sent you an email to
+          confirm that you'd like to receive updates on our progress.
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2 bd-danger">
+        <div class="alert alert-danger hide" role="alert">
+          Please enter a valid email address.
+        </div>
+      </div>
+
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+        <form>
+          <div class="input-group">
+            <input type="email" class="form-control input-lg landing-email-input"
+                                placeholder="e.g. elonmusk@ironman.com"/>
+            <span class="input-group-btn">
+              <button class='btn btn-primary input-lg landing-email-submit'>
+                <span class="landing-submit-text">Subscribe</span>
+                <%= icon('spinner', '', class: 'fa-pulse hide') %>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
   </div>
 </section>
-
-<footer class='landing-footer'>
-  footer
-</footer>
-
 <%= render 'pages/pitch_modal' %>
