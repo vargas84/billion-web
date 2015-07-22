@@ -27,8 +27,8 @@
       this.$submit.prop('disabled', true);
 
       $.ajax({
-        url: '/bam_applications',
-        method: 'POST',
+        url: $form.attr('action'),
+        method: $form.attr('method'),
         dataType: 'json',
         data: $form.serialize(),
         error: this.onError,

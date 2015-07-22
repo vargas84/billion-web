@@ -1,0 +1,32 @@
+
+<%= form_tag subscribe_path, method: 'post', class: 'subscribe-form' do %>
+  <div class='form-group'>
+
+    <div class='js-alert-success alert alert-success hide' role='alert'>
+      <strong>Thanks for your support!</strong> We've sent you an email to
+      confirm that you'd like to receive updates on our progress.
+    </div>
+
+    <div class=' js-alert-error alert alert-danger hide' role='alert'>
+      <strong>Uh-oh!</strong>
+      <span class='error-message'></span>
+    </div>
+
+    <div class='js-email-group input-group'>
+      <%= email_field_tag :email, '', class: 'form-control input-lg landing-email-input',
+        placeholder: 'e.g. elonmusk@ironman.com', required: true %>
+      <span class="input-group-btn">
+        <%= button_tag class: 'btn btn-primary btn-lg', title: 'Subscribe' do %>
+          <%= icon('circle-o-notch', '', class: 'js-spin-icon fa-spin hide') %>
+          <%= icon('arrow-right', class: 'js-submit-icon') %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :scripts do %>
+  <script>
+    new Billion.SubscribeForm($('.subscribe-form'))
+  </script>
+<% end %>
