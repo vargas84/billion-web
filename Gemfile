@@ -15,7 +15,6 @@ gem 'braintree', '~> 2.45.0'
 gem 'pundit', '~> 1.0.1'
 gem 'faker', '~> 1.4.3'
 
-
 # Rails-specific gems
 gem 'rails', '4.2.0'
 gem 'pg'
