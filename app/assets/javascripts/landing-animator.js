@@ -16,6 +16,7 @@
       this.$festivalStep3 = $('.festival-step:nth-of-type(3)');
       this.$pitchElems = $('.pitch-who, .pitch-why');
       this.$timelineEvents = $('.event-container');
+      this.$festivalImg = $('.festival-img-lg');
     };
 
     this.initScrollController = function() {
@@ -34,6 +35,7 @@
       new ScrollMagic.Scene({triggerElement: festivalTrigger1})
         .on('enter', function() {
           self.$festivalStep1.addClass('animated fadeInUp');
+          self.$festivalImg.addClass('animated fadeInUp');
         }).addTo(this.controller);
 
       new ScrollMagic.Scene({triggerElement: festivalTrigger2})
@@ -48,12 +50,12 @@
 
       new ScrollMagic.Scene({triggerElement: pitchTrigger})
         .on('enter', function() {
-          self.$pitchElems.addClass('animated fadeIn');
+          self.$pitchElems.addClass('animated fadeInUp');
         }).addTo(this.controller);
 
       new ScrollMagic.Scene({triggerElement: dateTrigger})
         .on('enter', function() {
-          self.$timelineEvents.addClass('animated fadeIn');
+          self.$timelineEvents.addClass('animated fadeInLeft');
         }).addTo(this.controller);
     };
 

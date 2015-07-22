@@ -3,6 +3,12 @@
   $bg-blue: #67C6FF;
   $bg-orange: #FEC27C;
 
+  @mixin visible-when-animated {
+    visibility: hidden;
+
+    &.animated { visibility: visible; }
+  }
+
   &-section {
     padding: $grid-gutter-width * 3 0;
 
@@ -86,6 +92,10 @@
 
   &-festival {
     counter-reset: festival-step;
+
+    .festival-img-lg {
+      @include visible-when-animated;
+    }
 
     .festival-step {
       margin: $grid-gutter-width 0;
@@ -273,6 +283,10 @@
 
   &-join {
     background-color: #e0e0e0;
+
+    form {
+      margin-top: $line-height-computed;
+    }
   }
 
   &-footer {
