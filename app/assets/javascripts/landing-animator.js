@@ -28,7 +28,7 @@
       var festivalTrigger1 = '.landing-festival .landing-section-heading p',
           festivalTrigger2 = '.festival-step:nth-of-type(1)',
           festivalTrigger3 = '.festival-step:nth-of-type(2)',
-          pitchTrigger = '.landing-pitch',
+          pitchTrigger = '.landing-pitch .landing-section-heading',
           dateTrigger = '.landing-dates';
 
       new ScrollMagic.Scene({triggerElement: festivalTrigger1})

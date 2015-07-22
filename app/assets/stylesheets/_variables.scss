@@ -4,6 +4,10 @@
 //== Colors
 $gray-base: #444951;
 $brand-primary: #323B63;
+$brand-success: #27ae60;
+$brand-info: #3498db;
+$brand-warning: #f39c12;
+$brand-danger: #e74c3c;
 
 //== Scaffolding
 
@@ -12,16 +16,56 @@ $text-color: #222;
 
 
 //== Typography
+
 $font-family-sans-serif: 'Open Sans', Helvetica, Arial, sans-serif !default;
 $font-size-base: 14px;
-$font-size-h1: floor(($font-size-base * 2.4)) !default;
+
+$line-height-base: $fourth;
+
+$ms-base: $font-size-base;
+$ms-ratio: $fourth;
+
+$font-size-h1: ms(3);
+$font-size-h2: ms(2);
+$font-size-h3: ms(1);
+$font-size-h4: ms(0);
+$font-size-h5: ms(0);
+$font-size-h6: ms(0);
 
 $headings-color: $gray-base;
+
+//== Modals
+
+$modal-content-bg: $body-bg;
+$modal-content-border-color: transparent;
+$modal-content-fallback-border-color: transparent;
+
+$modal-backdrop-bg: #000;
+$modal-backdrop-opacity: 0.9;
+$modal-header-border-color: transparent;
+$modal-footer-border-color: transparent;
+
+//== Buttons
+
+$btn-default-border: transparent;
+$btn-primary-border: transparent;
+$btn-success-border: transparent;
+$btn-info-border: transparent;
+$btn-warning-border: transparent;
+$btn-danger-border: transparent;
+$btn-danger-border: transparent;
+
+//== Forms
+$input-border: #dadada;
+$input-color: $text-color;
 
 // Components
 $border-radius-base: 0;
 $border-radius-large: $border-radius-base;
 $border-radius-small: $border-radius-base;
+
+$padding-base-vertical: ms(-1);
+$padding-base-horizontal: ms(-1);
 
 /* CUSTOM VARIABLES */
 

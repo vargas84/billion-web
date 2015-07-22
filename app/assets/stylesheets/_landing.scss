@@ -7,7 +7,7 @@
     padding: $grid-gutter-width * 3 0;
 
     h2 {
-      font-size: 18px;
+      font-size: ms(1);
       font-weight: bold;
       line-height: 2;
       color: $brand-primary;
@@ -23,7 +23,7 @@
       }
 
       p {
-        font-size: 18px;
+        font-size: ms(1);
         margin: 0;
       }
     }
@@ -52,7 +52,7 @@
     .tagline {
       font-weight: 300;
       color: $brand-primary;
-      font-size: 27px;
+      font-size: ms(2);
       line-height: 1.6;
       margin-bottom: 70px;
 
@@ -65,7 +65,7 @@
       text-align: center;
 
       a {
-        font-size: 19px;
+        font-size: ms(1);
         padding: 20px;
         border: none;
         background-color: $brand-primary;
@@ -96,6 +96,27 @@
       }
     }
 
+    h2 {
+      $counter-width: 1em;
+
+      position: relative;
+
+      &::before {
+        counter-increment: festival-step;
+        content: counter(festival-step) ". ";
+
+        @media (min-width: $screen-sm) {
+          content: counter(festival-step);
+          display: block;
+          left: - $counter-width - 0.5em;
+          position: absolute;
+          text-align: right;
+          top: 0;
+          width: $counter-width;
+        }
+      }
+    }
+
     .festival-img-sm {
       display: block;
       width: 100%;
@@ -119,32 +140,9 @@
         display: block;
       }
     }
-
-
-    h2 {
-      $counter-width: 1em;
-
-      position: relative;
-
-      &::before {
-        counter-increment: festival-step;
-        content: counter(festival-step) ". ";
-
-        @media (min-width: $screen-sm) {
-          content: counter(festival-step);
-          display: block;
-          left: - $counter-width - 0.5em;
-          position: absolute;
-          text-align: right;
-          top: 0;
-          width: $counter-width;
-        }
-      }
-    }
   }
 
   &-pitch {
-
     $background: $bg-orange;
     background-color: $background;
 
@@ -237,7 +235,7 @@
         width: 100%;
       }
 
-      $size: $grid-gutter-width / 2;
+      $size: floor($grid-gutter-width / 3 * 2);
       .timeline-event::before {
         content: '';
         display: block;
@@ -250,7 +248,8 @@
         margin-top: - $grid-gutter-width - ($size / 2);
         margin-left: - ($size / 2);
         left: 50%;
-        @include transition(all 0.1s)
+        @include transition(all 0.2s);
+        @include transition-property(width, height, margin-top, margin-left);
       }
 
       .timeline-event:hover::before {
@@ -279,5 +278,13 @@
   &-footer {
     background-color: $brand-primary;
     padding: $grid-gutter-width * 2 0;
+  }
+
+  &-pitch-modal {
+    @media (min-width: $screen-md-min) {
+      .modal-dialog {
+        width: 800px;
+      }
+    }
   }
 }

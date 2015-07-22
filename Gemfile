@@ -9,8 +9,13 @@ gem 'mailchimp-api', require: 'mailchimp'
 gem 'figaro', '~> 1.1.1'
 gem 'email_validator', '~> 1.6.0'
 gem 'lodash-rails', '~> 3.7.0'
+gem 'devise', '~> 3.5.1'
+gem 'devise_invitable', '~> 1.5.1'
+gem 'braintree', '~> 2.45.0'
 gem 'animate-rails', '~> 1.0.8'
+gem 'jquery-validation-rails', '~> 1.13.1'
 
+# Rails-specific gems
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -28,6 +33,7 @@ end
 
 group :development, :test do
   gem 'letter_opener', '~> 1.3.0'
+  gem 'letter_opener_web', '~> 1.3.0'
 end
 
 group :stage, :development, :test do

@@ -1,0 +1,158 @@
+<!-- Application modal -->
+<div class="modal fade" id="modalApplication" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action='<%= bam_applications_path %>' method='POST' id='applicationForm'>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+                                              aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h1 class="modal-title" id="myModalLabel">What's Your Billion?</h1>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <h2> We're taking submissions for your Big Ass Movements! Let us know
+                how you plan on changing your community for good, and we'll get in
+                touch.</h2>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <p class="help-block">Tell us who you are</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <input name='first_name' type="text" id="inputApplicationFirstName"
+                                                         placeholder="First name" class="textInput" />
+                  </div>
+                  <div class="col-sm-6">
+                    <input name='last_name' type="text" id="inputApplicationLastName"
+                                                        placeholder="Last name" class="textInput" />
+                  </div>
+                  <div class="col-sm-12">
+                    <label id="labelErrorContactFirstLastName"
+                           for="inputApplicationFirstName"
+                           class="labelError hidden control-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <p class="help-block">How can we contact you if we need more
+                    information?</p>
+                  </div>
+                  <div class="col-sm-6">
+                    <input name='email' type="email" id="inputApplicationEmail"
+                                                     placeholder="you@somewhere.com" class="textInput" />
+                  </div>
+                  <div class="col-sm-6">
+                    <input name='phone' type="tel" id="inputApplicationPhone"
+                                                   placeholder="xxx-xxx-xxxx" class="textInput" />
+                  </div>
+                  <div class="col-sm-12">
+                    <label id="labelErrorContactEmailPhone"
+                           for="inputApplicationContactEmail"
+                           class="labelError hidden control-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <p class="help-block">Name your movement</p>
+                  </div>
+                  <div class="col-sm-12">
+                    <input name='name' type="text" id="inputApplicationName"
+                                                   placeholder="My Awesome B.A.M." class="textInput fullWidth" />
+                  </div>
+                  <div class="col-sm-12">
+                    <label id="labelErrorName" for="inputApplicationName"
+                                               class="labelError hidden control-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <p class="help-block">Billion is working towards addressing
+                    a specific challenge here in the Columbus community. What is
+                    the problem or issue that your movement seeks to address?
+                    (200 characters)</p>
+                  </div>
+                  <div class="col-sm-12">
+                    <textarea rows=6 name='description' id="inputApplicationDescription" class="textInput"></textarea>
+                  </div>
+                  <div class="col-sm-12">
+                    <label id="labelErrorDescription"
+                           for="inputApplicationDescription"
+                           class="labelError hidden control-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <p class="help-block">Describe your movement in a tweet (140
+                    characters)</p>
+                  </div>
+                  <div class="col-sm-12">
+                    <textarea rows=4 name='tweet' id="inputApplicationTweet" class="textInput"></textarea>
+                  </div>
+                  <div class="col-sm-12">
+                    <label id="labelErrorTweet" for="inputApplicationTweet"
+                                                class="labelError hidden control-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <p class="help-block">Describe the long term impact your
+                    movement will have. (200 characters)</p>
+                  </div>
+                  <div class="col-sm-12">
+                    <textarea rows=6 name='impact' id="inputApplicationImpact" class="textInput"></textarea>
+                  </div>
+                  <div class="col-sm-12">
+                    <label id="labelErrorImpact" for="inputApplicationImpact"
+                                                 class="labelError hidden control-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <p class="help-block">What product or service will your
+                    movement provide to address this issue? (200 character)</p>
+                  </div>
+                  <div class="col-sm-12">
+                    <textarea rows=6 name='product' id="inputApplicationProduct" class="textInput"></textarea>
+                  </div>
+                  <div class="col-sm-12">
+                    <label id="labelErrorProduct" for="inputApplicationProduct"
+                                                  class="labelError hidden control-label"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            Maybe Later
+          </button>
+          <button type="submit" id="btnApplicationSubmit" class="btn btn-primary">
+            Submit
+            <%= icon('gear', class: 'fa-spin',
+                     style: 'margin-left: 5px; display: none;') %>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
