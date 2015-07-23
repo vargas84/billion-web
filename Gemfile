@@ -9,8 +9,15 @@ gem 'mailchimp-api', require: 'mailchimp'
 gem 'figaro', '~> 1.1.1'
 gem 'email_validator', '~> 1.6.0'
 gem 'lodash-rails', '~> 3.7.0'
-gem 'devise'
+gem 'devise', '~> 3.5.1'
+gem 'devise_invitable', '~> 1.5.1'
+gem 'braintree', '~> 2.45.0'
+gem 'animate-rails', '~> 1.0.8'
+gem 'jquery-validation-rails', '~> 1.13.1'
+gem 'pundit', '~> 1.0.1'
+gem 'faker', '~> 1.4.3'
 
+# Rails-specific gems
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -20,6 +27,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'bundler', '>= 1.8.4'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-scrollmagic', '~> 2.0.5'
+end
 
 group :development, :test do
   gem 'letter_opener', '~> 1.3.0'
