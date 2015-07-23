@@ -20,7 +20,7 @@ class BamApplicationsController < ApplicationController
   def params_errors
     errors = []
     bam_application_params.each do |param, value|
-      errors << "#{param} must be present." if value.empty?
+      errors << "#{param.humanize} must be present." if value.empty?
     end
 
     errors

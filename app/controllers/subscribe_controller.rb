@@ -8,7 +8,7 @@ class SubscribeController < ApplicationController
 
       render json: { message: 'success' }.to_json, status: :ok
     else
-      render json: { message: 'invalid email' }.to_json, status: :bad_request
+      render json: { message: 'The email is not valid.' }.to_json, status: :bad_request
     end
   end
 end
