@@ -1,12 +1,12 @@
 class BamApplicationsController < ApplicationController
   def create
     respond_to do |format|
-      #if params_errors.any?
-        #format.json { render json: { errors: params_errors }, status: :unprocessable_entity }
-      #else
-        #BamApplicationMailer.email_team(bam_application_params).deliver
+      if params_errors.any?
+        format.json { render json: { errors: params_errors }, status: :unprocessable_entity }
+      else
+        BamApplicationMailer.email_team(bam_application_params).deliver
         format.json { render json: bam_application_params }
-      #end
+      end
     end
   end
 
