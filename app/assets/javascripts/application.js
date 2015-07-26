@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require lodash
+//= require scrollmagic
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require_tree .

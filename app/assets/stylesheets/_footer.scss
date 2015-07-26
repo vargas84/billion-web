@@ -1,0 +1,61 @@
+footer {
+  $line-height: ms(3);
+
+  background-color: $brand-primary;
+
+  padding: $grid-gutter-width / 2 0;
+
+  @media (min-width: $screen-sm-min) {
+    padding: $grid-gutter-width 0;
+  }
+
+  .fa {
+    margin-left: 5px;
+  }
+
+  img {
+    width: 75px;
+  }
+
+  .logo {
+    line-height: $line-height;
+    vertical-align: middle;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .love {
+    font-size: ms(1);
+    line-height: $line-height;
+    padding-top: 0.2em;
+    color: white;
+  }
+
+  .social-links {
+    font-size: 19px;
+    vertical-align: middle;
+    a {
+      display: inline-block;
+      padding: 0em 0.55em 0 0;
+      color: white;
+    }
+  }
+
+  .fa-heart {
+    margin-left: 0;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .love {
+      text-align: center;
+    }
+    .social-links {
+      text-align: right;
+      a {
+        padding: 0.2em 0.2em 0 0;
+      }
+    }
+  }
+}
