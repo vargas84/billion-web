@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709002032) do
+ActiveRecord::Schema.define(version: 20150725035801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,39 @@ ActiveRecord::Schema.define(version: 20150709002032) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "author",     default: "", null: false
+    t.text     "content",    default: "", null: false
+    t.integer  "project_id",              null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "comments", ["author"], name: "index_comments_on_author", using: :btree
+  add_index "comments", ["content"], name: "index_comments_on_content", using: :btree
+
+  create_table "competitions", force: :cascade do |t|
+    t.string   "code_name",  default: "", null: false
+    t.date     "start_date",              null: false
+    t.date     "end_date",                null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "competitions", ["code_name"], name: "index_competitions_on_code_name", using: :btree
+  add_index "competitions", ["end_date"], name: "index_competitions_on_end_date", using: :btree
+  add_index "competitions", ["start_date"], name: "index_competitions_on_start_date", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",        default: "", null: false
+    t.text     "blurb"
+    t.text     "description"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "projects", ["name"], name: "index_projects_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
