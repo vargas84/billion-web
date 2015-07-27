@@ -25,5 +25,8 @@ module Billion
 
     config.generators.helper = false
     config.generators.assets = false
+
+    # Add to path
+    config.autoload_paths << Rails.root.join('app', 'services')
   end
 end

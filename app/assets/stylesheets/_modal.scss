@@ -1,0 +1,65 @@
+//
+// Modals
+// -----
+
+.modal-content {
+  border: none;
+  @include box-shadow(none);
+}
+
+.modal-header {
+  background-color: $brand-primary;
+  text-align: center;
+  padding: $grid-gutter-width;
+
+  .modal-title {
+    color: white;
+    font-weight: bold;
+    font-size: ms(2);
+    line-height: 1;
+  }
+}
+
+.modal-body {
+  padding: $grid-gutter-width;
+
+  .modal-section-heading {
+    font-size: ms(1);
+    font-weight: bold;
+    margin: ms(0) 0;
+    line-height: 2;
+    text-align: left;
+  }
+}
+
+.modal-footer {
+  border-top: none;
+  padding: $grid-gutter-width;
+  background-color: darken($body-bg, 5%);
+  text-align: center;
+}
+
+$transition-duration: 0.2s;
+
+.modal {
+  @include perspective(1300);
+
+  &.fade .modal-dialog {
+    transform: rotate3d(1, 0, 0, -20deg);
+    transition: all $transition-duration ease-out;
+    transform-origin: bottom center;
+    transition-property: transform, opacity;
+    opacity: 0;
+  }
+
+  &.in .modal-dialog {
+    transform: rotate3d(1, 0, 0, 0deg);
+    opacity: 1;
+  }
+}
+
+.modal-backdrop {
+  &.fade {
+    transition: opacity $transition-duration;
+  }
+}
