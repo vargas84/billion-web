@@ -6,34 +6,10 @@ class ApplicationPolicy
     @record = record
   end
 
-  # TODO: Right now, this isn't being called I think. It would be called
-  # if UserPolicy.rb used super. Not sure what actions are for what roles,
-  # so I'll leave default as admin, and ignore methods in this file def.
+  # rubocop:disable MethodLength
   def rails_admin?(action)
-    case action
-      when :dashboard
-        user.admin?
-      when :index
-        user.admin?
-      when :show
-        user.admin?
-      when :new
-        user.admin?
-      when :edit
-        user.admin?
-      when :destroy
-        user.admin?
-      when :export
-        user.admin?
-      when :delete
-        user.admin?
-      when :show_in_app
-        user.admin?
-      when :bulk_delete
-        user.admin?
-      else
-        raise ::Pundit::NotDefinedError, "Could not find #{action} for #{record}."
-    end
+    actions = %i(dashboard index show new edit destroy export delete show_in_app bulk_delete)
+    actions.include?(action) && user.admin?
   end
 
   def index?
@@ -41,7 +17,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(id: record.id).exists?
   end
 
   def create?
