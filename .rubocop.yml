@@ -19,6 +19,3 @@ Style/BlockComments:
 
 Style/AlignParameters:
   EnforcedStyle: with_fixed_indentation
-
-Rails/HasAndBelongsToMany:
-  Enabled: false
