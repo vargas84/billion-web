@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/sudosu/rails_admin_pundit.git
+  revision: 285e3e79a37242cf7a527053e9b438782801557a
+  specs:
+    rails_admin_pundit (0.0.1)
+      pundit (>= 0.2.3)
+      rails_admin (>= 0.6.2)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -309,6 +317,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-assets-scrollmagic (~> 2.0.5)!
   rails_admin (~> 0.6.8)
+  rails_admin_pundit!
   rspec-its (~> 1.2.0)
   rspec-rails (~> 3.0)
   rubocop

@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
     :rememberable, :trackable, :validatable, :lockable
 
   belongs_to :role, inverse_of: :users
+
+  def admin?
+    return self.role_id == 2
+  end
 end
