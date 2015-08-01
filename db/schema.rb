@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150729235230) do
 
   add_index "comments", ["author"], name: "index_comments_on_author", using: :btree
   add_index "comments", ["content"], name: "index_comments_on_content", using: :btree
+  add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
 
   create_table "competitions", force: :cascade do |t|
     t.string   "code_name",  default: "", null: false
@@ -43,6 +44,9 @@ ActiveRecord::Schema.define(version: 20150729235230) do
     t.integer "project_id", null: false
     t.integer "user_id",    null: false
   end
+
+  add_index "memberships", ["project_id"], name: "index_memberships_on_project_id", using: :btree
+  add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name",        default: "", null: false
