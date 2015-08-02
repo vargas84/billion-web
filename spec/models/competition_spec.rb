@@ -6,6 +6,7 @@ RSpec.describe Competition, type: :model do
     it { should validate_presence_of(:start_date) }
     it { should validate_presence_of(:end_date) }
   end
+
   describe 'associations' do
     it { is_expected.to have_many(:projects).inverse_of(:competition) }
   end
