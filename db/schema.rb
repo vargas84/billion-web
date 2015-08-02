@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801203131) do
+ActiveRecord::Schema.define(version: 20150729235230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20150801203131) do
     t.datetime "updated_at",              null: false
   end
 
-  add_index "comments", ["author"], name: "index_comments_on_author", using: :btree
-  add_index "comments", ["content"], name: "index_comments_on_content", using: :btree
   add_index "comments", ["project_id"], name: "index_comments_on_project_id", using: :btree
 
   create_table "competitions", force: :cascade do |t|
@@ -35,10 +33,6 @@ ActiveRecord::Schema.define(version: 20150801203131) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
-
-  add_index "competitions", ["code_name"], name: "index_competitions_on_code_name", using: :btree
-  add_index "competitions", ["end_date"], name: "index_competitions_on_end_date", using: :btree
-  add_index "competitions", ["start_date"], name: "index_competitions_on_start_date", using: :btree
 
   create_table "memberships", force: :cascade do |t|
     t.integer "project_id", null: false
@@ -52,9 +46,9 @@ ActiveRecord::Schema.define(version: 20150801203131) do
     t.string   "name",           default: "", null: false
     t.text     "blurb"
     t.text     "description"
+    t.integer  "competition_id",              null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.integer  "competition_id",              null: false
   end
 
   add_index "projects", ["competition_id"], name: "index_projects_on_competition_id", using: :btree

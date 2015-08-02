@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name, default: '', null: false, index: true
       t.text :blurb
       t.text :description
+      t.references :competition, null: false, index: true
 
       t.timestamps null: false
     end
