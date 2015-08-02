@@ -1,6 +1,10 @@
 FactoryGirl.define do
-  factory :user do |f|
-    f.email { Faker::Internet.email }
-    f.password { Faker::Internet.password(8) }
+  factory :user do
+    email { Faker::Internet.email }
+    password { Faker::Internet.password(8) }
+
+    factory :admin do
+      role_id 2
+    end
   end
 end
