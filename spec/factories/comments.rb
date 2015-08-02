@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :comment do
-    author { Faker::Lorem.word }
-    content { Faker::Lorem.sentence }
+    author { Faker::Internet.user_name }
+    content { Faker::Lorem.paragraph }
     project
   end
 end
