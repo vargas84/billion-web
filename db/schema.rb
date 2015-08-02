@@ -77,8 +77,6 @@ ActiveRecord::Schema.define(version: 20150729235230) do
     t.datetime "locked_at"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
-    t.integer  "role_id"
-    t.string   "bio"
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -87,6 +85,8 @@ ActiveRecord::Schema.define(version: 20150729235230) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",          default: 0
+    t.integer  "role_id"
+    t.string   "bio"
     t.string   "profile_image_file_name"
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
