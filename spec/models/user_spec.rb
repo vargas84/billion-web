@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe User, type: :model do
   subject { build :user }
-  
+
   describe 'validations' do
 
     it { is_expected.to have_attached_file(:profile_image) }
+    # rubocop:disable Metrics/LineLength
     it { is_expected.to validate_attachment_content_type(:profile_image).allowing('image/jpeg', 'image/png', 'image/gif') }
-
   end
   describe 'associations' do
     it { is_expected.to belong_to(:role).inverse_of(:users) }
