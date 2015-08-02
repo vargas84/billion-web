@@ -18,6 +18,7 @@ gem 'animate-rails', '~> 1.0.8'
 gem 'jquery-validation-rails', '~> 1.13.1'
 gem 'pundit', '~> 1.0.1'
 gem 'faker', '~> 1.4.3'
+gem 'paperclip', '~> 4.3.0'
 
 # Rails-specific gems
 gem 'rails', '4.2.0'
