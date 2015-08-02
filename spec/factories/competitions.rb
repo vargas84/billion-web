@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :competition do
     code_name { Faker::Lorem.word }
-    start_date { Faker::Date.between(10.days.ago, 2.days.ago) }
+    start_date { Faker::Date.backward(5) }
     end_date { Faker::Date.forward(5) }
 
     trait :with_projects do
