@@ -142,17 +142,16 @@
 
     <div class='row'>
       <div class='col-md-12'>
-        <div class='submit-btn-container'>
-          <button class='submit-idea-btn btn btn-lg btn-primary' data-toggle="modal" data-target="#pitch-modal">
-            Submit your idea
-          </a>
-        </div>
+        <p class="under-review-text">
+          Applications are currently under review.<br>
+          Check out <a href="#dates-section">important upcoming dates</a> below.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<section class='landing-section landing-dates'>
+<section id="dates-section" class='landing-section landing-dates'>
   <div class='container'>
     <div class='landing-section-heading'>
       <h1>Important Dates</h1>
@@ -240,8 +239,6 @@
     </div>
   </div>
 </section>
-
-<%= render 'pages/pitch_modal' %>
 
 <% content_for :scripts do %>
   <%= javascript_tag do %>
