@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729235230) do
+ActiveRecord::Schema.define(version: 20150811023941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,28 @@ ActiveRecord::Schema.define(version: 20150729235230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "temp_users", force: :cascade do |t|
+    t.string   "email",      default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "temp_users", ["email"], name: "index_temp_users_on_email", using: :btree
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "amount",         default: 0, null: false
+    t.integer  "sender_id",                  null: false
+    t.string   "sender_type",                null: false
+    t.integer  "recipient_id",               null: false
+    t.string   "recipient_type",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "transactions", ["amount"], name: "index_transactions_on_amount", using: :btree
+  add_index "transactions", ["recipient_type", "recipient_id"], name: "index_transactions_on_recipient_type_and_recipient_id", using: :btree
+  add_index "transactions", ["sender_type", "sender_id"], name: "index_transactions_on_sender_type_and_sender_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                      default: "", null: false
