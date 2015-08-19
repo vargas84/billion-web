@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20150811023941) do
   end
 
   create_table "temp_users", force: :cascade do |t|
-    t.string   "email",      default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "email",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "temp_users", ["email"], name: "index_temp_users_on_email", using: :btree
