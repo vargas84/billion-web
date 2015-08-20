@@ -6,5 +6,5 @@ class Transaction < ActiveRecord::Base
 
   validates :sender_type, inclusion: { in: TYPES }
   validates :recipient_type, inclusion: { in: TYPES }
-  validates :amount, presence: true, numericality: { greater_than: 0 }
+  validates :amount, presence: true, numericality: { greater_than: 0.0 }
 end
