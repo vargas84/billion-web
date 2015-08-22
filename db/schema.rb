@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811023941) do
+ActiveRecord::Schema.define(version: 20150822025508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,9 +76,13 @@ ActiveRecord::Schema.define(version: 20150811023941) do
     t.string   "recipient_type",                         null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "points",                                 null: false
+    t.integer  "competition_id",                         null: false
   end
 
   add_index "transactions", ["amount"], name: "index_transactions_on_amount", using: :btree
+  add_index "transactions", ["competition_id"], name: "index_transactions_on_competition_id", using: :btree
+  add_index "transactions", ["points"], name: "index_transactions_on_points", using: :btree
   add_index "transactions", ["recipient_type", "recipient_id"], name: "index_transactions_on_recipient_type_and_recipient_id", using: :btree
   add_index "transactions", ["sender_type", "sender_id"], name: "index_transactions_on_sender_type_and_sender_id", using: :btree
 
