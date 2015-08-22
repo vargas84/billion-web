@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   root to: 'pages#show', id: 'landing'
 
   post '/subscribe', to: 'subscribe#create', as: 'subscribe'
-  resources 'bam_applications', only: :create
+  resources 'bam_applications', only: [:create]
+  resources :projects, only: [:show]
 end
