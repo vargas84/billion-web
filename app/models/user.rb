@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :timeoutable, :recoverable,
     :rememberable, :trackable, :validatable, :lockable
 
-  has_many :memberships, inverse_of: :user
-  has_many :projects, through: :memberships, inverse_of: :collaborators
+  has_many :memberships, inverse_of: :user, dependent: :destroy
+  has_many :projects, through: :memberships
   belongs_to :role, inverse_of: :users
 
   has_attached_file :profile_image,

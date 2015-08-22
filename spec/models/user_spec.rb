@@ -14,6 +14,13 @@ describe User, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:role).inverse_of(:users) }
+    it { is_expected.to have_many(:projects).through(:memberships) }
+
+    it do
+      is_expected.to have_many(:memberships)
+        .inverse_of(:user)
+        .dependent(:destroy)
+    end
   end
 
   describe '#admin?' do
