@@ -13,7 +13,7 @@ FactoryGirl.define do
 
     trait :with_collaborators do
       after(:build, :stub) do |project|
-        create_list(:collaborator, 1, project: project)
+        create_list(:membership, 3, project: project)
       end
     end
   end
