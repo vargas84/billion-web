@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :project do
     name { Faker::Company.name }
-    blurb { Faker::Company.catch_phrase }
-    description { Faker::Lorem.paragraph }
+    blurb { Faker::Lorem.paragraph }
+    description { Faker::Lorem.paragraph(10) }
     competition
 
     trait :with_comments do
