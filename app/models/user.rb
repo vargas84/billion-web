@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
   def admin?
     role_id == 2
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
