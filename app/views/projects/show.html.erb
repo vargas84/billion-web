@@ -1,5 +1,5 @@
-<div class="container">
-  <section class="project-header">
+<section class="project-header">
+  <div class="container">
     <div class="row">
       <div class="project-video-container">
         <div class="col-xs-12 col-md-7">
@@ -10,11 +10,56 @@
       <div class="project-summary-container">
         <div class="col-xs-12 col-md-5">
           <h1><%= @project.name %></h1>
+
+          <div class="project-collaborators">
+            <p>By <%= @project.collaborators.collect(&:full_name).to_sentence %></p>
+          </div>
+
+          <div class="project-blurb">
+            <p><%= @project.blurb %></p>
+          </div>
+
+          <div class="project-stats">
+            <% if @project.competitor %>
+              <%= render 'stats_with_competitor' %>
+            <% else %>
+              <%= render 'stats_without_competitor' %>
+            <% end %>
+          </div>
+
+          <div class="project-support">
+            <a href="#" class="btn btn-primary btn-lg btn-block btn-blue">
+              Support this project
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="project-body">
-  </section>
-</div>
+<section class="project-body">
+  <div class="container">
+    <div class="row project-body-tabs">
+      <div class="col-xs-2 project-body-tab active">Movement</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-7 project-body-markdown">
+          <%= render('project_body_markdown').html_safe %>
+        </div>
+
+        <div class="col-xs-12 col-md-5">
+          <h1>Meet the team</h1>
+
+          <%= render @project.collaborators %>
+        </div>
+    </div>
+  </div>
+</section>
+
+<% if @project.competitor %>
+  <%= render "current_competitor_feature" %>
+<% else %>
+  <%= render "random_competitor_feature" %>
+<% end %>
