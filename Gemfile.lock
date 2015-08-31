@@ -222,6 +222,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (2.0.0)
     rake (10.4.2)
+    rdiscount (2.1.8)
     rdoc (4.2.0)
       json (~> 1.4)
     ref (1.0.5)
@@ -330,6 +331,7 @@ DEPENDENCIES
   rails-assets-scrollmagic (~> 2.0.5)!
   rails_admin (~> 0.6.8)
   rails_admin_pundit!
+  rdiscount (~> 2.1.8)
   rspec-its (~> 1.2.0)
   rspec-rails (~> 3.0)
   rubocop
