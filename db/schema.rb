@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 20150822025508) do
 
   add_index "transactions", ["amount"], name: "index_transactions_on_amount", using: :btree
   add_index "transactions", ["competition_id"], name: "index_transactions_on_competition_id", using: :btree
-  add_index "transactions", ["points"], name: "index_transactions_on_points", using: :btree
   add_index "transactions", ["recipient_type", "recipient_id"], name: "index_transactions_on_recipient_type_and_recipient_id", using: :btree
   add_index "transactions", ["sender_type", "sender_id"], name: "index_transactions_on_sender_type_and_sender_id", using: :btree
 
