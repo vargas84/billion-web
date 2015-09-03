@@ -9,5 +9,6 @@ RSpec.describe Competition, type: :model do
 
   describe 'associations' do
     it { is_expected.to have_many(:projects).inverse_of(:competition) }
+    it { is_expected.to have_many(:transactions).inverse_of(:competition) }
   end
 end
