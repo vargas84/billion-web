@@ -10,7 +10,7 @@ describe Project, type: :model do
       existing_project = create :project, :with_competitor
       project = build :project
 
-      expect{ project.competitor = existing_project }.to change{ project.valid? }
+      expect { project.competitor = existing_project }.to change { project.valid? }
         .from(true).to(false)
     end
 
