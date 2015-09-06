@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830172204) do
+ActiveRecord::Schema.define(version: 20150906103214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150830172204) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "competitor_id"
+    t.string   "video_url"
+    t.string   "card_image_url"
   end
 
   add_index "projects", ["competition_id"], name: "index_projects_on_competition_id", using: :btree
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 20150830172204) do
     t.datetime "profile_image_updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "profile_image_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -3,6 +3,8 @@ FactoryGirl.define do
     name { Faker::Company.name }
     blurb { Faker::Lorem.paragraph }
     description { Faker::Lorem.paragraph(10) }
+    card_image_url 'http://lorempixel.com/400/200/business'
+    video_url 'https://www.youtube.com/watch?v=SYOQ4w9EXzI'
     competition
 
     trait :with_comments do
