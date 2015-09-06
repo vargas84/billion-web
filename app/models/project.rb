@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   has_many :received_transactions, as: :recipient, class_name: 'Transaction'
 
   validates :name, presence: true
-  validates :competitor_id, uniqueness: true
+  validates :competitor_id, uniqueness: true, allow_nil: true
 
   after_create :set_competitor_inverse, if: 'competitor.present?'
 

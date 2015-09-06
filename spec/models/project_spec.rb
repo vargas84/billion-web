@@ -13,6 +13,12 @@ describe Project, type: :model do
       expect{ project.competitor = existing_project }.to change{ project.valid? }
         .from(true).to(false)
     end
+
+    it 'should allow competitor to be nil' do
+      project = build :project
+
+      expect(project.valid?).to eq(true)
+    end
   end
 
   describe 'associations' do
