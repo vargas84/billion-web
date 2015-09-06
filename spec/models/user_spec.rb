@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  subject { build :user }
+  subject(:user) { build :user }
 
   describe 'validations' do
     it { is_expected.to have_attached_file(:profile_image) }
@@ -14,6 +14,13 @@ describe User, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:role).inverse_of(:users) }
+    it { is_expected.to have_many(:projects).through(:memberships) }
+
+    it do
+      is_expected.to have_many(:memberships)
+        .inverse_of(:user)
+        .dependent(:destroy)
+    end
   end
 
   describe '#admin?' do
@@ -27,5 +34,9 @@ describe User, type: :model do
     it 'is false for user' do
       expect(user).not_to be_admin
     end
+  end
+
+  describe '#full_name' do
+    its(:full_name) { is_expected.to eq("#{user.first_name} #{user.last_name}") }
   end
 end

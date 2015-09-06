@@ -1,0 +1,20 @@
+<% competitor = (Project.all - [@project]).sample %>
+
+<%= link_to project_path(competitor), class: 'project-competitor-container' do %>
+  <section class="project-competitor">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 project-competitor-content">
+          <div class="project-competitor-title">Check Out Another Project</div>
+
+          <div class="project-competitor-name">
+            <%= competitor.name %>
+          </div>
+          <div class="project-competitor-blurb">
+            <%= competitor.blurb %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
