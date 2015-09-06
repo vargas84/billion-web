@@ -17,12 +17,13 @@ describe Project, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:competition).inverse_of(:projects) }
-    it { is_expected.to have_many(:memberships).inverse_of(:project) }
-    it { is_expected.to have_many(:collaborators).inverse_of(:projects) }
-    it { is_expected.to have_many(:comments).inverse_of(:project) }
-    it { is_expected.to have_many(:sent_transactions) }
-    it { is_expected.to have_many(:received_transactions) }
-    it { is_expected.to belong_to(:competitor) }
+    it { is_expected.to belong_to(:competitor).class_name('Project') }
+    it { is_expected.to have_many(:sent_transactions).class_name('Transaction') }
+
+    it do
+      is_expected.to have_many(:received_transactions)
+        .class_name('Transaction')
+    end
 
     it do
       is_expected.to have_many(:comments)
