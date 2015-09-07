@@ -1,0 +1,28 @@
+.terms {
+  p, h2 {
+    line-height: 1.75em;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+
+  &-title {
+    background-color: $blue;
+    text-align: center;
+    padding: ($grid-gutter-width * 2) 0;
+
+    h1, p {
+      color: $white;
+    }
+  }
+
+  &-content {
+    margin: $grid-gutter-width 0;
+  }
+
+  &-contact {
+    background-color: $orange;
+    padding: $grid-gutter-width 0;
+  }
+}
