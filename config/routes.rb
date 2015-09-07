@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post '/subscribe', to: 'subscribe#create', as: 'subscribe'
   resources 'bam_applications', only: [:create]
-  resources :projects, only: [:show]
+  resources :projects, only: [:index, :show]
 
   # static pages
   get 'privacy' => 'high_voltage/pages#show', id: 'privacy'

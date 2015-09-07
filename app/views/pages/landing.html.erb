@@ -15,7 +15,7 @@
           </div>
 
           <div class='scroll-btn animated bounceIn'>
-            <a class='btn btn-lg' href='#festival-section'>
+            <a class='btn btn-lg' href='#landing-works'>
               <%= icon('chevron-down') %>
             </a>
           </div>
@@ -25,6 +25,75 @@
   </div>
 </section>
 
+<section class='landing-section landing-works' id='landing-works'>
+  <div class='container'>
+    <div class='landing-section-heading'>
+      <h1>How it Works</h1>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p class='landing-section-subheading'>Billion is divided into three stages:</p>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+
+      <% col_class = 'col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2' %>
+      <div class='<%= col_class %>'>
+        <%=image_tag 'pitch.png', class: 'center-block' %>
+        <div class='billion-stage text-center'>
+          <h2>Pitch &amp; Rally</h2>
+          <p>Sixteen movements rally their supporters for a chance to win the Billion Fund. The movements that raise the most money move on to the next stage.</p>
+          <p><a href='#landing-movements'>Support a Movement</a></p>
+        </div>
+      </div>
+      <div class='<%= col_class %>'>
+        <%=image_tag 'bracket.png', class: 'center-block' %>
+
+        <div class='billion-stage text-center'>
+          <h2>Bracket</h2>
+          <p>The top eight teams from the previous stage will compete at the Columbus Independents' Day Festival in a tournament to determine the winner.</p>
+          <p><a href='#festival-section'>Columbus Independents' Day Festival</a></p>
+        </div>
+      </div>
+      <div class='<%= col_class %>'>
+        <%=image_tag 'winner.png', class: 'center-block' %>
+
+        <div class='billion-stage text-center'>
+          <h2>Winner</h2>
+          <p>The winner of the tournament is awarded the Billion Fund. With the support from the community, the winner goes on to change the world.</p>
+          <p><a href='#'>The Billion Fund</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='landing-section landing-movements' id='landing-movements'>
+  <div class='container'>
+
+    <div class='landing-section-heading'>
+      <h1>Support a Movement</h1>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p class='landing-section-subheading'>We are looking to improve Columbus. Help us find the best way.</p>
+        </div>
+      </div>
+    </div>
+  <div class='row'>
+    <% Project.order('random()').limit(4).each do |project| %>
+    <div class='col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-6 col-md-3'>
+      <%= render partial: 'shared/project_card', locals: { project: project } %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-12 text-center'>
+      <%= link_to 'See all projects', projects_path, class: 'project-see-all btn btn-lg btn-primary' %>
+    </div>
+  </div>
+</section>
 
 <section class='landing-section landing-festival' id='festival-section'>
   <div class='container'>
@@ -32,10 +101,10 @@
       <h1>Columbus Independents' Day Festival</h1>
       <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
-          <p>
+          <p class='landing-section-subheading'>
           Billion
           is excited to hold our first crowdfunding cycle during the
-          <a href='http://thisisindependent.com/' title="Columbus Independents's Day Festival">
+          <a href='http://thisisindependent.com/' title='Columbus Independents's Day Festival'>
             Columbus Independents' Day Festival</a>
           on September&nbsp;19&nbsp;-&nbsp;20.
           </p>
@@ -54,20 +123,7 @@
         <%= image_tag 'festival.jpg', class: 'festival-img-sm' %>
       </div>
       <div class='col-md-6'>
-        <!--
         <div class='festival-step'>
-          <h2>Pitching</h2>
-          <p>
-          We are accepting applications for ideas that will make a positive impact in the Columbus community.
-          The top eight ideas will be selected to compete for funding at the festival.
-          </p>
-          <p><strong>Have a great idea? <a href='#pitch-section'>Pitch it!</a></strong></p>
-        </div>
-        -->
-
-        <div class='festival-step'>
-          <!-- <h2>At the festival</h2> -->
-
           <h2>Play and earns point</h2>
           <p>Have fun with an augmented reality video game made by our friends
           at <strong><a href='http://www.multivariousgames.com/'>Multivarious Games</a></strong>.
@@ -86,78 +142,18 @@
           out the bracket. Check back after the event to watch the Billion
           winner improve our community.</p>
         </div>
-
-        <!--
-        <div class='festival-step'>
-          <h2>Winner</h2>
-          <p>At the end of the festival, the idea that has earned the most points will receive 100% of the admission fees raised at the event.</p>
-          <p>We call this <em>Competitive Crowdfunding</em>. Sound like fun yet?</p>
-        </div>
-        -->
       </div>
     </div>
   </div>
 </section>
 
-<section class='landing-section landing-pitch' id='pitch-section'>
-  <div class='container'>
-    <div class='landing-section-heading'>
-      <h1>Pitch Your Idea</h1>
-      <div class='row'>
-        <div class='col-md-8 col-md-offset-2'>
-          <p>Have a great idea? We'd love to talk!</p>
-        </div>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-md-4 col-md-offset-1 pitch-why'>
-        <h2>Why</h2>
-
-        <h3>Gain publicity for your idea</h3>
-        <p>Thousands will attend the festival.</p>
-
-        <h3>Go home with some serious capital</h3>
-        <p>Our winner will receive all funds raised.</p>
-
-        <h3>Receive mentorship and resources</h3>
-        <p>Plus, we'll make you a promo video if selected.</p>
-
-      </div>
-
-      <div class='col-md-4 col-md-offset-2 pitch-who'>
-        <h2>Who</h2>
-
-        <h3>Individual or small team</h3>
-        <p>You're an artist, researcher, or maker with a big idea.</p>
-
-        <h3>Non-profit</h3>
-        <p>You want to kick off an early stage initiative.</p>
-
-        <h3>Social enterprise</h3>
-        <p>You want to engage your community and give back.</p>
-
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-md-12'>
-        <p class="under-review-text">
-          Applications are currently under review.<br>
-          Check out <a href="#dates-section">important upcoming dates</a> below.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="dates-section" class='landing-section landing-dates'>
+<section id='dates-section' class='landing-section landing-dates'>
   <div class='container'>
     <div class='landing-section-heading'>
       <h1>Important Dates</h1>
       <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
-          <p>We know you're busy trying to change the world and everything, so
+          <p class='landing-section-subheading'>We know you're busy trying to change the world and everything, so
           here are some important dates to keep in mind.</p>
         </div>
       </div>
@@ -178,7 +174,7 @@
         </div>
 
         <div class='col-md-3 event-container'>
-          <div class='timeline-event'>
+          <div class='timeline-event timeline-past-event'>
             <span class='timeline-date'>
               <time datetime='2015-08-01'>August 1</time>
             </span>
@@ -189,7 +185,7 @@
 
         <div class='col-md-3 event-container'>
           <div class='timeline-event'>
-            <time datetime='2015-09-01' class='timeline-date'>September 1</time>
+            <time datetime='2015-09-01' class='timeline-date'>September 9</time>
             <h2>Rallying begins</h2>
             <p>Submissions selected for participation will be displayed here.
             Share them!
@@ -211,7 +207,6 @@
 
       </div>
     </div>
-
   </div>
 </section>
 
@@ -222,7 +217,7 @@
 
       <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
-          <p>
+          <p class='landing-section-subheading'>
             Subscribe to our mailing list and we'll keep you updated on our
             progress.<br/>
             <a href='mailto:hello@billioneffect.com'>
@@ -233,7 +228,7 @@
     </div>
 
     <div class='row'>
-      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class='col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
         <%= render 'pages/subscription_form' %>
       </div>
     </div>
