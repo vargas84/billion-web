@@ -1,0 +1,23 @@
+<section class='projects-header'>
+  <div class='container'>
+    <div class='page-header'>
+      <div class='row'>
+        <h1>Billion Movements
+          <small>Help Change Columbus for the Better</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='projects-body'>
+  <div class='container'>
+    <div class='row'>
+      <% Project.all.each do |project| %>
+        <div class='col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-6 col-md-3'>
+          <%= render partial: 'shared/project_card', locals: { project: project } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
