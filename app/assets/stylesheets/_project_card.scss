@@ -1,0 +1,62 @@
+.project-card {
+  background-color: white;
+  margin-bottom: $grid-gutter-width * 2;
+  position: relative;
+
+  .card-image {
+    background-size: cover;
+    height: 12em;
+    background-position: center center;
+  }
+  .card-content {
+    padding: $grid-gutter-width / 2;
+  }
+  .card-footer {
+    padding: $grid-gutter-width / 2;
+    width: 100%;
+    border-bottom: 2px solid $brand-primary;
+    color: $brand-primary;
+  }
+
+  .project-title {
+    margin-top: 0;
+    line-height: 1.5;
+    font-weight: bold;
+    font-size: ms(0);
+    color: $brand-primary;
+  }
+
+  p {
+    line-height: ms(1);
+  }
+
+  .points {
+    font-weight: bold;
+  }
+
+  .learn-more {
+    float: right;
+  }
+
+  @media (min-width: $screen-sm) {
+    .card-content {
+      height: 12em;
+    }
+    .card-footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    .card-content {
+      height: 18em;
+    }
+  }
+
+  @media (min-width: $screen-lg) {
+    .card-content {
+      height: 16em;
+    }
+  }
+}
