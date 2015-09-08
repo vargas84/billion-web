@@ -1,0 +1,29 @@
+.page-header {
+  padding: $grid-gutter-width 0;
+  margin: 0;
+  border: none;
+  h1 {
+    font-size: ms(3);
+    font-weight: bold;
+    text-align: center;
+    color: $brand-primary;
+    margin: 0;
+    padding: 0;
+    line-height: ms(5);
+  }
+  small {
+    font-size: ms(1);
+    display: block;
+    color: $text-color;
+  }
+
+  &.page-header-primary {
+    background-color: $brand-primary;
+    h1 {
+      color: white;
+    }
+    small {
+      color: white;
+    }
+  }
+}
