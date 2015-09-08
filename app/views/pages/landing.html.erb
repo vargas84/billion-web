@@ -71,7 +71,6 @@
 
 <section class='landing-section landing-movements' id='landing-movements'>
   <div class='container'>
-
     <div class='landing-section-heading'>
       <h1>Support a Movement</h1>
       <div class='row'>
@@ -80,17 +79,18 @@
         </div>
       </div>
     </div>
-  <div class='row'>
-    <% Project.order('random()').limit(4).each do |project| %>
-    <div class='col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-6 col-md-3'>
-      <%= render partial: 'shared/project_card', locals: { project: project } %>
+    <div class='row'>
+      <% Project.order('random()').limit(4).each do |project| %>
+      <div class='col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-6 col-md-3'>
+        <%= render partial: 'shared/project_card', locals: { project: project } %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
 
-  <div class='row'>
-    <div class='col-md-12 text-center'>
-      <%= link_to 'See all projects', projects_path, class: 'project-see-all btn btn-lg btn-primary' %>
+    <div class='row'>
+      <div class='col-md-12 text-center'>
+        <%= link_to 'See all projects', projects_path, class: 'project-see-all btn btn-lg btn-primary' %>
+      </div>
     </div>
   </div>
 </section>
