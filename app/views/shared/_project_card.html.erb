@@ -1,0 +1,19 @@
+<div class='project-card'>
+  <div class='card-image' style='background-image: url(<%= project.card_image_url || "http://placehold.it/640x480"%>)'>
+  </div>
+
+  <div class='card-content'>
+    <div class='project-title'>
+      <%= link_to project.name, project_path(project), title: project.name %>
+    </div>
+    <p><%= truncate(project.blurb, length: 140)%></p>
+  </div>
+
+  <div class='card-footer'>
+    <span class='points'>
+      <% points = project.received_transactions.sum(:points) - project.sent_transactions.sum(:points) %>
+      <%= pluralize(points, 'pt') %>
+    </span>
+    <%= link_to 'learn more', project_path(project), class: 'learn-more' %>
+  </div>
+</div>

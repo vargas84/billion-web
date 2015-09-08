@@ -1,4 +1,8 @@
 .landing {
+  /* background colors */
+  $bg-blue: #67C6FF;
+  $bg-orange: #FEC27C;
+
   @mixin visible-when-animated {
     visibility: hidden;
 
@@ -28,7 +32,7 @@
         font-weight: bold;
       }
 
-      p {
+      .landing-section-subheading {
         font-size: ms(1);
         margin: 0;
         line-height: ms(3);
@@ -38,7 +42,7 @@
   }
 
   &-masthead {
-    $background: $blue;
+    $background: $bg-blue;
     background-color: $background;
 
     .logo {
@@ -91,10 +95,51 @@
         @include animation-delay(0.8s);
       }
     }
+  }
 
+  &-works {
+    background-color: white; 
+
+    a {
+      border: 1px solid $brand-primary;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      display: inline-block;
+      margin: $grid-gutter-width/2 0;
+
+      &:hover {
+        color: white;
+        background-color: $brand-primary;
+      }
+    }
+
+    .billion-stage {
+      margin-bottom: $grid-gutter-width * 2;
+    }
+
+    @media (min-width: $screen-md) {
+      .billion-stage {
+        margin-bottom: 0;
+      }
+    }
+
+    // .col-md-4 {
+    //   border: 1px solid black;
+    // }
+  }
+
+  &-movements {
+
+    .project-see-all {
+      display: inline;
+      margin: 0 auto;
+    }
+
+    
   }
 
   &-festival {
+    background-color: white;
     counter-reset: festival-step;
 
     .festival-img-lg {
@@ -157,7 +202,7 @@
   }
 
   &-pitch {
-    $background: $orange;
+    $background: $bg-orange;
     background-color: $background;
 
     h2 {
