@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require lodash
+//= require autoNumeric
 //= require scrollmagic
 //= require jquery.validate
 //= require jquery.validate.additional-methods
