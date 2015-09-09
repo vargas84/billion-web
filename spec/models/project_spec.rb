@@ -64,4 +64,38 @@ describe Project, type: :model do
       end
     end
   end
+
+  describe '#net_points' do
+    it 'returns the total points belonging to a project' do
+      project = create :project
+
+      create :transaction, recipient: project, points: 100
+      create :transaction, sender: project, points: 20
+
+      expect(project.net_points).to eq(80)
+    end
+  end
+
+  describe '#total_transactions' do
+    it 'returns the total number of transactions involving project' do
+      project = create :project
+
+      create :transaction, recipient: project
+      create :transaction, sender: project
+
+      expect(project.total_transactions).to eq(2)
+    end
+  end
+
+  describe '#points_per_transaction' do
+    it 'returns the average number of points per transaction' do
+      project = create :project
+
+      create :transaction, recipient: project, points: 10
+      create :transaction, recipient: project, points: 9
+      create :transaction, sender: project, points: 10
+
+      expect(project.total_transactions).to eq(3)
+    end
+  end
 end
