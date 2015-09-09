@@ -15,9 +15,6 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
-  config.included_models = %w(User TempUser Role Membership Project Transaction
-                              Competition Membership)
-
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -28,5 +25,19 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+  end
+
+  config.included_models = %w(User TempUser Role Membership Project Transaction
+                              Competition Membership)
+
+  config.model 'User' do
+    edit do
+      field :email
+      field :password
+      field :first_name
+      field :last_name
+      field :bio, :text
+      field :profile_image_url
+    end
   end
 end
