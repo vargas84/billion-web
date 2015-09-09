@@ -1,6 +1,10 @@
 <div class="row project-team-member">
   <div class="col-xs-3">
-    <img src='<%= user.profile_image_url %>'>
+    <% if user.profile_image_url.present? %>
+      <img src='<%= user.profile_image_url %>'>
+    <% else %>
+      <%= image_tag 'grumpy-kitty.jpg' %>
+    <% end %>
   </div>
 
   <div class="col-xs-9">
