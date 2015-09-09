@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new transaction_params
 
-    @transaction.points = (@transaction.amount || 0) * DOLLAR_TO_POINT
+    @transaction.points = ((@transaction.amount || 0) * DOLLAR_TO_POINT).ceil
     @transaction.sender = @temp_user
     @transaction.competition = Competition.current_competition
 

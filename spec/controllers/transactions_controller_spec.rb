@@ -14,11 +14,12 @@ describe TransactionsController, :type => :controller do
 
     let(:project) { create :project }
     let(:temp_user) { create :temp_user }
+    let(:amount) { 22.11 }
 
     let(:valid_params) do
       {
         transaction: {
-          amount: 22.50,
+          amount: amount,
           recipient_id: project.id,
           temp_user: {
             email: temp_user.email
@@ -35,6 +36,16 @@ describe TransactionsController, :type => :controller do
 
       it 'create a transaction' do
         expect{ create_transaction }.to change{ Transaction.count }.by(1)
+      end
+
+      it 'rounds the transaction points up' do
+        stub_const('TransactionsController::DOLLAR_TO_POINT', 2)
+        raw_points = amount * TransactionsController::DOLLAR_TO_POINT
+        expected_points = raw_points.ceil
+
+        create_transaction
+
+        expect(Transaction.last.points).to eq(expected_points)
       end
     end
 
