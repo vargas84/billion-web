@@ -1,25 +1,25 @@
 <div class="row stats-without-competitor">
   <div class="col-xs-4 project-stat-container text-left">
-    <% net_points = @project.net_points %>
-    <div class="project-stat-pts"><%= net_points %></div>
+    <% points_donated = @project.points_donated %>
+    <div class="project-stat-pts"><%= points_donated %></div>
     <div class="project-stat-currency">
-      <%= 'Point'.pluralize net_points %>
+      <%= 'Point'.pluralize points_donated %>
     </div>
   </div>
 
   <div class="col-xs-4 project-stat-container text-right">
-    <% total_transactions = @project.total_transactions %>
-    <div class="project-stat-pts"><%= total_transactions %></div>
+    <% donation_count = @project.donation_count %>
+    <div class="project-stat-pts"><%= donation_count %></div>
     <div class="project-stat-currency">
-      <%= 'Donation'.pluralize total_transactions %>
+      <%= 'Donation'.pluralize donation_count %>
     </div>
   </div>
 
   <div class="col-xs-4 project-stat-container text-right">
-    <% points_per_transaction = @project.points_per_transaction %>
-    <div class="project-stat-pts"><%= points_per_transaction %></div>
+    <% points_per_donation = @project.points_per_donation %>
+    <div class="project-stat-pts"><%= points_per_donation %></div>
     <div class="project-stat-currency">
-      <%= 'Pt'.pluralize points_per_transaction  %> / Donation
+      <%= 'Pt'.pluralize points_per_donation %> / Donation
     </div>
   </div>
 </div>

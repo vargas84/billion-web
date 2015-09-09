@@ -12,16 +12,17 @@ class Project < ActiveRecord::Base
 
   after_create :set_competitor_inverse, if: 'competitor.present?'
 
-  def net_points
-    received_transactions.sum(:points) - sent_transactions.sum(:points)
+  def points_donated
+    received_transactions.sum(:points)
   end
 
-  def total_transactions
-    received_transactions.size + sent_transactions.size
+  def donation_count
+    received_transactions.size
   end
 
-  def points_per_transaction
-    net_points / total_transactions
+  def points_per_donation
+    return 0 if donation_count == 0
+    points_donated / donation_count
   end
 
   private

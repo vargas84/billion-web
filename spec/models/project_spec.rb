@@ -65,37 +65,43 @@ describe Project, type: :model do
     end
   end
 
-  describe '#net_points' do
-    it 'returns the total points belonging to a project' do
+  describe '#points_donated' do
+    it 'returns the total points donated to a project' do
       project = create :project
 
       create :transaction, recipient: project, points: 100
-      create :transaction, sender: project, points: 20
+      create :transaction, recipient: project, points: 20
+      create :transaction, sender: project, points: 50
 
-      expect(project.net_points).to eq(80)
+      expect(project.points_donated).to eq(120)
     end
   end
 
-  describe '#total_transactions' do
-    it 'returns the total number of transactions involving project' do
+  describe '#donation_count' do
+    it 'returns the total number of donations to a project' do
       project = create :project
 
       create :transaction, recipient: project
       create :transaction, sender: project
 
-      expect(project.total_transactions).to eq(2)
+      expect(project.donation_count).to eq(1)
     end
   end
 
-  describe '#points_per_transaction' do
-    it 'returns the average number of points per transaction' do
+  describe '#points_per_donation' do
+    it 'returns the average number of points per donation' do
       project = create :project
 
       create :transaction, recipient: project, points: 10
-      create :transaction, recipient: project, points: 9
+      create :transaction, recipient: project, points: 20
       create :transaction, sender: project, points: 10
 
-      expect(project.total_transactions).to eq(3)
+      expect(project.points_per_donation).to eq(15)
+    end
+
+    it 'protects against divide by zero' do
+      project = create :project
+      expect(project.points_per_donation).to eq(0)
     end
   end
 end
