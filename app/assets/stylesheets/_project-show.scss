@@ -28,10 +28,6 @@
       font-size: ms(2);
     }
 
-    .project-stat-container {
-      text-align: center;
-    }
-
     .project-stat-header {
       font-size: ms(0);
       text-transform: uppercase;
@@ -86,6 +82,12 @@
 
     .project-team-member {
       margin-bottom: $grid-gutter-width;
+
+      h1 {
+        font-size: ms(0);
+        line-height: 2em;
+        margin: 0;
+      }
 
       img {
         width: 100%;

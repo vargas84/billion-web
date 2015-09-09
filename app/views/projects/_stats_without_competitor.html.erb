@@ -1,15 +1,25 @@
 <div class="row stats-without-competitor">
-  <div class="col-xs-5 col-xs-offset-1 project-stat-container">
-    <div class="project-stat-header"><strong>For Us</strong></div>
-    <div class="project-stat-pts">3,265</div>
-    <div class="project-stat-currency">Points</div>
+  <div class="col-xs-4 project-stat-container text-left">
+    <% points_donated = @project.points_donated %>
+    <div class="project-stat-pts"><%= points_donated %></div>
+    <div class="project-stat-currency">
+      <%= 'Point'.pluralize points_donated %>
+    </div>
   </div>
 
-  <div class="col-xs-5 project-stat-container">
-    <div class="project-stat-header"><strong>
-      Total <a href="#"><i class="fa fa-question-circle"></i></a>
-    </strong></div>
-    <div class="project-stat-pts">3,265</div>
-    <div class="project-stat-currency">Dollars</div>
+  <div class="col-xs-4 project-stat-container text-right">
+    <% donation_count = @project.donation_count %>
+    <div class="project-stat-pts"><%= donation_count %></div>
+    <div class="project-stat-currency">
+      <%= 'Donation'.pluralize donation_count %>
+    </div>
+  </div>
+
+  <div class="col-xs-4 project-stat-container text-right">
+    <% points_per_donation = @project.points_per_donation %>
+    <div class="project-stat-pts"><%= points_per_donation %></div>
+    <div class="project-stat-currency">
+      <%= 'Pt'.pluralize points_per_donation %> / Donation
+    </div>
   </div>
 </div>

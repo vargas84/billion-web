@@ -11,8 +11,7 @@
 
   <div class='card-footer'>
     <span class='points'>
-      <% points = project.received_transactions.sum(:points) - project.sent_transactions.sum(:points) %>
-      <%= pluralize(points, 'pt') %>
+      <%= pluralize(project.points_donated, 'pt') %>
     </span>
     <%= link_to 'learn more', project_path(project), class: 'learn-more' %>
   </div>
