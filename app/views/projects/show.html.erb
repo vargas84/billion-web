@@ -16,7 +16,7 @@
           </div>
 
           <div class="project-blurb">
-            <p><%= @project.blurb %></p>
+            <p><%= truncate(@project.blurb, length: 140) %></p>
           </div>
 
           <div class="project-stats">
