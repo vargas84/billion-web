@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bundler', '>= 1.8.4'
 source 'https://rails-assets.org' do
   gem 'rails-assets-scrollmagic', '~> 2.0.5'
+  gem 'rails-assets-autoNumeric', '~> 1.9.39'
 end
 
 group :development, :test do
@@ -59,3 +60,4 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
