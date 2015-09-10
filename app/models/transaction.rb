@@ -5,6 +5,7 @@ class Transaction < ActiveRecord::Base
 
   TYPES = %w(Project TempUser)
 
+  validates :recipient, presence: true
   validates :sender_type, inclusion: { in: TYPES, allow_nil: true }
   validates :recipient_type, inclusion: { in: TYPES }
   validates :amount, numericality: { greater_than: 0.0 }, allow_nil: true
