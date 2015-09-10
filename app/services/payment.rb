@@ -42,7 +42,7 @@ class Payment
     # validation error, e.g. rejected etc
     @errors = result.errors.map(&:message)
     if @errors.size == 0
-      @errors << 'Sorry, we are having trouble processing your payment.' 
+      @errors << 'Sorry, we are having trouble processing your payment.'
     end
 
     false

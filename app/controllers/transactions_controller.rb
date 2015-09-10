@@ -57,7 +57,7 @@ class TransactionsController < ApplicationController
       recipient_type: 'Project',
       sender_type: @temp_user.class.name,
       sender_id: @temp_user.id,
-     competition_id: @competition.id
+      competition_id: @competition.id
     )
   end
 
