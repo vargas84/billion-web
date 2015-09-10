@@ -1,3 +1,4 @@
+
 <%= render 'page_header' %>
 
 <div class='transaction-form'>
@@ -9,12 +10,16 @@
       <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
           <div class='alert alert-danger'>
-            <p>Oops! Looks like there were some problems with your submission</p>
-            <ul>
-            <% flash[:error].each do |message| %>
-              <li><%= message %></li>
+            <% if flash[:error].size == 1 %>
+              <p><%= flash[:error].first %></p>
+            <% else %>
+              <p>Oops! Looks like there were some problems with your submission</p>
+              <ul>
+              <% flash[:error].each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
             <% end %>
-            </ul>
           </div>
         </div>
       </div>

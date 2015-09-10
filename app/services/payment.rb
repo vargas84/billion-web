@@ -1,3 +1,4 @@
+
 class Payment
   class RecordInvalid < StandardError
     attr_reader :record
@@ -40,7 +41,10 @@ class Payment
 
     # validation error, e.g. rejected etc
     @errors = result.errors.map(&:message)
-    @errors << 'Something has gone wrong' if @errors.size == 0
+    if @errors.size == 0
+      @errors << 'Sorry, we are having trouble processing your payment.' 
+    end
+
     false
   rescue *BRAINTREE_ERRORS => e
     # likely a braintree service failure
