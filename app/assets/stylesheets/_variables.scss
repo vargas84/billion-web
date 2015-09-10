@@ -65,6 +65,8 @@ $input-border: #dadada;
 $input-color: $text-color;
 $input-border-focus: rgba(lighten($brand-primary, 20%), 0.75);
 
+$state-danger-bg: mix($brand-danger, white, 5%);
+
 // Components
 $border-radius-base: 0;
 $border-radius-large: $border-radius-base;

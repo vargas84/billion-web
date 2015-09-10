@@ -2,6 +2,7 @@
   background-color: white;
   margin-bottom: $grid-gutter-width * 2;
   position: relative;
+  font-size: ms(0);
 
   .card-image {
     background-size: cover;
@@ -9,16 +10,11 @@
     background-position: center center;
   }
   .card-content {
+    text-align: left;
     padding: $grid-gutter-width / 2;
-  }
-  .card-footer {
-    padding: $grid-gutter-width / 2;
-    width: 100%;
-    border-bottom: 2px solid $brand-primary;
-    color: $brand-primary;
   }
 
-  .project-title {
+  .card-project-title {
     margin-top: 0;
     line-height: 1.5;
     font-weight: bold;
@@ -26,15 +22,26 @@
     color: $brand-primary;
   }
 
-  p {
-    line-height: ms(1);
+  .card-description {
+    font-size: ms(0);
+    line-height: ms(2);
   }
 
-  .points {
+
+  .card-footer {
+    font-size: ms(0);
+    padding: $grid-gutter-width / 2;
+    width: 100%;
+    border-bottom: 2px solid $brand-primary;
+    color: $brand-primary;
+    text-align: left;
+  }
+
+  .card-points {
     font-weight: bold;
   }
 
-  .learn-more {
+  .card-learn-more {
     float: right;
   }
 
