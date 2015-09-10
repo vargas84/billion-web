@@ -30,6 +30,10 @@ describe TransactionsController, type: :controller do
     end
 
     context 'successful' do
+      before do
+        expect(TransactionMailer).to receive(:confirmation).and_call_original
+      end
+
       subject(:create_transaction) { post :create, valid_params }
 
       it { is_expected.to have_http_status(:created) }
@@ -52,6 +56,10 @@ describe TransactionsController, type: :controller do
 
     context 'unsuccessful' do
       shared_examples 'it fails to create a transaction' do
+        before do
+          expect(TransactionMailer).to_not receive(:confirmation)
+        end
+
         it { is_expected.to have_http_status(:ok) }
         it { is_expected.to render_template(:new) }
 
