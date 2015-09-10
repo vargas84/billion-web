@@ -1,18 +1,21 @@
 <div class='project-card'>
-  <div class='card-image' style='background-image: url(<%= project.card_image_url || "http://placehold.it/640x480"%>)'>
-  </div>
+
+  <%= link_to project_path(project), title: project.name  do %>
+    <div class='card-image' style='background-image: url(<%= project.card_image_url || "http://placehold.it/640x480"%>)'>
+    </div>
+  <% end %>
 
   <div class='card-content'>
-    <div class='project-title'>
+    <div class='card-project-title'>
       <%= link_to project.name, project_path(project), title: project.name %>
     </div>
-    <p><%= truncate(project.blurb, length: 140)%></p>
+    <p class='card-description'><%= truncate(project.blurb, length: 140)%></p>
   </div>
 
   <div class='card-footer'>
-    <span class='points'>
-      <%= pluralize(project.points_donated, 'pt') %>
+    <span class='card-points'>
+      <%= pluralize(number_with_delimiter(project.points_donated), 'pt') %>
     </span>
-    <%= link_to 'learn more', project_path(project), class: 'learn-more' %>
+    <%= link_to 'learn more', project_path(project), class: 'card-learn-more' %>
   </div>
 </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   post '/subscribe', to: 'subscribe#create', as: 'subscribe'
   resources 'bam_applications', only: [:create]
   resources :projects, only: [:index, :show]
+  resources :transactions, only: [:new, :create], path: 'donate'
 
   # static pages
   get 'privacy' => 'high_voltage/pages#show', id: 'privacy'

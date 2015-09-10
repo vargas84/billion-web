@@ -1,0 +1,41 @@
+<%= render 'page_header' %>
+
+<div class='transaction'>
+ <div class='thank-you-message'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          Thanks a billion! Your money has helped bringing
+          <span class='thank-you-project-name'>
+            <%= link_to @transaction.recipient.name,
+              project_path(@transaction.recipient) %>
+          </span>
+          one step closer to to winning the Billion Fund.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='thank-you-see-more'>
+
+    <div class='container'>
+      <div class='row'>
+        <p class='thank-you-see-more-intro'><strong>But wait, there's more!</strong><br/>
+        Check out these other awesome movements</p>
+
+        <% Project.all.order('random()').limit(4).each do |project| %>
+          <div class='col-md-3'>
+            <%= render partial: 'shared/project_card', locals: { project: project } %>
+          </div>
+        <% end %>
+
+        <div class='text-center'>
+          <%= link_to 'See All Projects', projects_path,
+            class: 'btn btn-lg btn-primary'
+        %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
