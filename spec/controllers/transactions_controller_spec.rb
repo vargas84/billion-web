@@ -59,6 +59,11 @@ describe TransactionsController, type: :controller do
           expect { create_transaction }.to_not change { Transaction.count }
         end
 
+        it 'assigns a transaction' do
+          create_transaction
+          expect(assigns(:transaction)).to be_present
+        end
+
         it 'flashes an error' do
           create_transaction
           expect(flash[:error]).to be_present

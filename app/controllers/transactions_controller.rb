@@ -82,11 +82,13 @@ class TransactionsController < ApplicationController
   end
 
   def render_payment_error(exception)
+    @transaction ||= Transaction.new
     flash[:error] = exception.record.errors
     render :new, status: :ok
   end
 
   def render_error(exception)
+    @transaction ||= Transaction.new
     flash[:error] = exception.record.errors.full_messages
     render :new, status: :ok
   end
