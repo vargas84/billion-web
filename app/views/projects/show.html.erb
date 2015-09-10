@@ -1,9 +1,13 @@
-<section class="project-header">
+<div class="project-header">
   <div class="container">
     <div class="row">
       <div class="project-video-container">
         <div class="col-xs-12 col-md-7">
-          <%= embed(@project.video_url) %>
+          <% if @project.video_url.present? %>
+            <%= embed(@project.video_url) %>
+          <% else %>
+            <%= image_tag @project.project_image_url, alt: @project.name, class: 'img-responsive' %>
+          <% end %>
         </div>
       </div>
 
@@ -11,9 +15,15 @@
         <div class="col-xs-12 col-md-5">
           <h1><%= @project.name %></h1>
 
+          <% if @project.collaborators.any? %>
           <div class="project-collaborators">
-            <p>By <%= @project.collaborators.collect(&:full_name).to_sentence %></p>
+            <p>by
+            <%= @project.collaborators.map do |c| %>
+              <% link_to c.full_name, "##{c.full_name.parameterize}" %>
+            <% end.join(', ').html_safe %>
+            </p>
           </div>
+          <% end %>
 
           <div class="project-blurb">
             <p><%= truncate(@project.blurb, length: 300) %></p>
@@ -35,12 +45,16 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<section class="project-body">
+<div class="project-body">
   <div class="container">
-    <div class="row project-body-tabs">
-      <div class="col-xs-4 col-sm-2 project-body-tab active">Movement</div>
+    <div class="row ">
+      <div class='col-md-12'>
+        <div class='project-body-tabs'>
+          <div class="project-body-tab active">Movement</div>
+        </div>
+      </div>
     </div>
 
     <div class="row">
@@ -55,7 +69,7 @@
         </div>
     </div>
   </div>
-</section>
+</div>
 
 <% if @project.competitor %>
   <%= render "current_competitor_feature" %>

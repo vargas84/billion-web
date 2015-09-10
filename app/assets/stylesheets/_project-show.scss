@@ -97,7 +97,7 @@
     }
 
     .project-body-tabs {
-      border-bottom: 2px solid $body-bg;
+      border-bottom: 1px solid $body-bg;
       margin-bottom: $grid-gutter-width / 2;
     }
 
@@ -105,12 +105,17 @@
       font-size: ms(1);
       font-weight: bold;
       text-align: center;
-      display: block;
+      display: inline-block;
+      position: relative;
       padding-bottom: $grid-gutter-width / 2;
-      margin-bottom: -2px;
+      margin-bottom: -3px;
+
+      & + .project-body-tab {
+        margin-left: $grid-gutter-width;
+      }
 
       &.active {
-        border-bottom: 2px solid $orange;
+        border-bottom: 3px solid $orange;
 
         &:after {
           content: '';
