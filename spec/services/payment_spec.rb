@@ -16,7 +16,7 @@ describe Payment do
       before { FakeBraintree.decline_all_cards! }
 
       it 'throws a Payment::RecordInvalid error' do
-        expect{ make_payment }.to raise_error(Payment::RecordInvalid)
+        expect { make_payment }.to raise_error(Payment::RecordInvalid)
       end
 
       after { FakeBraintree.clear! }
@@ -25,7 +25,7 @@ describe Payment do
 
   describe '.pay' do
     it 'returns throws error if amount is not string or big decimal' do
-      expect{ Payment.new('fake-valid-nonce', 2.33) }.to raise_error(TypeError)
+      expect { Payment.new('fake-valid-nonce', 2.33) }.to raise_error(TypeError)
     end
 
     it 'returns true if nonce is valid' do

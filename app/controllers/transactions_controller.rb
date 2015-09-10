@@ -37,20 +37,20 @@ class TransactionsController < ApplicationController
   end
 
   def purchase_params
-    params.require(:transaction).permit(:amount).merge({
+    params.require(:transaction).permit(:amount).merge(
       recipient_type: @temp_user.class.name,
       recipient_id: @temp_user.id,
       competition_id: @competition.id
-    })
+    )
   end
 
   def allocation_params
-    params.require(:transaction).permit(:recipient_id).merge({
+    params.require(:transaction).permit(:recipient_id).merge(
       recipient_type: 'Project',
       sender_type: @temp_user.class.name,
       sender_id: @temp_user.id,
-      competition_id: @competition.id
-    })
+     competition_id: @competition.id
+    )
   end
 
   def accept_payment

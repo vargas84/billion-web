@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe TransactionsController, :type => :controller do
+describe TransactionsController, type: :controller do
 
-  describe "GET new" do
-    it "returns http success" do
+  describe 'GET new' do
+    it 'returns http success' do
       get :new
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET create" do
+  describe 'GET create' do
     before { create :current_competition }
 
     let(:project) { create :project }
@@ -36,7 +36,7 @@ describe TransactionsController, :type => :controller do
       it { is_expected.to render_template(:create) }
 
       it 'create a transaction' do
-        expect{ create_transaction }.to change{ Transaction.count }.by(2)
+        expect { create_transaction }.to change { Transaction.count }.by(2)
       end
 
       it 'rounds the transaction points up' do
@@ -56,7 +56,7 @@ describe TransactionsController, :type => :controller do
         it { is_expected.to render_template(:new) }
 
         it 'does not create a transaction' do
-          expect{ create_transaction }.to_not change{ Transaction.count }
+          expect { create_transaction }.to_not change { Transaction.count }
         end
 
         it 'flashes an error' do

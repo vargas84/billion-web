@@ -33,17 +33,15 @@ class Payment
   end
 
   def pay
-    result = Braintree::Transaction.sale(payment_method_nonce: @token,
-                                         amount: @amount)
+    transaction = Braintree::Transaction
+    result = transaction.sale(payment_method_nonce: @token, amount: @amount)
 
-    if result.success?
-      true
-    else
-      # validation error, e.g. rejected etc
-      @errors = result.errors.map(&:message)
-      @errors << 'Something has gone wrong' if @errors.size == 0
-      false
-    end
+    return true if result.success?
+
+    # validation error, e.g. rejected etc
+    @errors = result.errors.map(&:message)
+    @errors << 'Something has gone wrong' if @errors.size == 0
+    false
   rescue *BRAINTREE_ERRORS => e
     # likely a braintree service failure
     # TODO: log to new relic
@@ -52,13 +50,13 @@ class Payment
 
   def pay!
     return true if pay && errors.nil?
-    raise  RecordInvalid.new(self, 'payment is invalid')
+    fail RecordInvalid.new(self, 'payment is invalid')
   end
 
   private
 
   def validate_amount_type
     return if @amount.is_a?(String) || @amount.is_a?(BigDecimal)
-    raise TypeError, 'Amount must be a String or BigDecimal'
+    fail TypeError, 'Amount must be a String or BigDecimal'
   end
 end
