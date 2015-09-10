@@ -24,7 +24,8 @@ describe TransactionsController, :type => :controller do
           temp_user: {
             email: temp_user.email
           }
-        }
+        },
+        payment_method_nonce: 'thisisanonce'
       }
     end
 
@@ -35,7 +36,7 @@ describe TransactionsController, :type => :controller do
       it { is_expected.to render_template(:create) }
 
       it 'create a transaction' do
-        expect{ create_transaction }.to change{ Transaction.count }.by(1)
+        expect{ create_transaction }.to change{ Transaction.count }.by(2)
       end
 
       it 'rounds the transaction points up' do
@@ -64,6 +65,18 @@ describe TransactionsController, :type => :controller do
         end
       end
 
+      context 'with invalid payment' do
+        subject(:create_transaction) do
+          post :create, valid_params
+        end
+
+        before { FakeBraintree.decline_all_cards! }
+
+        include_examples 'it fails to create a transaction'
+
+        after { FakeBraintree.clear! }
+      end
+
       context 'with invalid temp user' do
         subject(:create_transaction) do
           post :create, valid_params.tap { |p| p[:transaction].delete(:temp_user) }
@@ -72,9 +85,17 @@ describe TransactionsController, :type => :controller do
         include_examples 'it fails to create a transaction'
       end
 
-      context 'with invalid transaction' do
+      context 'with invalid purchase' do
         subject(:create_transaction) do
-          post :create, valid_params.tap { |p| p[:transaction].delete(:amount) }
+          post :create, valid_params.merge(transaction: { amount: 0 })
+        end
+
+        include_examples 'it fails to create a transaction'
+      end
+
+      context 'with invalid allocatons' do
+        subject(:create_transaction) do
+          post :create, valid_params.tap { |p| p[:transaction].delete(:recipient_id) }
         end
 
         include_examples 'it fails to create a transaction'

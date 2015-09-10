@@ -1,8 +1,10 @@
 class TransactionsController < ApplicationController
   DOLLAR_TO_POINT = 500
 
+  rescue_from Payment::RecordInvalid, with: :render_payment_error
   rescue_from ActiveRecord::RecordInvalid, with: :render_error
 
+  before_action :set_competition, only: [:create]
   before_action :set_temp_user, only: [:create]
 
   def new
@@ -10,23 +12,17 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new transaction_params
+    accept_payment
 
-    @transaction.points = ((@transaction.amount || 0) * DOLLAR_TO_POINT).ceil
-    @transaction.sender = @temp_user
-    @transaction.competition = Competition.current_competition
-
-    @transaction.save!
+    ActiveRecord::Base.transaction do
+      purchase_points
+      allocate_points
+    end
 
     render :create, status: :created
   end
 
   private
-
-  def transaction_params
-    params.require(:transaction).permit(:amount, :recipient_id)
-      .merge(recipient_type: 'Project')
-  end
 
   def set_temp_user
     transaction = params[:transaction]
@@ -34,6 +30,52 @@ class TransactionsController < ApplicationController
     email = temp_user && temp_user[:email]
 
     @temp_user = TempUser.find_or_create_by! email: email
+  end
+
+  def set_competition
+    @competition = Competition.current_competition
+  end
+
+  def purchase_params
+    params.require(:transaction).permit(:amount).merge({
+      recipient_type: @temp_user.class.name,
+      recipient_id: @temp_user.id,
+      competition_id: @competition.id
+    })
+  end
+
+  def allocation_params
+    params.require(:transaction).permit(:recipient_id).merge({
+      recipient_type: 'Project',
+      sender_type: @temp_user.class.name,
+      sender_id: @temp_user.id,
+      competition_id: @competition.id
+    })
+  end
+
+  def accept_payment
+    nonce = params[:payment_method_nonce]
+    amount = params[:transaction] && params[:transaction][:amount]
+    payment = Payment.new nonce, amount
+
+    payment.pay!
+  end
+
+  def purchase_points
+    @purchase = Transaction.new purchase_params
+    @purchase.points = ((@purchase.amount || 0) * DOLLAR_TO_POINT).ceil
+    @purchase.save!
+  end
+
+  def allocate_points
+    @allocation = Transaction.new allocation_params
+    @allocation.points = @purchase.points
+    @allocation.save!
+  end
+
+  def render_payment_error(exception)
+    flash[:error] = exception.record.errors
+    render :new, status: :ok
   end
 
   def render_error(exception)
