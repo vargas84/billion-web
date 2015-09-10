@@ -16,8 +16,11 @@
   background-color: $blue;
   color: $white;
 
-  &:hover {
-    background-color: lighten($blue, 5%);
+  &:hover, &:active, &:focus {
     color: $white;
+  }
+
+  &:hover, &:active {
+    background-color: lighten($blue, 5%);
   }
 }
