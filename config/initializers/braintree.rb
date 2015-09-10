@@ -1,6 +1,6 @@
 if Rails.env.production?
   Braintree::Configuration.environment = :production
-elsif Rails.env.integration?
+elsif !Rails.env.test?
   Braintree::Configuration.environment = :sandbox
 end
 

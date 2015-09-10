@@ -45,16 +45,19 @@ end
 group :integration, :development, :test do
   # Project-specific gems
   gem 'rubocop', require: false
+  gem 'letter_opener', '~> 1.3.0'
+  gem 'letter_opener_web', '~> 1.3.0'
+
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
+end
+
+group :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'rspec-its', '~> 1.2.0'
   gem 'json-schema', '~> 2.5.1'
   gem 'database_cleaner', '~> 1.4.1'
-  gem 'letter_opener', '~> 1.3.0'
-  gem 'letter_opener_web', '~> 1.3.0'
   gem 'fake_braintree', '~> 0.6.0'
-
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
 end
