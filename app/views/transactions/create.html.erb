@@ -7,7 +7,8 @@
         <div class='col-md-8 col-md-offset-2'>
           Thanks a billion! Your money has helped bringing
           <span class='thank-you-project-name'>
-            <a href='#'>Race for the Cure</a>
+            <%= link_to @transaction.recipient.name,
+              project_path(@transaction.recipient) %>
           </span>
           one step closer to to winning the Billion Fund.
         </div>

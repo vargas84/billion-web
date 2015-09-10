@@ -11,7 +11,7 @@
 
   <div class='card-footer'>
     <span class='card-points'>
-      <%= pluralize(project.points_donated, 'pt') %>
+      <%= pluralize(number_with_delimiter(project.points_donated), 'pt') %>
     </span>
     <%= link_to 'learn more', project_path(project), class: 'card-learn-more' %>
   </div>
