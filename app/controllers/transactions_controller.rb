@@ -4,8 +4,8 @@ class TransactionsController < ApplicationController
   rescue_from Payment::RecordInvalid, with: :render_payment_error
   rescue_from ActiveRecord::RecordInvalid, with: :render_error
 
+  before_action :clean_amount, only: [:create]
   before_action :set_competition, only: [:create]
-  before_action :set_temp_user, only: [:create]
 
   def new
     @transaction = Transaction.new(recipient_id: params[:project_id])
@@ -15,6 +15,7 @@ class TransactionsController < ApplicationController
     accept_payment
 
     ActiveRecord::Base.transaction do
+      set_temp_user
       purchase_points
       allocate_points
     end
@@ -23,6 +24,13 @@ class TransactionsController < ApplicationController
   end
 
   private
+
+  def clean_amount
+    params.tap do |p|
+      amount = p[:transaction] && p[:transaction][:amount]
+      p[:transaction][:amount] = amount.gsub(/[$,]/, '') if amount.present?
+    end
+  end
 
   def set_temp_user
     transaction = params[:transaction]
@@ -44,7 +52,7 @@ class TransactionsController < ApplicationController
     )
   end
 
-  def allocation_params
+  def transaction_params
     params.require(:transaction).permit(:recipient_id).merge(
       recipient_type: 'Project',
       sender_type: @temp_user.class.name,
@@ -68,9 +76,9 @@ class TransactionsController < ApplicationController
   end
 
   def allocate_points
-    @allocation = Transaction.new allocation_params
-    @allocation.points = @purchase.points
-    @allocation.save!
+    @transaction = Transaction.new transaction_params
+    @transaction.points = @purchase.points
+    @transaction.save!
   end
 
   def render_payment_error(exception)

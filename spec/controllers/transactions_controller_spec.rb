@@ -14,7 +14,7 @@ describe TransactionsController, type: :controller do
 
     let(:project) { create :project }
     let(:temp_user) { create :temp_user }
-    let(:amount) { 22.11 }
+    let(:amount) { "$2,222.11" }
 
     let(:valid_params) do
       {
@@ -41,7 +41,7 @@ describe TransactionsController, type: :controller do
 
       it 'rounds the transaction points up' do
         stub_const('TransactionsController::DOLLAR_TO_POINT', 2)
-        raw_points = amount * TransactionsController::DOLLAR_TO_POINT
+        raw_points = 2222.11 * TransactionsController::DOLLAR_TO_POINT
         expected_points = raw_points.ceil
 
         create_transaction
