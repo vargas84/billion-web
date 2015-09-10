@@ -1,0 +1,137 @@
+<div class='page-header page-header-primary'>
+  <div class='container'>
+    <div class='row'>
+      <h1>The Billion Story
+        <small>How it works and why</small>
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div class='story'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-3'>
+        <div class='story-content'>
+          <h2 id='letter'>A letter to the participant</h2>
+
+          <p>Hi World Changer,</p>
+
+          <p>We are Billion. We are the world’s first tournament style crowdfunding
+          platform and we want to change the world. But before we tell you what’s
+          happening in Columbus, Ohio, we want to tell you a little bit about us.</p>
+
+          <p>It started with a passion to do good in the world. If you only pay
+          the slightest attention today,  you know that there are immense issues
+          in the world that need to be solved, issues that impact millions of
+          people, if not billions. Why does human trafficking still exist? Why do
+          we live in an age where the technology exists to grow organs, yet we
+          still live on a dying planet? We wanted to let people from all walks of
+          life- from the cashier at your local grocery store to the
+          multimillionaire, be able to contribute to a cause that impacted
+          billions of people. This is because we believe that to truly solve
+          problems that impact the world, the world needs to first lend a helping
+          hand.</p>
+
+          <p>Ultimately we realized that there wasn’t a globally accessible
+          solution to solve these billion people impact problems. This is was
+          when Billion was born.</p>
+
+          <p>Billion combines the immense power of crowdfunding with the
+          interactiveness of basketball bracket to pool the world’s resources
+          into one fund to benefit the globe.</p>
+
+          <h2>Why Billion</h2>
+
+          <p>Because crowdfunding sites that currently exist are aimed at solving
+          smaller issues. Your dollar in the Billion Fund has the chance to
+          snowball into a massive opportunity to find solutions to world issues.
+          A movement that originally starts as a spark of a brilliant idea in the
+          midst of a sea of others, is given a chance to grow and shine with your
+          support. The idea behind Billion is finding a solution each year to a
+          huge issue. The reason we choose one is because giving a huge fund to a
+          movement with huge potential creates bigger impact then spreading the
+          fund over several.</p>
+
+          <h2>How Billion Works</h2>
+
+          <h3>Pitch & Rally</h3>
+
+          <p>People and organizations with great ideas pitch their movements to
+          be featured on Billion. The top sixteen ideas are selected by the
+          Billion team based on the criteria of innovation, impact, and
+          viability.</p>
+
+          <p>Once selected, these movements rally their supporters to raise
+          money for the Billion Fund. Points are awarded based on the amount of
+          money that is raised: each dollar will earn the movement
+          <%= pluralize(TransactionsController::DOLLAR_TO_POINT, 'point') %>.
+          </p>
+
+          <p>The teams with the most points advance to the next stage of the event: <em>the bracket</em></p>
+
+          <h3>Bracket</h3>
+
+          <p>
+          The top eight teams compete during the
+          <a href='http://thisisindependent.com/'>Columbus Independents' Day Festival</a>
+          in a tournament to determine the winner. Teams can earn points in two ways:</p>
+
+          <ul>
+            <li><em>Online:</em>
+              money can be raised online during the festival to give the teams
+              points as in the previous stage.
+            </li>
+
+            <li><em>At the festival:</em>
+              Billion is partnering with
+              <a href='http://www.multivariousgames.com/'>Multivarious Games</a>
+              to host an awesome augmented reality game in a 30-foot long
+              shipping container. Admission fees to play the game contribute
+              directly to the Billion Fund, and points will be awarded to the
+              movement that is selected by the player.
+            </li>
+          </ul>
+
+          <h3>The Winner</h3>
+          <p>After three rounds of hard fought battles over two days, the
+          winner emerges and is awarded the Billion Fund.</p>
+
+          <p>With the support from the community, the winner goes on to change
+          Columbus.</p>
+        </div>
+
+        <div class='story-cta'>
+        <p>Help us find the winner and change the world</p>
+        <%= link_to 'See All Movements', projects_path,
+          class: 'btn btn-lg btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class='landing-section landing-join'>
+  <div class='container'>
+    <div class='landing-section-heading'>
+      <h1>Join the Movement</h1>
+
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p class='landing-section-subheading'>
+            Subscribe to our mailing list and we'll keep you updated on our
+            progress.<br/>
+            <a href='mailto:hello@billioneffect.com'>
+            Still have questions? Ask away!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
+        <%= render 'pages/subscription_form' %>
+      </div>
+    </div>
+  </div>
+</section>

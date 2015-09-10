@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   # static pages
   get 'privacy' => 'high_voltage/pages#show', id: 'privacy'
   get 'terms' => 'high_voltage/pages#show', id: 'terms'
+  get 'story' => 'high_voltage/pages#show', id: 'story'
 end
