@@ -1,17 +1,24 @@
-<div class='page-header'>
-  <div class='container'>
-    <div class='row'>
-      <h1>Support A Movement
-        <small>Lorem ipsum</small>
-      </h1>
-    </div>
-  </div>
-</div>
+<%= render 'page_header' %>
 
 <div class='transaction-form'>
   <div class='container'>
 
     <%= form_for @transaction do |f| %>
+
+      <% if flash[:error] %>
+      <div class='row'>
+        <div class='col-md-6 col-md-offset-3'>
+          <div class='alert alert-danger'>
+            <p>Oops! Looks like there were some problems with your submission</p>
+            <ul>
+            <% flash[:error].each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
 
       <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
@@ -19,22 +26,25 @@
           I'd like to donate
 
           <span class='dollar-container'>
-            $<%= f.text_field :amount, value: '1.00',
-              class: 'amount-field',
-              step: '0.01',
-              data: { autonumeric: { aSign: '$', vMin: 1 }} %>
+            <%= f.text_field :amount, value: '1.00',
+              class: 'amount-field inline-form-field',
+              data: { 'a-sign' => '$', 'v-min' => 1, 'v-max' => '50000' },
+              required: true
+            %>
           </span>
 
           to the <%= link_to 'Billion&nbsp;Fund'.html_safe, '#' %>, <br/>
 
+          giving
           <span class='point-container'>
-            giving
-            <span class='point-value'>200</span>
+            <span class='point-value'><%= TransactionsController::DOLLAR_TO_POINT %></span>
             <span class='point-unit'>points</span>
-            to
           </span>
+          to
 
-          <%= f.collection_select :recipient_id, Project.all, :id, :name, { prompt: '...' }, class: 'project-select' %>.
+          <%= f.collection_select :recipient_id, Project.all, :id, :name, { prompt: '...' },
+            class: 'project-select inline-form-field',
+            required: true %>.
           </p>
         </div>
       </div>
@@ -70,18 +80,17 @@
             </div>
 
             <div class='form-group'>
-              <%= check_box_tag :tos_acceptance, 1, false, disabled: true %>
-              <%= label_tag :tos_acceptance  do %>
-                I accept the
+              <p>
+                By donating you accept the
                 <%= link_to 'Terms of Service', terms_path, target: '_blank' %>
                 and the
                 <%= link_to 'Privacy Policy',  privacy_path, target: '_blank' %>
                 .
-              <% end %>
+              </p>
             </div>
 
             <div class='form-group'>
-              <%= f.submit 'Submit', disabled_with: 'Please wait...', class: 'btn btn-large btn-block btn-primary' %>
+              <%= f.submit 'Donate', disabled_with: 'Please wait...', class: 'btn btn-large btn-block btn-primary' %>
             </div>
           </div>
         </div>
@@ -94,7 +103,7 @@
   <script src="https://js.braintreegateway.com/js/beta/braintree-hosted-fields-beta.18.min.js"></script>
   <script>
 $(document).ready(function() {
-  new DonationForm('#new_transaction', '<%= Braintree::ClientToken.generate %>', 1000)
+  new DonationForm('#new_transaction', '<%= Braintree::ClientToken.generate %>', <%= TransactionsController::DOLLAR_TO_POINT %>)
 });
   </script>
 <% end %>

@@ -1,11 +1,12 @@
 class TransactionsController < ApplicationController
+  DOLLAR_TO_POINT = 500
+
   def new
     @transaction = Transaction.new(recipient_id: params[:project_id])
   end
 
   def create
     @transaction = Transaction.new(transaction_params.except(:temp_user))
-    render :new
   end
 
   private

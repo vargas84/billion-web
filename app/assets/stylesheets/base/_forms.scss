@@ -22,7 +22,7 @@ label {
     box-shadow: none;
     &:focus {
       box-shadow: none;
-      background-color: mix($brand-danger, white, 5%);
+      background-color: $state-danger-bg;
     }
   }
 

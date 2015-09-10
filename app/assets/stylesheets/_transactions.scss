@@ -1,0 +1,121 @@
+.transaction {
+
+  &-form {
+    padding: $grid-gutter-width 0;
+
+    .giving-sentence {
+      font-size: ms(2);
+      text-align: center;
+      line-height: 2;
+
+      a {
+        font-weight: bold;
+      }
+
+      input, select {
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid $blue;
+        height: 1.5em;
+        line-height: 1.5;
+        color: $brand-primary;
+        background-color: transparentize($blue, 0.95);
+      }
+
+      option {
+        font-size: ms(0);
+        background-color: white;
+      }
+
+      .amount-field {
+        width: 4em;
+        text-align: right;
+      }
+
+      .project-select {
+        width: 15em;
+        &:active {
+          outline: none;
+        }
+      }
+
+      .point-container {
+        font-weight: bold;
+      }
+
+      .inline-form-field.invalid {
+        background-color: $state-danger-bg;
+        border-color: $state-danger-text;
+        &:focus {
+          outline-color: $state-danger-text;
+        }
+      }
+    }
+
+    .payment-spinner {
+      font-size: ms(1);
+      text-align: center;
+      margin: $grid-gutter-width 0;
+    }
+
+    .payment-form {
+      margin: $grid-gutter-width 0;
+      &.loading {
+        opacity: 0;
+      }
+
+      @include transition(opacity 0.5s);
+    }
+
+    .braintree-control {
+      @extend .form-control;
+      position: relative;
+
+      &.braintree-hosted-fields-focused {
+        border-color: $input-border-focus;
+      }
+
+      &.braintree-hosted-fields-invalid {
+        border-color: $state-danger-text;
+      }
+
+      &.braintree-hosted-fields-invalid.braintree-hosted-fields-focused {
+        border-color: $state-danger-text;
+        background-color: $state-danger-bg;
+      }
+
+      &.disabled {
+        background-color: $input-bg-disabled;
+        cursor: $cursor-disabled;
+      }
+    }
+  }
+
+  .thank-you {
+    &-message {
+      padding: $grid-gutter-width * 3 0;
+      font-size: ms(2);
+      text-align: center;
+      line-height: ms(4);
+    }
+
+    &-project-name {
+      font-size: ms(3);
+      display: block;
+      font-weight: bold;
+    }
+
+    &-see-more {
+      padding: $grid-gutter-width * 2 0;
+      //background-color: fade-out($brand-primary, 0.9);
+      background-color: mix(white, $brand-primary, 90%);
+    }
+
+    &-see-more-intro {
+      font-size: ms(1);
+      line-height: 1;
+      text-align: center;
+      padding: 0 0 $grid-gutter-width 0;
+    }
+  }
+}

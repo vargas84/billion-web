@@ -2,12 +2,15 @@
   'use strict';
 
   function DonationForm(form, braintreeToken, dollarToPoint) {
-    setupBraintree(form, braintreeToken);
     setupPointConverter(
       $(form).find('.dollar-container'),
       $(form).find('.point-container'),
       dollarToPoint
     );
+
+    setupFormValidation(form);
+
+    setupBraintree(form, braintreeToken);
   };
 
   function setupPointConverter($dollarContainer, $pointContainer, dollarToPoint) {
@@ -17,15 +20,41 @@
 
     $dollarInput.autoNumeric('init');
 
-    $dollarInput.on('change', function() {
-      var dollar = parseFloat($dollarInput.val()) || 0;
+    $dollarInput.on('keyup', function() {
+      var dollar = parseFloat($dollarInput.autoNumeric('get')) || 0;
       $pointValue.text(convertToPoint(dollar, dollarToPoint))
     });
 
+    $dollarInput.trigger('keyup');
+  }
+
+  function setupFormValidation(form) {
+    var $form = $(form);
+    $form.validate({
+      highlight: function(element) {
+        if ($(element).hasClass('inline-form-field')) {
+          $(element).addClass('invalid');
+        } else {
+          $.validator.defaults.highlight.apply(this, arguments);
+        }
+      },
+      unhighlight: function(element) {
+        if ($(element).hasClass('inline-form-field')) {
+          $(element).removeClass('invalid');
+        } else {
+          $.validator.defaults.unhighlight.apply(this, arguments);
+        }
+      },
+      errorPlacement: function(error, element) {
+        if (!$(element).hasClass('inline-form-field')) {
+          $.validator.defaults.errorPlacement.apply(this, arguments);
+        }
+      },
+    });
   }
 
   function convertToPoint(dollar, dollarToPoint) {
-    return Math.ceil(dollar * dollarToPoint);
+    return Math.ceil(dollar * dollarToPoint).toLocaleString();
   }
 
   function pluralizePoint(point) {
@@ -58,17 +87,28 @@
               selector: '#' + form_id + ' .expiration-date'
             }
           },
+
           onReady: function() {
             $form.find('.payment-form').removeClass('loading');
             $form.find('.payment-spinner').remove();
             $form.find('.disabled').removeClass('disabled');
             $form.find('[disabled]').prop('disabled', false);
+          },
+
+          onPaymentMethodReceived: function(obj) {
+            if ($form.valid()) {
+              var money = $form.find('.amount-field').val();
+              var project = $form.find('.project-select option:selected').text()
+              var message = 'You are about to donate ' + money + ' in support of ' + project + '.';
+              message += '\n\nDo you wish to continue?'
+              if (confirm(message)) {
+                $form.append($("<input name='payment_method_nonce' value='" + obj.nonce + "'/>"));
+                $form.submit();
+              }
+            }
           }
         });
     }
-
-  DonationForm.prototype = {
-  };
 
   window.DonationForm = DonationForm;
 }(jQuery));
