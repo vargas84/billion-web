@@ -102,7 +102,7 @@
               var message = 'You are about to donate ' + money + ' in support of ' + project + '.';
               message += '\n\nDo you wish to continue?'
               if (confirm(message)) {
-                $form.append($("<input name='payment_method_nonce' value='" + obj.nonce + "'/>"));
+                $form.append($("<input type='hidden' name='payment_method_nonce' value='" + obj.nonce + "'/>"));
                 $form.submit();
               }
             }

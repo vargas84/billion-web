@@ -20,6 +20,7 @@ gem 'pundit', '~> 1.0.1'
 gem 'faker', '~> 1.4.3'
 gem 'paperclip', '~> 4.3.0'
 gem 'rdiscount', '~> 2.1.8'
+gem 'quiet_assets', '~> 1.1.0'
 
 # Rails-specific gems
 gem 'rails', '4.2.0'

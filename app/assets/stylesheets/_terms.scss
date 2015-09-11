@@ -1,24 +1,18 @@
 .terms {
-  h1, h2 {
+  h2 {
     font-weight: bold;
-  }
-
-  p, h2 {
-    line-height: 1.75em;
+    font-size: ms(1);
+    line-height: ms(2);
+    text-align: center;
+    margin: ms(2) * 2 0 ms(2);
   }
 
   p {
-    margin-bottom: 1em;
+    line-height: ms(2);
   }
 
-  &-title {
-    background-color: $blue;
-    text-align: center;
-    padding: ($grid-gutter-width * 2) 0;
-
-    h1, p {
-      color: $white;
-    }
+  p {
+    margin-bottom: ms(2);
   }
 
   &-content {
