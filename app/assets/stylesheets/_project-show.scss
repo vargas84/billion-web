@@ -64,16 +64,16 @@
       font-size: ms(1);
       font-weight: bold;
       line-height: 2.5em;
-      margin-bottom: 1em;
+      margin: 1.5em 0 0.5em;
     }
 
     p, li {
+      font-size: ms(0);
       line-height: 1.75em;
     }
 
-    p {
-      font-size: ms(0);
-      margin-bottom: 2em;
+    p, ul, ol {
+      margin-bottom: 1em;
     }
 
     img {
