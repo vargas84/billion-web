@@ -212,11 +212,3 @@
     </div>
   </div>
 </section>
-
-<% content_for :scripts do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      new Billion.LandingAnimator();
-    });
-  <% end %>
-<% end %>

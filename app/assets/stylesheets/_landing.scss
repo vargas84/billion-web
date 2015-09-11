@@ -142,17 +142,8 @@
     background-color: white;
     counter-reset: festival-step;
 
-    .festival-img-lg {
-      @include visible-when-animated;
-    }
-
     .festival-step {
       margin: $grid-gutter-width 0;
-      visibility: hidden;
-
-      &.animated {
-        visibility: visible;
-      }
     }
 
     h2 {
@@ -225,11 +216,6 @@
       background-color: rgba(255, 255, 255, 0.2);
       padding: 0 20px 15px;
       margin-top: 40px;
-      visibility: hidden;
-
-      &.animated {
-        visibility: visible;
-      }
     }
 
     .submit-btn-container {
@@ -262,12 +248,6 @@
     }
 
     .event-container {
-      visibility: hidden;
-
-      &.animated {
-        visibility: visible;
-      }
-
       &.animated:nth-of-type(2) {
         @include animation-delay(0.1s);
       }
