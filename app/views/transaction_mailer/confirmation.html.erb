@@ -3,7 +3,7 @@
 <p>Thank you so much for participating in the world’s first tournament style
   crowdfunding platform!</p>
 
-<p>You have donated <%= number_to_currency @transaction.amount %> to the Billion
+<p>You have donated <%= number_to_currency @purchase.amount %> to the Billion
   Fund, awarding <%= @transaction.recipient.name %> with
   <%= number_with_delimiter @transaction.points %> points. If
   <%= @transaction.recipient.name %> wins our inaugural competition, they will

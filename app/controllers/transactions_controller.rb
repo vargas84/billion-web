@@ -19,7 +19,7 @@ class TransactionsController < ApplicationController
       purchase_points
       allocate_points
     end
-    TransactionMailer.confirmation(@transaction).deliver_now
+    TransactionMailer.confirmation(@purchase, @transaction).deliver_now
 
     render :create, status: :created
   end
