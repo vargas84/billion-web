@@ -64,8 +64,11 @@ describe Payment do
         nonce = 'fake-valid-nonce'
         amount = '2'
         expect(Braintree::Transaction).to receive(:sale)
-          .with(payment_method_nonce: nonce, amount: amount)
-          .and_raise(braintree_error)
+          .with(
+            payment_method_nonce: nonce,
+            amount: amount,
+            options: { submit_for_settlement: true }
+          ).and_raise(braintree_error)
         expect { Payment.new(nonce, amount).pay }.to raise_error(Payment::PaymentServiceError)
       end
     end
@@ -75,8 +78,11 @@ describe Payment do
       nonce = 'fake-valid-nonce'
       amount = '2'
       expect(Braintree::Transaction).to receive(:sale)
-        .with(payment_method_nonce: nonce, amount: amount)
-        .and_raise(Braintree::ConfigurationError.new('setting', 'message'))
+        .with(
+          payment_method_nonce: nonce,
+          amount: amount,
+          options: { submit_for_settlement: true }
+        ).and_raise(Braintree::ConfigurationError.new('setting', 'message'))
       expect { Payment.new(nonce, amount).pay }.to raise_error(Payment::PaymentServiceError)
     end
   end

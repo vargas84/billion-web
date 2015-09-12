@@ -35,7 +35,13 @@ class Payment
 
   def pay
     transaction = Braintree::Transaction
-    result = transaction.sale(payment_method_nonce: @token, amount: @amount)
+    result = transaction.sale(
+      payment_method_nonce: @token,
+      amount: @amount,
+      options: {
+        submit_for_settlement: true
+      }
+    )
 
     return true if result.success?
 
