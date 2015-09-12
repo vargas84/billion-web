@@ -20,5 +20,20 @@
         error.insertAfter(element);
       }
     }
-  })
+  });
+
+  $.validator.addMethod('autonumeric', function(value, element, params) {
+    //debugger;
+    var num = parseFloat(value.replace(/[^\d\.]/, ''));
+
+    var isNumber = !isNaN(num),
+        satisfyMin = isNumber && present(params.min) ? num >= params.min : true,
+        satisfyMax = isNumber && present(params.max) ? num >= params.max : true;
+
+    return this.optional(element) || (isNumber && satisfyMin && satisfyMax);
+  });
+
+  function present(value) {
+    return typeof value !== 'undefined' && value !== null
+  }
 }());
