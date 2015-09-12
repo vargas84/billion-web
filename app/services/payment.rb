@@ -34,13 +34,12 @@ class Payment
   end
 
   def pay
-    transaction = Braintree::Transaction
-    result = transaction.sale(payment_method_nonce: @token, amount: @amount)
+    transaction_result = create_transaction
 
-    return true if result.success?
+    return true if transaction_result.success?
 
     # validation error, e.g. rejected etc
-    @errors = result.errors.map(&:message)
+    @errors = transaction_result.errors.map(&:message)
     if @errors.size == 0
       @errors << 'Sorry, we are having trouble processing your payment.'
     end
@@ -58,6 +57,16 @@ class Payment
   end
 
   private
+
+  def create_transaction
+    Braintree::Transaction.sale(
+      payment_method_nonce: @token,
+      amount: @amount,
+      options: {
+        submit_for_settlement: true
+      }
+    )
+  end
 
   def validate_amount_type
     return if @amount.is_a?(String) || @amount.is_a?(BigDecimal)
