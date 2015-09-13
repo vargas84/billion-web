@@ -31,6 +31,16 @@
   function setupFormValidation(form) {
     var $form = $(form);
     $form.validate({
+      rules: {
+        'transaction[amount]': {
+          autonumeric: {
+            min: 1
+          }
+        }
+      },
+      invalidHandler: function(form, validator) {
+        console.log(validator);
+      },
       highlight: function(element) {
         if ($(element).hasClass('inline-form-field')) {
           $(element).addClass('invalid');
