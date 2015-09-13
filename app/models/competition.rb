@@ -9,4 +9,8 @@ class Competition < ActiveRecord::Base
   def self.current_competition
     find_by('start_date < :now and end_date > :now', now: Time.now)
   end
+
+  def total_raised
+    transactions.where('sender_id IS NULL').sum(:amount)
+  end
 end

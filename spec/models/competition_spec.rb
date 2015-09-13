@@ -13,6 +13,18 @@ describe Competition, type: :model do
     it { is_expected.to have_many(:transactions).inverse_of(:competition) }
   end
 
+  describe '#total_raised' do
+    it 'returns the total funds raised' do
+      competition = create :competition
+      create :transaction, sender: nil, competition: competition, amount: 10.00
+      create :transaction, sender: nil, competition: competition, amount: 20.00
+      create :transaction, sender: nil, competition: competition, amount: 30.00
+      create :transaction, competition: competition, amount: 40.00
+
+      expect(competition.total_raised).to eq(60.00)
+    end
+  end
+
   describe '.current_competition' do
     context 'there is a current competition' do
       it 'returns the current competition' do
