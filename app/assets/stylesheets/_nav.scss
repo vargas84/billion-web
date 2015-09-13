@@ -1,8 +1,34 @@
-nav {
+.navbar-default {
   background-color: $white;
   padding: $grid-gutter-width / 2;
+  margin-bottom: 0;
+
+  .navbar-brand {
+    padding: 0;
+  }
 
   .logo {
     height: 30px;
+    margin: 10px 15px;
+  }
+
+  .navbar-nav {
+    li {
+      a.navbar-text {
+        font-size: ms(0);
+        padding: 0;
+      }
+    }
+  }
+
+  .navbar-total {
+    margin: 0;
+    color: $brand-primary;
+    border: 1px solid $brand-primary;
+    padding: 5px 10px;
+
+    @media (min-width: $screen-sm) {
+      margin: 10px 15px;
+    }
   }
 }
