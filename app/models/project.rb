@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :short_name, use: :slugged
+
   belongs_to :competition, inverse_of: :projects
   belongs_to :competitor, class_name: 'Project'
   has_many :memberships, inverse_of: :project, dependent: :destroy
