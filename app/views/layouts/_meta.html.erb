@@ -1,35 +1,38 @@
 <%# Templates %>
 <%# https://scotch.io/quick-tips/all-search-and-social-media-meta-tags-starter-template%>
 
-<%# TODO: Move this to i18n %>
 
-<% title = "Billion - Changing the way the world crowdfunds. For good." %>
-<% description = "Billion is a competitive crowdfunding platform for social good." %>
-<% image = image_url('share-image.png') %>
-
-
-<title><%= title %></title>
-<meta name="description" content="<%= description %>">
-<link rel="canonical" href="<%= root_url %>">
+<title><%= meta_title %></title>
+<meta name="description" content="<%= meta_description %>">
+<link rel="canonical" href="<%= meta_canonical %>">
 
 <!-- Mobile Friendly -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!-- Social: Twitter -->
-<meta name="twitter:card" content="Billion Effect">
+<meta name="twitter:card" content="<%= meta_image.present? ? 'summary_large_image' : 'summary' %>">
 <meta name="twitter:site" content="@BillionEffect">
-<meta name="twitter:description" content="<%= description %>">
-<meta name="twitter:image:src" content="<%= image %>">
+<meta name="twitter:title" content="<%= meta_title %>">
+<meta name="twitter:description" content="<%= meta_description %>">
+<% if meta_image.present? %>
+  <meta name="twitter:image:src" content="<%= meta_image %>">
+<% end %>
 
 <!-- Social: Facebook / Open Graph -->
-<meta property="og:url" content="<%= root_url %>">
+<meta property="og:url" content="<%= meta_canonical %>">
 <meta property="og:type" content="website">
-<meta property="og:title" content="<%= title %>">
-<meta property="og:image" content="<%= image %>"/>
-<meta property="og:description" content="<%= description %>">
-<meta property="og:site_name" content="BillionEffect">
+<meta property="og:title" content="<%= meta_title %>">
+<meta property="og:description" content="<%= meta_description %>">
+<meta property="og:site_name" content="Billion">
+
+<% if meta_image.present? %>
+  <meta property="og:image" content="<%= meta_image %>"/>
+<% end %>
 
 <!-- Social: Google+ / Schema.org  -->
-<meta itemprop="name" content="<%= title %>">
-<meta itemprop="description" content="<%= description %>">
-<meta itemprop="image" content="<%= image %>">
+<meta itemprop="name" content="<%= meta_title %>">
+<meta itemprop="description" content="<%= meta_description %>">
+
+<% if meta_image.present? %>
+  <meta itemprop="image" content="<%= meta_image %>">
+<% end %>

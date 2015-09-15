@@ -17,5 +17,8 @@ Metrics/LineLength:
 Style/BlockComments:
   Enabled: false
 
+Metrics/MethodLength:
+  Max: 15
+
 Style/AlignParameters:
   EnforcedStyle: with_fixed_indentation

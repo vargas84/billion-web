@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TransactionsController, type: :controller do
-
   describe 'GET new' do
     it 'returns http success' do
       get :new
@@ -115,5 +114,4 @@ describe TransactionsController, type: :controller do
       end
     end
   end
-
 end
