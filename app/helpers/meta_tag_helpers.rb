@@ -50,7 +50,7 @@ module MetaTagHelpers
 
   meta_helper :description, default: I18n.t('meta.default_description')
 
-  meta_helper :image, default: -> { image_url('share_image.png') }
+  meta_helper :image, default: -> { image_url('share-image.png') }
 
   meta_helper :canonical, default: -> { request.original_url }
 end
