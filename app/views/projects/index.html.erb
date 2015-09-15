@@ -14,7 +14,7 @@
 <section class='projects-body'>
   <div class='container'>
     <div class='row'>
-      <% Project.all.each do |project| %>
+      <% Project.all.shuffle.each do |project| %>
         <div class='col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-3'>
           <%= render partial: 'shared/project_card', locals: { project: project } %>
         </div>
