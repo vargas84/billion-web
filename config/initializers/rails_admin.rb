@@ -40,4 +40,20 @@ RailsAdmin.config do |config|
       field :profile_image_url
     end
   end
+
+  config.model 'Project' do
+    edit do
+      field :name
+      field :blurb, :text
+      field :description, :text
+      field :competition
+      field :video_url
+      field :card_image_url
+      field :project_image_url
+      field :collaborators
+      field :sent_transactions
+      field :received_transactions
+      field :short_name
+    end
+  end
 end
