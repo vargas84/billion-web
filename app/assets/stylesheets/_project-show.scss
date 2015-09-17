@@ -56,6 +56,7 @@
     }
   }
 
+
   &-body {
     background-color: $white;
     padding: ($grid-gutter-width / 2) 0 $grid-gutter-width;
@@ -103,6 +104,13 @@
     .project-body-tabs {
       border-bottom: 1px solid $body-bg;
       margin-bottom: $grid-gutter-width / 2;
+
+      .social-sharer {
+        float: right;
+        .social-share-icon {
+          margin: 0 0.2em 0;
+        }
+      }
     }
 
     .project-body-tab {
@@ -132,6 +140,19 @@
           bottom: -10px; left: 50%;
           margin-left: -10px;
         }
+      }
+    }
+
+
+    .social-sharer-footer {
+      p {
+        margin-bottom: 0;
+      }
+
+      .social-share-icon {
+        font-size: ms(0);
+        margin-left: 0;
+        margin-right: 0.5em;
       }
     }
   }

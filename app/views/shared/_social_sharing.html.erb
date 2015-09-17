@@ -1,0 +1,10 @@
+<% url = meta_canonical %>
+<%= link_to "http://www.facebook.com/sharer.php?u=#{url}", class: 'social-share-icon social-share-facebook' do %>
+  <%= icon('facebook-f') %>
+<% end %>
+<%= link_to "http://twitter.com/share?url=#{url}", class: 'social-share-icon social-share-twitter' do %>
+  <%= icon('twitter') %>
+<% end %>
+<%= link_to "https://plus.google.com/share?&hl=en&url=#{url}", class: 'social-share-icon social-share-google-plus' do %>
+  <%= icon('google-plus') %>
+<% end %>
