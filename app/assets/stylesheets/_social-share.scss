@@ -1,0 +1,35 @@
+.social-share {
+  &-icon {
+    background-color: red;
+    color: white;
+    display: inline-block;
+    line-height: 2em;
+    text-align: center;
+    width: 2em;
+
+    &:hover, &:active, &:focus {
+      color: white;
+    }
+
+  }
+
+  @mixin social-icon($color) {
+    background-color: $color;
+    &:hover {
+      background-color: lighten($color, 5%);
+    }
+  }
+
+
+  &-facebook {
+    @include social-icon(#3b5998);
+  }
+
+  &-twitter {
+    @include social-icon(#55acee);
+  }
+
+  &-google-plus {
+    @include social-icon(#dc4e41);
+  }
+}
