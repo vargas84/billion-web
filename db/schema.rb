@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913034833) do
+ActiveRecord::Schema.define(version: 20150918000705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150913034833) do
     t.string   "project_image_url"
     t.string   "short_name"
     t.string   "slug"
+    t.datetime "eliminated_at"
   end
 
   add_index "projects", ["competition_id"], name: "index_projects_on_competition_id", using: :btree

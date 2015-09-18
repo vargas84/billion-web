@@ -48,7 +48,7 @@
           </span>
           to
 
-          <%= f.collection_select :recipient_id, Project.all, :id, :name, { prompt: '...' },
+          <%= f.collection_select :recipient_id, @projects, :id, :name, { prompt: '...' },
             class: 'project-select inline-form-field',
             required: true %>.
           </p>

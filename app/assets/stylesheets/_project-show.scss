@@ -22,10 +22,19 @@
       margin: $grid-gutter-width 0;
     }
 
-    .project-support .btn {
-      padding: $grid-gutter-width / 2;
+    .project-support {
       margin-top: $grid-gutter-width;
-      font-size: ms(2);
+
+      p {
+        text-align: center;
+        color: $brand-danger;
+        line-height: ms(3);
+      }
+
+      .btn {
+        padding: $grid-gutter-width / 2;
+        font-size: ms(2);
+      }
     }
 
     .project-stat-header {
