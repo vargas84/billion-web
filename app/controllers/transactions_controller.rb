@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @project = @competition.projects.find_by(id: params[:project_id])
+    @project = @competition.projects.find_by(id: params[:transaction][:recipient_id])
 
     unless authorize_project(@project)
       @transaction = Transaction.new(recipient_id: @project.try(:id))
@@ -45,7 +45,7 @@ class TransactionsController < ApplicationController
       flash[:error] = ['The selected project has been eliminated.']
     end
 
-    return true unless flash[:error].any?
+    return true if flash[:error].blank?
   end
 
   def set_projects
