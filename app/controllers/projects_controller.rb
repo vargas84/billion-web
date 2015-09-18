@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
   def show
-    @project = Project.friendly.find params[:id]
+    @project = @competition.projects.friendly.find params[:id]
   end
 
   def index
-    @projects = Project.all
+    @projects = @competition.projects.order_by_points.order('eliminated_at NULLS FIRST, random()')
   end
 end

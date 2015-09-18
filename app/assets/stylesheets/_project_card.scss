@@ -45,6 +45,10 @@
     float: right;
   }
 
+  &-eliminated {
+    opacity: 0.3;
+  }
+
   @media (min-width: $screen-sm) {
     .card-content {
       height: 12em;

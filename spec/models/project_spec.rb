@@ -104,4 +104,16 @@ describe Project, type: :model do
       expect(project.points_per_donation).to eq(0)
     end
   end
+
+  describe '#eliminated?' do
+    it 'is eliminated if has eliminated_at' do
+      project = create :project, eliminated_at: DateTime.now
+      expect(project).to be_eliminated
+    end
+
+    it 'is not eliminated if eliminated_at is not present' do
+      project = create :project, eliminated_at: nil
+      expect(project).not_to be_eliminated
+    end
+  end
 end

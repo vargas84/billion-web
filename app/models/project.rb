@@ -15,6 +15,17 @@ class Project < ActiveRecord::Base
 
   after_create :set_competitor_inverse, if: 'competitor.present?'
 
+  # TODO: spec for scopes
+
+  scope :active, -> { where(eliminated_at: nil) }
+
+  scope :order_by_points, lambda {
+    select('projects.*, sum(points) as points')
+      .joins('LEFT JOIN transactions ON projects.id = transactions.recipient_id')
+      .order('points DESC NULLS LAST')
+      .group('projects.id')
+  }
+
   def points_donated
     received_transactions.sum(:points)
   end
@@ -26,6 +37,10 @@ class Project < ActiveRecord::Base
   def points_per_donation
     return 0 if donation_count == 0
     points_donated / donation_count
+  end
+
+  def eliminated?
+    eliminated_at.present?
   end
 
   private

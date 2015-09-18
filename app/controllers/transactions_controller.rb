@@ -4,27 +4,53 @@ class TransactionsController < ApplicationController
   rescue_from Payment::RecordInvalid, with: :render_payment_error
   rescue_from ActiveRecord::RecordInvalid, with: :render_error
 
+  before_action :set_projects
   before_action :clean_amount, only: [:create]
-  before_action :set_competition, only: [:create]
 
   def new
-    @transaction = Transaction.new(recipient_id: params[:project_id])
+    @projects = @competition.projects.active
+    @project = @projects.find_by id: params[:project_id]
+    @transaction = Transaction.new(recipient_id: @project.try(:id))
   end
 
   def create
-    accept_payment
+    @project = @competition.projects.find_by(id: params[:project_id])
 
-    ActiveRecord::Base.transaction do
-      set_temp_user
-      purchase_points
-      allocate_points
+    unless authorize_project(@project)
+      @transaction = Transaction.new(recipient_id: @project.try(:id))
+      return render :new
     end
+
+    purchase_and_allocate_points
     TransactionMailer.confirmation(@purchase, @transaction).deliver_now
 
     render :create, status: :created
   end
 
   private
+
+  def purchase_and_allocate_points
+    ActiveRecord::Base.transaction do
+      set_temp_user
+      purchase_points
+      allocate_points
+      accept_payment
+    end
+  end
+
+  def authorize_project(project)
+    if project.nil?
+      flash[:error] = ['The selected project does not exists.']
+    elsif project.eliminated?
+      flash[:error] = ['The selected project has been eliminated.']
+    end
+
+    return true unless flash[:error].any?
+  end
+
+  def set_projects
+    @projects = @competition.projects.active
+  end
 
   def clean_amount
     params.tap do |p|
@@ -39,10 +65,6 @@ class TransactionsController < ApplicationController
     email = temp_user && temp_user[:email]
 
     @temp_user = TempUser.find_or_create_by! email: email
-  end
-
-  def set_competition
-    @competition = Competition.current_competition
   end
 
   def purchase_params

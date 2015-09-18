@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :project do
     name { Faker::Company.name }
+    short_name { name.parameterize }
     blurb { Faker::Lorem.paragraph }
     description do
       rand(3..4).times.map do
