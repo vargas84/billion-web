@@ -15,7 +15,6 @@ class Project < ActiveRecord::Base
 
   validates :name, presence: true
 
-
   # TODO: spec for scopes
 
   scope :active, -> { where(eliminated_at: nil) }
@@ -27,6 +26,16 @@ class Project < ActiveRecord::Base
       .order('points DESC NULLS LAST')
       .group('projects.id')
   }
+
+  # TODO: There is a better way to do this. This makes me sad.
+  def current_competitor
+    match = competition.active_round
+      .try(:matches)
+      .try(:where, 'project_1_id = :id OR project_2_id = :id', id: id)
+      .try(:first)
+
+    match.project_1_id == id ? match.project_2 : match.project_1 unless match.nil?
+  end
 
   def points_donated
     received_transactions.sum(:points)

@@ -49,6 +49,32 @@ describe Project, type: :model do
     end
   end
 
+  describe '#current_competitor' do
+    context 'there is current competitor' do
+      it 'returns the current competitor' do
+        competition = create :competition
+        project = create :project, competition: competition
+        competitor = create :project, competition: competition
+        round = create :active_round, competition: competition
+        create :match, round: round, project_1: project, project_2: competitor
+
+        expect(project.current_competitor).to eq(competitor)
+      end
+    end
+
+    context 'there is not a current competitor' do
+      it 'returns nil' do
+        competition = create :competition
+        project = create :project, competition: competition
+        competitor = create :project, competition: competition
+        round = create :inactive_round, competition: competition
+        create :match, round: round, project_1: project, project_2: competitor
+
+        expect(project.current_competitor).to be_nil
+      end
+    end
+  end
+
   describe '#points_donated' do
     it 'returns the total points donated to a project' do
       project = create :project
