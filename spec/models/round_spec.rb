@@ -5,6 +5,7 @@ describe Round, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:competition) }
+    it { is_expected.to validate_presence_of(:round_number) }
     it { is_expected.to validate_presence_of(:started_at) }
     it { is_expected.to validate_presence_of(:ended_at) }
   end
