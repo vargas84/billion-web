@@ -338,6 +338,28 @@
     }
   }
 
+  &-partners {
+    text-align: center;
+    background-color: darken($body-bg, 3%);
+    padding: $grid-gutter-width 0;
+
+    img {
+      max-width: 120px;
+      margin: 0 $grid-gutter-width $grid-gutter-width;
+      @include transition(all 0.2s);
+
+      -webkit-filter: grayscale(1);
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+
+      &:hover {
+        -webkit-filter: grayscale(0);
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+      }
+    }
+  }
+
   &-footer {
     background-color: $brand-primary;
     padding: $grid-gutter-width * 2 0;
