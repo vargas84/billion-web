@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919051255) do
+ActiveRecord::Schema.define(version: 20150919060542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 20150919051255) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "round_id"
+    t.integer  "project_1_id"
+    t.integer  "project_2_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "matches", ["project_1_id"], name: "index_matches_on_project_1_id", using: :btree
+  add_index "matches", ["project_2_id"], name: "index_matches_on_project_2_id", using: :btree
+  add_index "matches", ["round_id"], name: "index_matches_on_round_id", using: :btree
 
   create_table "memberships", force: :cascade do |t|
     t.integer "project_id", null: false
@@ -160,5 +173,8 @@ ActiveRecord::Schema.define(version: 20150919051255) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "matches", "projects", column: "project_1_id"
+  add_foreign_key "matches", "projects", column: "project_2_id"
+  add_foreign_key "matches", "rounds"
   add_foreign_key "rounds", "competitions"
 end

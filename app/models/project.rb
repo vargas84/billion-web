@@ -8,6 +8,10 @@ class Project < ActiveRecord::Base
   has_many :comments, inverse_of: :project, dependent: :destroy
   has_many :sent_transactions, as: :sender, class_name: 'Transaction'
   has_many :received_transactions, as: :recipient, class_name: 'Transaction'
+  has_many :matches_as_1, class_name: 'Match', foreign_key: :project_1_id,
+    inverse_of: :project_1
+  has_many :matches_as_2, class_name: 'Match', foreign_key: :project_2_id,
+    inverse_of: :project_2
 
   validates :name, presence: true
 

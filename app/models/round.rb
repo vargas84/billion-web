@@ -1,5 +1,6 @@
 class Round < ActiveRecord::Base
   belongs_to :competition, inverse_of: :rounds
+  has_many :matches, inverse_of: :round, dependent: :destroy
 
   validates :competition, presence: true
   validates :started_at, presence: true

@@ -11,5 +11,11 @@ describe Round, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:competition).inverse_of(:rounds) }
+
+    it do
+      is_expected.to have_many(:matches)
+        .inverse_of(:round)
+        .dependent(:destroy)
+    end
   end
 end

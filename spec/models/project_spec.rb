@@ -33,6 +33,20 @@ describe Project, type: :model do
         .inverse_of(:project)
         .dependent(:destroy)
     end
+
+    it do
+      is_expected.to have_many(:matches_as_1)
+        .class_name('Match')
+        .with_foreign_key('project_1_id')
+        .inverse_of(:project_1)
+    end
+
+    it do
+      is_expected.to have_many(:matches_as_2)
+        .class_name('Match')
+        .with_foreign_key('project_2_id')
+        .inverse_of(:project_2)
+    end
   end
 
   describe '#points_donated' do
