@@ -1,6 +1,7 @@
 class Competition < ActiveRecord::Base
   has_many :projects, inverse_of: :competition, dependent: :destroy
   has_many :transactions, inverse_of: :competition, dependent: :destroy
+  has_many :rounds, inverse_of: :competition, dependent: :destroy
 
   # TODO: Add validations to ensure only 1 competition per time period
   # TODO: validate that end_date > start_date
