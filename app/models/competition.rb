@@ -7,8 +7,14 @@ class Competition < ActiveRecord::Base
   # TODO: validate that end_date > start_date
   validates :code_name, :start_date, :end_date, presence: true
 
+  # TODO: Opportunity for null object?
   def self.current_competition
     find_by('start_date < :now and end_date > :now', now: Time.now)
+  end
+
+  # TODO: Opportunity for null object?
+  def active_round
+    rounds.find_by('started_at < :now and ended_at > :now', now: Time.now)
   end
 
   def total_raised

@@ -40,6 +40,27 @@ describe Competition, type: :model do
     end
   end
 
+  describe '#active_round' do
+   context 'with active round' do
+     it 'returns the active round' do
+       competition = create :competition
+       active_round = create :active_round, competition: competition
+       create :inactive_round, competition: competition
+
+       expect(competition.active_round).to eq(active_round)
+     end
+   end
+
+   context 'with no active round' do
+     it 'returns nil' do
+       competition = create :competition
+       create :inactive_round, competition: competition
+
+       expect(competition.active_round).to be_nil
+     end
+   end
+  end
+
   describe '.current_competition' do
     context 'there is a current competition' do
       it 'returns the current competition' do
