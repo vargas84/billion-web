@@ -1,0 +1,36 @@
+<% project_1 = matchup.project_1 %>
+<% project_2 = matchup.project_2 %>
+
+<div class='matchup-cards'>
+  <div class='matchup-card matchup-card-1'>
+    <div class='matchup-card-title'>
+      <%= link_to project_1.name, project_path(project_1), title: project_1.name %>
+    </div>
+
+    <div class='matchup-card-blurb'>
+      <%= truncate(project_1.blurb, length: 140) %>
+    </div>
+
+    <div class='matchup-score'>
+      <span>
+        <%= number_with_delimiter project_1.points_donated %>
+      </span>
+    </div>
+  </div>
+
+  <div class='matchup-card matchup-card-2'>
+    <div class='matchup-score'>
+      <span>
+        <%= number_with_delimiter project_2.points_donated %>
+      </span>
+    </div>
+
+    <div class='matchup-card-title'>
+      <%= link_to project_2.name, project_path(project_2), title: project_2.name %>
+    </div>
+
+    <div class='matchup-card-blurb'>
+      <%= truncate(project_2.blurb, length: 140)%>
+    </div>
+  </div>
+</div>

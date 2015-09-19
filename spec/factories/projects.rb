@@ -30,9 +30,5 @@ FactoryGirl.define do
         create_list(:membership, 3, project: project)
       end
     end
-
-    trait :with_competitor do
-      association :competitor, factory: :project
-    end
   end
 end

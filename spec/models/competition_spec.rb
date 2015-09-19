@@ -9,8 +9,23 @@ describe Competition, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:projects).inverse_of(:competition) }
-    it { is_expected.to have_many(:transactions).inverse_of(:competition) }
+    it do
+      is_expected.to have_many(:projects)
+        .inverse_of(:competition)
+        .dependent(:destroy)
+    end
+
+    it do
+      is_expected.to have_many(:transactions)
+        .inverse_of(:competition)
+        .dependent(:destroy)
+    end
+
+    it do
+      is_expected.to have_many(:rounds)
+        .inverse_of(:competition)
+        .dependent(:destroy)
+    end
   end
 
   describe '#total_raised' do
@@ -22,6 +37,27 @@ describe Competition, type: :model do
       create :transaction, competition: competition, amount: 40.00
 
       expect(competition.total_raised).to eq(60.00)
+    end
+  end
+
+  describe '#active_round' do
+    context 'with active round' do
+      it 'returns the active round' do
+        competition = create :competition
+        active_round = create :active_round, competition: competition
+        create :inactive_round, competition: competition
+
+        expect(competition.active_round).to eq(active_round)
+      end
+    end
+
+    context 'with no active round' do
+      it 'returns nil' do
+        competition = create :competition
+        create :inactive_round, competition: competition
+
+        expect(competition.active_round).to be_nil
+      end
     end
   end
 

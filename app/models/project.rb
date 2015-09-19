@@ -3,17 +3,17 @@ class Project < ActiveRecord::Base
   friendly_id :short_name, use: :slugged
 
   belongs_to :competition, inverse_of: :projects
-  belongs_to :competitor, class_name: 'Project'
   has_many :memberships, inverse_of: :project, dependent: :destroy
   has_many :collaborators, through: :memberships, source: :user
   has_many :comments, inverse_of: :project, dependent: :destroy
   has_many :sent_transactions, as: :sender, class_name: 'Transaction'
   has_many :received_transactions, as: :recipient, class_name: 'Transaction'
+  has_many :matches_as_1, class_name: 'Match', foreign_key: :project_1_id,
+                          inverse_of: :project_1
+  has_many :matches_as_2, class_name: 'Match', foreign_key: :project_2_id,
+                          inverse_of: :project_2
 
   validates :name, presence: true
-  validates :competitor_id, uniqueness: true, allow_nil: true
-
-  after_create :set_competitor_inverse, if: 'competitor.present?'
 
   # TODO: spec for scopes
 
@@ -26,6 +26,15 @@ class Project < ActiveRecord::Base
       .order('points DESC NULLS LAST')
       .group('projects.id')
   }
+
+  # TODO: There is a better way to do this. This makes me sad.
+  def current_competitor
+    match = competition.active_round.try(:matches)
+            .try(:where, 'project_1_id = :id OR project_2_id = :id', id: id)
+            .try(:first)
+
+    match.project_1_id == id ? match.project_2 : match.project_1 unless match.nil?
+  end
 
   def points_donated
     received_transactions.sum(:points)
@@ -42,11 +51,5 @@ class Project < ActiveRecord::Base
 
   def eliminated?
     eliminated_at.present?
-  end
-
-  private
-
-  def set_competitor_inverse
-    competitor.update_attribute :competitor, self
   end
 end

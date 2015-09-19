@@ -1,6 +1,6 @@
 <div class="row stats-without-competitor">
   <div class="col-xs-4 project-stat-container text-left">
-    <% points_donated = @project.points_donated %>
+    <% points_donated = project.points_donated %>
     <div class="project-stat-pts">
       <%= number_with_delimiter points_donated %>
     </div>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="col-xs-4 project-stat-container text-right">
-    <% donation_count = @project.donation_count %>
+    <% donation_count = project.donation_count %>
     <div class="project-stat-pts">
       <%= number_with_delimiter donation_count %>
     </div>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="col-xs-4 project-stat-container text-right">
-    <% points_per_donation = @project.points_per_donation %>
+    <% points_per_donation = project.points_per_donation %>
     <div class="project-stat-pts">
       <%= number_with_delimiter points_per_donation %>
     </div>

@@ -1,4 +1,4 @@
-<% competitor = (Project.all - [@project]).sample %>
+<% competitor = (Project.where(eliminated_at: nil) - [@project]).sample %>
 
 <%= link_to project_path(competitor), class: 'project-competitor-container' do %>
   <section class="project-competitor">

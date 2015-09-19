@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe TransactionsController, type: :controller do
   describe 'GET new' do
+    before { create :current_competition }
+
     it 'returns http success' do
       get :new
       expect(response).to have_http_status(:success)
@@ -11,7 +13,7 @@ describe TransactionsController, type: :controller do
   describe 'GET create' do
     before { create :current_competition }
 
-    let(:project) { create :project }
+    let(:project) { create :project, competition: Competition.current_competition }
     let(:temp_user) { create :temp_user }
     let(:amount) { '$2,222.11' }
 

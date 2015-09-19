@@ -5,25 +5,10 @@ describe Project, type: :model do
 
   describe 'validations' do
     it { should validate_presence_of(:name) }
-
-    it 'should validate uniqueness of competitor' do
-      existing_project = create :project, :with_competitor
-      project = build :project
-
-      expect { project.competitor = existing_project }.to change { project.valid? }
-        .from(true).to(false)
-    end
-
-    it 'should allow competitor to be nil' do
-      project = build :project
-
-      expect(project.valid?).to eq(true)
-    end
   end
 
   describe 'associations' do
     it { is_expected.to belong_to(:competition).inverse_of(:projects) }
-    it { is_expected.to belong_to(:competitor).class_name('Project') }
     it { is_expected.to have_many(:sent_transactions).class_name('Transaction') }
 
     it do
@@ -48,19 +33,44 @@ describe Project, type: :model do
         .inverse_of(:project)
         .dependent(:destroy)
     end
+
+    it do
+      is_expected.to have_many(:matches_as_1)
+        .class_name('Match')
+        .with_foreign_key('project_1_id')
+        .inverse_of(:project_1)
+    end
+
+    it do
+      is_expected.to have_many(:matches_as_2)
+        .class_name('Match')
+        .with_foreign_key('project_2_id')
+        .inverse_of(:project_2)
+    end
   end
 
-  describe 'before_create' do
-    describe 'set_competitor_inverse' do
-      it "sets competitor's competitor to self" do
-        project = build :project, :with_competitor
-        competitor = project.competitor
+  describe '#current_competitor' do
+    context 'there is current competitor' do
+      it 'returns the current competitor' do
+        competition = create :competition
+        project = create :project, competition: competition
+        competitor = create :project, competition: competition
+        round = create :active_round, competition: competition
+        create :match, round: round, project_1: project, project_2: competitor
 
-        expect(competitor.competitor).to be_nil
+        expect(project.current_competitor).to eq(competitor)
+      end
+    end
 
-        project.save
+    context 'there is not a current competitor' do
+      it 'returns nil' do
+        competition = create :competition
+        project = create :project, competition: competition
+        competitor = create :project, competition: competition
+        round = create :inactive_round, competition: competition
+        create :match, round: round, project_1: project, project_2: competitor
 
-        expect(competitor.competitor).to be(project)
+        expect(project.current_competitor).to be_nil
       end
     end
   end

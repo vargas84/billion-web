@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918000705) do
+ActiveRecord::Schema.define(version: 20150919081712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 20150918000705) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "matches", force: :cascade do |t|
+    t.integer  "round_id"
+    t.integer  "project_1_id"
+    t.integer  "project_2_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "matches", ["project_1_id"], name: "index_matches_on_project_1_id", using: :btree
+  add_index "matches", ["project_2_id"], name: "index_matches_on_project_2_id", using: :btree
+  add_index "matches", ["round_id"], name: "index_matches_on_round_id", using: :btree
+
   create_table "memberships", force: :cascade do |t|
     t.integer "project_id", null: false
     t.integer "user_id",    null: false
@@ -62,7 +75,6 @@ ActiveRecord::Schema.define(version: 20150918000705) do
     t.integer  "competition_id",                 null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.integer  "competitor_id"
     t.string   "video_url"
     t.string   "card_image_url"
     t.string   "project_image_url"
@@ -72,7 +84,6 @@ ActiveRecord::Schema.define(version: 20150918000705) do
   end
 
   add_index "projects", ["competition_id"], name: "index_projects_on_competition_id", using: :btree
-  add_index "projects", ["competitor_id"], name: "index_projects_on_competitor_id", using: :btree
   add_index "projects", ["name"], name: "index_projects_on_name", using: :btree
   add_index "projects", ["short_name"], name: "index_projects_on_short_name", using: :btree
   add_index "projects", ["slug"], name: "index_projects_on_slug", unique: true, using: :btree
@@ -82,6 +93,18 @@ ActiveRecord::Schema.define(version: 20150918000705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "competition_id"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "round_number"
+  end
+
+  add_index "rounds", ["competition_id"], name: "index_rounds_on_competition_id", using: :btree
 
   create_table "temp_users", force: :cascade do |t|
     t.string   "email",                      null: false
@@ -151,5 +174,8 @@ ActiveRecord::Schema.define(version: 20150918000705) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
-  add_foreign_key "projects", "projects", column: "competitor_id"
+  add_foreign_key "matches", "projects", column: "project_1_id"
+  add_foreign_key "matches", "projects", column: "project_2_id"
+  add_foreign_key "matches", "rounds"
+  add_foreign_key "rounds", "competitions"
 end
