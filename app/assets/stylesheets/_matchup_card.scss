@@ -66,16 +66,19 @@
   }
 
   &-card-blurb {
-    height: 7em;
     font-size: ms(0);
     line-height: ms(2);
+  }
+
+  &-body {
+    height: 5 * ms(2);
 
     @media (min-width: $screen-sm) {
-      height: 4 * ms(2);
+      height: 7 * ms(2);
     }
 
     @media (min-width: $screen-md) {
-      height: 3 * ms(2);
+      height: 4 * ms(2);
     }
   }
 
