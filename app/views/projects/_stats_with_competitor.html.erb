@@ -1,18 +1,30 @@
 <div class="row stats-with-competitor">
   <div class="col-xs-4 project-stat-container text-center">
+    <% points_donated = project.points_donated %>
     <div class="project-stat-header"><strong>Us</strong></div>
-    <div class="project-stat-pts">3,265</div>
-    <div class="project-stat-currency">Points</div>
+    <div class="project-stat-pts">
+      <%= number_with_delimiter points_donated %>
+    </div>
+    <div class="project-stat-currency">
+      <%= 'Point'.pluralize points_donated %>
+    </div>
   </div>
 
   <div class="col-xs-4 project-stat-container text-center">
-    <div class="project-stat-header">04:12:43</div>
+    <div class="project-stat-header">
+      Round <%= project.competition.active_round.round_number %>
+    </div>
     <div class="project-stat-vs">vs</div>
   </div>
 
   <div class="col-xs-4 project-stat-container text-center">
+    <% competitor_points = competitor.points_donated %>
     <div class="project-stat-header"><strong>Them</strong></div>
-    <div class="project-stat-pts">3,265</div>
-    <div class="project-stat-currency">Points</div>
+    <div class="project-stat-pts">
+      <%= number_with_delimiter competitor_points %>
+    </div>
+    <div class="project-stat-currency">
+      <%= 'Point'.pluralize competitor_points %>
+    </div>
   </div>
 </div>

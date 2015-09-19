@@ -34,10 +34,16 @@
           </div>
 
           <div class="project-stats">
-            <% if @project.competitor %>
-              <%= render 'stats_with_competitor' %>
+            <% if @project.current_competitor %>
+              <%= render partial: 'stats_with_competitor',
+                locals: {
+                  project: @project,
+                  competitor: @project.current_competitor
+                }
+              %>
             <% else %>
-              <%= render 'stats_without_competitor' %>
+              <%= render partial: 'stats_without_competitor',
+                locals: { project: @project} %>
             <% end %>
           </div>
 
@@ -89,7 +95,7 @@
   </div>
 </div>
 
-<% if @project.competitor %>
+<% if @project.current_competitor %>
   <%= render "current_competitor_feature" %>
 <% else %>
   <%= render "random_competitor_feature" %>
