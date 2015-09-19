@@ -28,7 +28,7 @@ RailsAdmin.config do |config|
   end
 
   config.included_models = %w(User TempUser Role Membership Project Transaction
-                              Competition Membership)
+                              Competition Membership Round Match)
 
   config.model 'User' do
     edit do
