@@ -3,7 +3,6 @@ class Project < ActiveRecord::Base
   friendly_id :short_name, use: :slugged
 
   belongs_to :competition, inverse_of: :projects
-  belongs_to :competitor, class_name: 'Project'
   has_many :memberships, inverse_of: :project, dependent: :destroy
   has_many :collaborators, through: :memberships, source: :user
   has_many :comments, inverse_of: :project, dependent: :destroy
@@ -11,9 +10,7 @@ class Project < ActiveRecord::Base
   has_many :received_transactions, as: :recipient, class_name: 'Transaction'
 
   validates :name, presence: true
-  validates :competitor_id, uniqueness: true, allow_nil: true
 
-  after_create :set_competitor_inverse, if: 'competitor.present?'
 
   # TODO: spec for scopes
 
@@ -42,11 +39,5 @@ class Project < ActiveRecord::Base
 
   def eliminated?
     eliminated_at.present?
-  end
-
-  private
-
-  def set_competitor_inverse
-    competitor.update_attribute :competitor, self
   end
 end
