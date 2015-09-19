@@ -1,10 +1,11 @@
+<% active_round = @competition.active_round %>
 <div class='container'>
   <div class='landing-section-heading'>
-    <h1>Need To Put</h1>
+    <h1>The Billion Bracket: Round <%= active_round.round_number %></h1>
     <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
         <p class='landing-section-subheading'>
-          Whatever You Want
+          We are looking to improve Columbus. Help us find the best way.
         </p>
       </div>
     </div>
@@ -12,25 +13,29 @@
 
   <div class='row'>
 
-      <%
-        # Poor man model
-        model = Struct.new(:project_1, :project_2)
-        projects = Project.where(eliminated_at: nil).order('random()')
-        matchups = projects.each_slice(2).map do |(p1, p2)|
-          model.new p1, p2
-        end
-      %>
-
-    <% matchups.each_slice(2) do |m1, m2| %>
-
-      <div class='col-sm-5'>
-        <%= render partial: 'shared/match_up_card', locals: { matchup: m1} %>
+    <% active_matches = active_round.matches %>
+    <% if active_matches.size == 1 %>
+      <div class='col-sm-6 col-sm-offset-3'>
+        <%= render partial: 'shared/match_up_card',
+          locals: { matchup: active_matches.first } %>
       </div>
+    <% else %>
+      <% active_matches.each_slice(2) do |m1, m2| %>
 
-      <div class='col-sm-5 col-sm-offset-2'>
-        <%= render partial: 'shared/match_up_card', locals: { matchup: m2} %>
-      </div>
+        <div class='col-sm-5'>
+          <%= render partial: 'shared/match_up_card', locals: { matchup: m1} %>
+        </div>
+
+        <div class='col-sm-5 col-sm-offset-2'>
+          <%= render partial: 'shared/match_up_card', locals: { matchup: m2} %>
+        </div>
+      <% end %>
     <% end %>
 
+    <div class='row'>
+      <div class='col-md-12 text-center'>
+        <%= link_to 'See all projects', projects_path, class: 'project-see-all btn btn-lg btn-primary' %>
+      </div>
+    </div>
   </div>
 </div>

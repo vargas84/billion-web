@@ -72,8 +72,11 @@
 </section>
 
 <section class='landing-section landing-movements' id='landing-movements'>
-  <%#= render 'landing_projects' %>
-  <%= render 'landing_bracket' %>
+  <% if @competition.active_round.present? %>
+    <%= render 'landing_bracket' %>
+  <% else %>
+    <%= render 'landing_projects' %>
+  <% end %>
 </section>
 
 <section class='landing-section landing-festival' id='festival-section'>
