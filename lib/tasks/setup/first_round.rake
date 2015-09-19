@@ -10,16 +10,17 @@ namespace :setup do
     round.save
 
     # create matches
-    active_projects = competition.projects
-      .where(eliminated_at: nil)
-      .sort_by { |p| 0 - p.points_donated }
+    active_projects = competition.projects.where(eliminated_at: nil).sort_by do |p|
+      0 - p.points_donated
+    end
+
     matches_needed = active_projects.size / 2
     (0..matches_needed - 1).each do |i|
-      Match.create({
+      Match.create(
         round: round,
         project_1: active_projects[i],
-        project_2: active_projects[-(i+1)],
-      })
+        project_2: active_projects[-(i + 1)]
+      )
     end
   end
 end

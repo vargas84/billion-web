@@ -9,9 +9,9 @@ class Project < ActiveRecord::Base
   has_many :sent_transactions, as: :sender, class_name: 'Transaction'
   has_many :received_transactions, as: :recipient, class_name: 'Transaction'
   has_many :matches_as_1, class_name: 'Match', foreign_key: :project_1_id,
-    inverse_of: :project_1
+                          inverse_of: :project_1
   has_many :matches_as_2, class_name: 'Match', foreign_key: :project_2_id,
-    inverse_of: :project_2
+                          inverse_of: :project_2
 
   validates :name, presence: true
 
@@ -29,10 +29,9 @@ class Project < ActiveRecord::Base
 
   # TODO: There is a better way to do this. This makes me sad.
   def current_competitor
-    match = competition.active_round
-      .try(:matches)
-      .try(:where, 'project_1_id = :id OR project_2_id = :id', id: id)
-      .try(:first)
+    match = competition.active_round.try(:matches)
+            .try(:where, 'project_1_id = :id OR project_2_id = :id', id: id)
+            .try(:first)
 
     match.project_1_id == id ? match.project_2 : match.project_1 unless match.nil?
   end
