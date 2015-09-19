@@ -3,12 +3,14 @@
 
 <div class='matchup-cards'>
   <div class='matchup-card matchup-card-1'>
-    <div class='matchup-card-title'>
-      <%= link_to project_1.name, project_path(project_1), title: project_1.name %>
-    </div>
+    <div class='matchup-body'>
+      <div class='matchup-card-title'>
+        <%= link_to project_1.name, project_path(project_1), title: project_1.name %>
+      </div>
 
-    <div class='matchup-card-blurb'>
-      <%= truncate(project_1.blurb, length: 140) %>
+      <div class='matchup-card-blurb'>
+        <%= truncate(project_1.blurb, length: 140) %>
+      </div>
     </div>
 
     <div class='matchup-score'>
@@ -25,12 +27,14 @@
       </span>
     </div>
 
-    <div class='matchup-card-title'>
-      <%= link_to project_2.name, project_path(project_2), title: project_2.name %>
-    </div>
+    <div class='matchup-body'>
+      <div class='matchup-card-title'>
+        <%= link_to project_2.name, project_path(project_2), title: project_2.name %>
+      </div>
 
-    <div class='matchup-card-blurb'>
-      <%= truncate(project_2.blurb, length: 140)%>
+      <div class='matchup-card-blurb'>
+        <%= truncate(project_2.blurb, length: 140)%>
+      </div>
     </div>
   </div>
 </div>
