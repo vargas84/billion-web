@@ -1,0 +1,93 @@
+.matchup {
+  $gap-width: 3px;
+
+  &-cards {
+    margin-bottom: $grid-gutter-width  * 2;
+    position: relative;
+    &::after {
+      $font-size: ms(1);
+      $size: 2 * $font-size;
+      background-color: $white;
+      border-radius: 50%;
+      border: $gap-width solid $body-bg;
+      box-sizing: content-box;
+      color: $text-color;
+      content: 'vs';
+      display: block;
+      font-size: ms(1);
+      font-weight: bold;
+      height: $size;
+      left: $grid-gutter-width;
+      line-height: $size;
+      margin-top: -($size + $gap-width * 2) / 2;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      width: $size;
+    }
+  }
+
+  &-card {
+    background-color: white;
+    padding: $grid-gutter-width / 2;
+    position: relative;
+
+    &::before{
+      background-color: $blue;
+      content: '';
+      display: block;
+      height: 100%;
+      right: 100%;
+      position: absolute;
+      top: 0;
+      width: 2px;
+      @include transition(width 0.1s);
+    }
+
+    &:hover::before {
+      width: 4px;
+    }
+
+    & + & {
+      margin-top: $gap-width;
+    }
+  }
+
+  &-score {
+    color: $brand-primary;
+    text-align: right;
+    font-size: ms(2);
+  }
+
+
+  &-card-title {
+    font-size: ms(1);
+    font-weight: bold;
+  }
+
+  &-card-blurb {
+    height: 7em;
+    font-size: ms(0);
+    line-height: ms(2);
+
+    @media (min-width: $screen-sm) {
+      height: 4 * ms(2);
+    }
+
+    @media (min-width: $screen-md) {
+      height: 3 * ms(2);
+    }
+  }
+
+  &-card-1 {
+    &::before {
+      background-color: $red;
+    }
+  }
+
+  &-card-2 {
+    &::before {
+      background-color: $blue;
+    }
+  }
+}
