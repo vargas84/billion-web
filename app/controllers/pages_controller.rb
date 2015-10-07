@@ -1,3 +1,4 @@
+
 class PagesController < ApplicationController
   include HighVoltage::StaticPage
 
@@ -6,11 +7,6 @@ class PagesController < ApplicationController
   private
 
   def layout_for_page
-    case params[:id]
-    when 'landing'
-      'landing'
-    else
-      'application'
-    end
+    'application'
   end
 end
