@@ -50,7 +50,6 @@
           <div class="project-support">
             <% if @project.eliminated? %>
               <p>This project has been eliminated from the current competition.</p>
-              <%= link_to 'View active projects', projects_path, class: 'btn btn-block btn-blue' %>
             <% else %>
               <%= link_to 'Support this project',
                 new_transaction_path(project_id: @project.id),
