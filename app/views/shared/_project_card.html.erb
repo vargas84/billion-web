@@ -1,5 +1,4 @@
-<% classes = "project-card #{project.eliminated? ? 'project-card-eliminated' : ''}" %>
-<div class='<%= classes %>'>
+<div class='project-card'>
 
   <%= link_to project_path(project), title: project.name  do %>
     <div class='card-image' style='background-image: url(<%= project.card_image_url || "http://placehold.it/640x480"%>)'>
