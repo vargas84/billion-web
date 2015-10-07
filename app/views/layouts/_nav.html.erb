@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-12-xs">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,13 +23,19 @@
             <li><%= link_to 'Our Story', story_path, class: 'navbar-text' %></li>
 
             <li>
-              <%= link_to 'Discover Projects', projects_path,
+              <% winner = @competition.projects.order_by_points.first %>
+              <%= link_to 'The Billion Winner', project_path(winner),
+                class: 'navbar-text' %>
+            </li>
+
+            <li>
+              <%= link_to 'Past Participants', projects_path,
                 class: 'navbar-text' %>
             </li>
 
             <li class="navbar-total">
               The Billion Fund:
-              <%= number_to_currency Competition.current_competition.total_raised %>
+              <%= number_to_currency @competition.total_raised %>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->

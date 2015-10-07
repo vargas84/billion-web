@@ -44,6 +44,9 @@
   &-masthead {
     $background: $bg-blue;
     background-color: $background;
+    background-image: url(https://s3.amazonaws.com/billioneffect/images/landing/billion-festival.jpg);
+    background-size: cover;
+    background-position: center;
 
     .logo {
       height: 40px;
@@ -54,7 +57,7 @@
       padding: 50px 0 75px;
 
       @media (min-width: $screen-md) {
-      padding: 160px 0 200px;
+      padding: 190px 0 50px;
       }
     }
 
@@ -64,13 +67,17 @@
 
     .tagline {
       font-weight: 300;
-      color: $brand-primary;
+      color: $white;
       font-size: ms(2);
       line-height: 1.6;
-      margin-bottom: 40px;
+      margin-bottom: 180px;
 
       @media (min-width: $screen-md) {
         font-size: ms(3);
+
+        .large {
+          font-size: ms(4);
+        }
       }
     }
 
@@ -81,12 +88,10 @@
         font-size: ms(1);
         padding: 10px 15px;
         border: none;
-        background-color: $brand-primary;
         border-radius: 50%;
-        color: lighten($background, 20%);
+        color: $white;
       }
 
-      l
       .fa {
         color: white;
       }
@@ -135,11 +140,16 @@
       margin: 0 auto;
     }
 
-    
+    &.participants {
+      background-color: white;
+
+      .project-card .card-content {
+        background-color: $body-bg;
+      }
+    }
   }
 
   &-festival {
-    background-color: white;
     counter-reset: festival-step;
 
     .festival-step {

@@ -1,18 +1,16 @@
 <%
-projects = @competition.projects.active
+winner = @competition.projects.order_by_points.first
+projects = @competition.projects.where.not(id: winner.id)
 
-if projects.count == @competition.projects.count
-  projects = projects.order('random()').limit(4)
-  subheading = 'We are looking to improve Columbus. Help us find the best way.'
-else
-  projects = projects.order_by_points
-  subheading = 'These teams have made it to the bracket stage!'
-end
+projects = projects.order('random()').limit(4)
+subheading = 'These projects are no longer eligable for funding through ' +
+  'Billion. However, they continue to make Columbus a better place every day.' +
+  ' Check them out!'
 %>
 
   <div class='container'>
     <div class='landing-section-heading'>
-      <h1>Support a Movement</h1>
+      <h1>Support Columbus Changemakers</h1>
       <div class='row'>
         <div class='col-md-8 col-md-offset-2'>
           <p class='landing-section-subheading'><%= subheading %></p>
