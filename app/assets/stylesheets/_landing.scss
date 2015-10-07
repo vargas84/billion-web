@@ -140,11 +140,16 @@
       margin: 0 auto;
     }
 
-    
+    &.participants {
+      background-color: white;
+
+      .project-card .card-content {
+        background-color: $body-bg;
+      }
+    }
   }
 
   &-festival {
-    background-color: white;
     counter-reset: festival-step;
 
     .festival-step {

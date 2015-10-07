@@ -1,0 +1,20 @@
+<%
+winner = @competition.projects.order_by_points.first
+%>
+
+  <div class='container'>
+    <div class='landing-section-heading'>
+      <h1>Meet the Inagural Billion Winner</h1>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p class='landing-section-subheading'>The Columbus Community has spoken!</p>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
+        <%= render partial: 'shared/project_card', locals: { project: winner } %>
+      </div>
+    </div>
+
+  </div>
